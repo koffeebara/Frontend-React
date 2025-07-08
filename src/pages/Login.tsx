@@ -16,6 +16,7 @@ export default function Login() {
     <div className="w-full max-w-md mx-auto mt-8 p-4">
       {/* 간단한 소개 */}
       <div className="text-center mt-8">
+
         <h1 className="text-xl mb-2">시고르토크</h1>
         <div className="bg-gray-200 p-4">
           <p>시고르토크 img 위치</p>

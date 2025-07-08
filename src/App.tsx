@@ -6,6 +6,7 @@ import Moon from "./pages/Moon";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
+
 // npm run format → prettier로 코드 정렬
 // npm run lint → eslint로 코드 검사
 
@@ -18,6 +19,7 @@ function App() {
         <Link to="/moon">MOON</Link>
         <Link to="/login">LOGIN</Link>
         <Link to="/signup">SIGNUP</Link>
+
       </div>
 
       <Routes>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/moon" element={<Moon />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
       </Routes>
     </>
   );
