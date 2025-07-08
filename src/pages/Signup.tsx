@@ -1,4 +1,26 @@
+import { useFormValidation } from "../hooks/useFormValidation";
+
 export default function Signup() {
+  const {
+    email,
+    setEmail,
+    emailMessage,
+    password,
+    setPassword,
+    passwordMessage,
+    name,
+    setName,
+    nameMessage,
+  } = useFormValidation({ type: "signup" });
+
+  const isValid =
+    email &&
+    password &&
+    name &&
+    !emailMessage &&
+    !passwordMessage &&
+    !nameMessage;
+
   return (
     <div className="w-full max-w-md mx-auto mt-8 p-4">
       {/* 간단한 소개 */}
@@ -10,33 +32,54 @@ export default function Signup() {
       </div>
 
       {/* 이메일 */}
-      <div className="mb-4">
+      <div className="mt-4">
         <input
+          type="email"
           className="w-full bg-gray-200 p-4 text-center"
           placeholder="이메일"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
+      {emailMessage && (
+        <p className="text-center text-sm text-red-500">{emailMessage}</p>
+      )}
 
       {/* 비밀번호 */}
-      <div className="mb-4">
+      <div className="mt-4">
         <input
           className="w-full bg-gray-200 p-4 text-center"
           placeholder="비밀번호"
           type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
 
+      {password.length > 0 && passwordMessage && (
+        <p className="text-center text-sm text-red-500">{passwordMessage}</p>
+      )}
+
       {/* 이름 */}
-      <div className="mb-4">
+      <div className="mt-4">
         <input
           className="w-full bg-gray-200 p-4 text-center"
           placeholder="이름"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
+      {nameMessage && (
+        <p className="text-center text-sm text-red-500">{nameMessage}</p>
+      )}
 
       {/* 회원가입 */}
-      <div className="mb-8">
-        <button className="w-full bg-blue-500 p-4 text-center cursor-pointer">
+      <div className="mt-8">
+        <button
+          className={`w-full p-4 text-center cursor-pointer 
+            ${isValid ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
+          disabled={!isValid}
+        >
           회원가입
         </button>
       </div>
