@@ -1,4 +1,4 @@
-export default function Login() {
+export default function Signup() {
   return (
     <div className="w-full max-w-md mx-auto mt-8 p-4">
       {/* 간단한 소개 */}
@@ -26,19 +26,27 @@ export default function Login() {
         />
       </div>
 
-      {/* 로그인 */}
+      {/* 이름 */}
+      <div className="mb-4">
+        <input
+          className="w-full bg-gray-200 p-4 text-center"
+          placeholder="이름"
+        />
+      </div>
+
+      {/* 회원가입 */}
       <div className="mb-8">
         <button className="w-full bg-blue-500 p-4 text-center cursor-pointer">
-          로그인
+          회원가입
         </button>
       </div>
 
       {/* 하단 텍스트 */}
       <div className="flex justify-center text-gray-500 mb-8">
-        <p>계정이 없으신가요?</p>
+        <p>이미 계정이 있으신가요?</p>
         <p>
           <a href="#" className="text-blue-500">
-            회원가입
+            로그인
           </a>
         </p>
       </div>
