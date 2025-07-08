@@ -1,6 +1,9 @@
+import Mentors from "./Mentors";
 
 export default function Moon() {
   return (
-    <div>Moon</div>
+    <>
+      <Mentors />
+    </>
   )
 }
