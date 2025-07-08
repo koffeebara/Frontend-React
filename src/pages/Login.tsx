@@ -5,7 +5,7 @@ export default function Login() {
       <div className="text-center mb-8">
         <h1 className="text-xl mb-2">시고르토크</h1>
         <div className="bg-gray-200 p-4">
-          <p>시크해트크 img 위치</p>
+          <p>시고르토크 img 위치</p>
         </div>
       </div>
 
