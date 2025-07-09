@@ -27,6 +27,6 @@ dist-ssr
 .github/workflows/node_modules/
 .github/workflows/build/
 
-
+dist/*
 .firebaserc
 build/*
