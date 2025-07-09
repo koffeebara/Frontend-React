@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+.github/workflows/node_modules/
+.github/workflows/build/
+
+
+.firebaserc
+firebase.json
+build/*
