@@ -29,5 +29,4 @@ dist-ssr
 
 
 .firebaserc
-firebase.json
 build/*
