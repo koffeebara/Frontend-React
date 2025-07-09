@@ -1,4 +1,4 @@
-import Mentors from "./Mentors";
+import Mentors from "./mentors";
 
 export default function Moon() {
   return (
