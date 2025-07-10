@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
 
 export default function Signup() {
@@ -88,9 +89,9 @@ export default function Signup() {
       <div className="flex justify-center text-gray-500 mb-8">
         <p>이미 계정이 있으신가요?</p>
         <p>
-          <a href="#" className="text-blue-500">
+          <Link to="/login" className="text-blue-500">
             로그인
-          </a>
+          </Link>
         </p>
       </div>
 

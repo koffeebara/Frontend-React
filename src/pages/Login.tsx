@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
 
 export default function Login() {
@@ -16,7 +17,6 @@ export default function Login() {
     <div className="w-full max-w-md mx-auto mt-8 p-4">
       {/* 간단한 소개 */}
       <div className="text-center mt-8">
-
         <h1 className="text-xl mb-2">시고르토크</h1>
         <div className="bg-gray-200 p-4">
           <p>시고르토크 img 위치</p>
@@ -68,9 +68,9 @@ export default function Login() {
       <div className="flex justify-center text-gray-500 mb-8">
         <p>계정이 없으신가요?</p>
         <p>
-          <a href="#" className="text-blue-500">
+          <Link to="/signup" className="text-blue-500">
             회원가입
-          </a>
+          </Link>
         </p>
       </div>
 
