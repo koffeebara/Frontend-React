@@ -1,9 +1,16 @@
-/**
- * HTTP 클라이언트 - 인터셉터와 자동 재시도 로직 포함
- */
+/* HTTP 클라이언트 - 인터셉터와 자동 재시도 로직 포함 */
+interface RefreshTokenResponse {
+  response: {
+    accessToken: string;
+  };
+}
+
+type GetTokenFunction = () => string | null;
+type SetTokenFunction = (token: string) => void;
+type RemoveTokenFunction = () => void;
 
 // 토큰 재발급 함수
-const refreshTokenRequest = async () => {
+const refreshTokenRequest = async (): Promise<string> => {
   try {
     const response = await fetch("/api/v1/auth/refresh", {
       method: "POST",
@@ -11,7 +18,7 @@ const refreshTokenRequest = async () => {
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const data: RefreshTokenResponse = await response.json();
       return data.response.accessToken;
     } else {
       throw new Error("토큰 재발급 실패");
@@ -22,13 +29,16 @@ const refreshTokenRequest = async () => {
   }
 };
 
-/**
- * 인증이 필요한 API 호출을 처리하는 HTTP 클라이언트
- * 401 에러 시 자동으로 토큰 재발급 후 재시도
- */
-export const createAuthenticatedFetch = (getToken, setToken, removeToken) => {
-  return async (url, options = {}) => {
-    const makeRequest = async (token) => {
+// 인증이 필요한 API 호출을 처리하는 HTTP 클라이언트
+// 401 에러 시 자동으로 토큰 재발급 후 재시도
+
+export const createAuthenticatedFetch = (
+  getToken: GetTokenFunction,
+  setToken: SetTokenFunction,
+  removeToken: RemoveTokenFunction
+) => {
+  return async (url: string, options: RequestInit = {}): Promise<Response> => {
+    const makeRequest = async (token: string | null): Promise<Response> => {
       return fetch(url, {
         ...options,
         headers: {
