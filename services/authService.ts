@@ -29,7 +29,6 @@ interface ApiResponse<T> {
   response: T;
 }
 
-// API 호출 시 공통적으로 사용할 기본 URL
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 export const authService = {

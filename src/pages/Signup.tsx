@@ -49,8 +49,6 @@ export default function Signup() {
       // 회원가입 후 자동 로그인
       const loginResponse = await authService.login({ email, password });
       console.log("자동 로그인 성공:", loginResponse);
-
-      // zustand store를 사용해 토큰 저장 및 로그인 상태 업데이트
       setToken(loginResponse.accessToken);
       navigate("/");
     } catch (error) {
