@@ -76,6 +76,7 @@ export default function Login() {
             placeholder="비밀번호"
             type="password"
             value={password}
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

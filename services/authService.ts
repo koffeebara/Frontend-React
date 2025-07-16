@@ -29,10 +29,13 @@ interface ApiResponse<T> {
   response: T;
 }
 
+// API 호출 시 공통적으로 사용할 기본 URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+
 export const authService = {
-  /* 회원가입 */
   signup: async (userData: SignupData): Promise<SignupResponse> => {
-    const response = await fetch("/api/v1/users", {
+    const url = `${API_BASE_URL}/api/v1/users`;
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +52,8 @@ export const authService = {
 
   /* 로그인 */
   login: async (credentials: LoginCredentials): Promise<LoginResponse> => {
-    const response = await fetch("/api/v1/auth/login", {
+    const url = `${API_BASE_URL}/api/v1/auth/login`;
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
