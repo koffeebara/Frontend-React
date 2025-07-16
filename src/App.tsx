@@ -12,7 +12,15 @@ import "./App.css";
 import Mypage from "./pages/Mypage";
 
 function App() {
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const { isLoggedIn, _hasHydrated } = useAuthStore();
+
+  if (!_hasHydrated) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-lg">로딩 중...</div>
+      </div>
+    );
+  }
 
   return (
     <>
