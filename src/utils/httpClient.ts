@@ -1,73 +1,47 @@
-/* HTTP 클라이언트 - 인터셉터와 자동 재시도 로직 포함 */
-interface RefreshTokenResponse {
-  response: {
-    accessToken: string;
-  };
+async function refreshAccessToken(): Promise<string> {
+  const response = await fetch("/api/v1/auth/refresh", {
+    method: "POST",
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("토큰 만료");
+  }
+
+  const data = await response.json();
+  return data.response.accessToken;
 }
 
-type GetTokenFunction = () => string | null;
-type SetTokenFunction = (token: string) => void;
-type RemoveTokenFunction = () => void;
-
-// 토큰 재발급 함수
-const refreshTokenRequest = async (): Promise<string> => {
-  try {
-    const response = await fetch("/api/v1/auth/refresh", {
-      method: "POST",
-      credentials: "include", // HttpOnly 쿠키 포함
-    });
-
-    if (response.ok) {
-      const data: RefreshTokenResponse = await response.json();
-      return data.response.accessToken;
-    } else {
-      throw new Error("토큰 재발급 실패");
-    }
-  } catch (error) {
-    console.error("토큰 재발급 실패:", error);
-    throw error;
-  }
-};
-
-// 인증이 필요한 API 호출을 처리하는 HTTP 클라이언트
-// 401 에러 시 자동으로 토큰 재발급 후 재시도
-
-export const createAuthenticatedFetch = (
-  getToken: GetTokenFunction,
-  setToken: SetTokenFunction,
-  removeToken: RemoveTokenFunction
-) => {
-  return async (url: string, options: RequestInit = {}): Promise<Response> => {
-    const makeRequest = async (token: string | null): Promise<Response> => {
-      return fetch(url, {
-        ...options,
-        headers: {
-          ...options.headers,
-          ...(token && { Authorization: `Bearer ${token}` }),
-        },
-      });
+export function createAuthenticatedFetch(
+  getToken: () => string | null,
+  setToken: (token: string) => void,
+  removeToken: () => void
+) {
+  return async function authFetch(
+    url: string,
+    options: RequestInit = {}
+  ): Promise<Response> {
+    const token = getToken();
+    const headers: Record<string, string> = {
+      ...(options.headers as Record<string, string>),
     };
+    if (token) headers.Authorization = `Bearer ${token}`;
 
-    // 첫 번째 요청
-    let response = await makeRequest(getToken());
+    let response = await fetch(url, { ...options, headers });
 
-    // 401 에러 시 토큰 재발급 후 재시도
-    if (response.status === 401 && getToken()) {
-      console.log("토큰이 만료되었습니다. 재발급을 시도합니다...");
-
+    if (response.status === 401 && token) {
       try {
-        const newToken = await refreshTokenRequest();
+        const newToken = await refreshAccessToken();
         setToken(newToken);
-        console.log("새 토큰으로 재시도합니다...");
-        response = await makeRequest(newToken);
-      } catch (error) {
-        // RefreshToken도 만료된 경우
+        headers.Authorization = `Bearer ${newToken}`;
+        response = await fetch(url, { ...options, headers });
+      } catch (err) {
         removeToken();
-        alert("세션이 만료되었습니다. 다시 로그인해주세요.");
-        throw error;
+        window.location.href = "/login";
+        throw err;
       }
     }
 
     return response;
   };
-};
+}

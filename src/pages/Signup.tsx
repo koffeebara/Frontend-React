@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
 import { authService } from "../../services/authService";
-import { useAuth } from "../hooks/useAuth";
+import { useAuthStore } from "../store/authStore";
 import { useState } from "react";
 
 export default function Signup() {
@@ -25,7 +25,7 @@ export default function Signup() {
     !passwordMessage &&
     !nameMessage;
 
-  const { saveToken } = useAuth();
+  const { setToken } = useAuthStore();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [signupError, setSignupError] = useState("");
@@ -49,8 +49,7 @@ export default function Signup() {
       // 회원가입 후 자동 로그인
       const loginResponse = await authService.login({ email, password });
       console.log("자동 로그인 성공:", loginResponse);
-
-      saveToken(loginResponse.accessToken);
+      setToken(loginResponse.accessToken);
       navigate("/");
     } catch (error) {
       console.error("회원가입 실패:", error);
