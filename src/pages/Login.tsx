@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
-import { useAuth } from "../hooks/useAuth";
 import { authService } from "../../services/authService";
 import { useState } from "react";
+import { useAuthStore } from "../store/authStore";
 
 export default function Login() {
   const {
@@ -14,7 +14,7 @@ export default function Login() {
     passwordMessage,
   } = useFormValidation({ type: "login" });
 
-  const { saveToken } = useAuth();
+  const setToken = useAuthStore((state) => state.setToken);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
@@ -32,13 +32,11 @@ export default function Login() {
       console.log("로그인 시도:", { email, password });
       const response = await authService.login({ email, password });
       console.log("로그인 성공:", response);
-      saveToken(response.accessToken);
+      setToken(response.accessToken);
       navigate("/");
     } catch (error) {
       console.error("로그인 실패:", error);
-      const errorMessage =
-        error instanceof Error ? error.message : "로그인에 실패했습니다.";
-      setLoginError(errorMessage);
+      setLoginError("아이디 또는 비밀번호가 올바르지 않습니다.");
     } finally {
       setIsLoading(false);
     }
