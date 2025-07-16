@@ -14,15 +14,7 @@ import Home from "./pages/Home";
 function App() {
   return (
     <>
-      {/* 아래 div 코드는 추후 메인페이지가 만들어지면 삭제될 코드 */}
-      <div className="flex flex-col">
-        <Nav />
-        <Link to="/lee">LEE</Link>
-        <Link to="/moon">MOON</Link>
-        <Link to="/login">LOGIN</Link>
-        <Link to="/signup">SIGNUP</Link>
-      </div>
-
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lee" element={<Lee />} />
