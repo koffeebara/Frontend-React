@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Nav() {
   return (
     <div className="m-w-screen flex flex-col justify-center items-center">
-      <nav className="w-1/2 p-4 border-l border-r border-b border-gray-500 bg-white shadow-md">
+      <nav className="w-full p-4 border-l border-r border-b border-gray-500 bg-white shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-black text-lg font-bold">
             <Link to="/">시고르토크</Link>
