@@ -35,10 +35,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mentors" element={<Mentors />} />
-        <Route
+        {/* <Route
           path="/mypage"
           element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
-        />
+        /> */}
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
     </>
   );
