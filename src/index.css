@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+
+.cb-h1 {
+  @apply justify-start text-gray-900 text-xl font-semibold font-['Noto_Sans_KR'] leading-loose;
+}
+
+.cb-p1 {
+  @apply  justify-start text-gray-900 text-base font-normal font-['Noto_Sans_KR'] leading-normal;
+}
+
+.cb-caption {
+  @apply justify-start text-gray-600 text-xs font-normal font-['Noto_Sans_KR'] leading-none
+}
