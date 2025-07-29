@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+.display {
+  @apply text-[40px] leading-[56px] font-semibold tracking-[0.04em];
+}
+
+.title-1 {
+  @apply text-[32px] leading-[48px] font-bold tracking-[0.02em];
+}
+
+.title-2 {
+  @apply text-[24px] leading-[36px] font-bold tracking-[0.01em];
+}
+
+.heading-1 {
+  @apply text-[20px] leading-[30px] font-bold tracking-[0.02em];
+}
+
+.heading-2 {
+  @apply text-[18px] leading-[28px] font-semibold tracking-[0.02em];
+}
+
+.body-1 {
+  @apply text-[18px] leading-[28px] font-normal tracking-[0.04em];
+}
+
+.body-2 {
+  @apply text-[16px] leading-[24px] font-semibold tracking-[0.02em];
+}
+
+.body-3 {
+  @apply text-[16px] leading-[24px] font-normal tracking-[0.04em];
+}
+
+.body-4 {
+  @apply text-[14px] leading-[22px] font-semibold tracking-[0.02em];
+}
+
+.body-5 {
+  @apply text-[14px] leading-[22px] font-normal tracking-[0.02em];
+}
+
+.caption-1 {
+  @apply text-[12px] leading-[18px] font-light tracking-[0.02em];
+}
+
+.caption-2 {
+  @apply text-[10px] leading-[14px] font-light tracking-[0.01em];
+}
