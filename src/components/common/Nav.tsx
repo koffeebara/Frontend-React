@@ -11,37 +11,46 @@ export default function Nav() {
   };
 
   return (
-    <div className="m-w-screen flex flex-col justify-center items-center">
-      <nav className="w-full p-4 border-l border-r border-b border-gray-500 bg-white shadow-md">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-black text-lg font-bold">
-            <Link to="/">시고르토크</Link>
-          </div>
+    <header className="w-full h-20 bg-gradient-to-r from-green-500 to-green-400">
+      <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+        <Link to="/" className="text-white text-2xl md:text-3xl font-bold">
+          🌱 가상농장
+        </Link>
+        <nav className="hidden md:flex items-center space-x-8">
+          <a href="#" className="text-white hover:text-green-100">
+            작물 둘러보기
+          </a>
+          <a href="#" className="text-white hover:text-green-100">
+            서비스 소개
+          </a>
+          <a href="#" className="text-white hover:text-green-100">
+            고객후기
+          </a>
           {isLoggedIn ? (
-            <div className="flex gap-2">
+            <>
               <Link
                 to="/mypage"
-                className="text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700"
+                className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
               >
                 마이페이지
               </Link>
               <button
-                className="text-white bg-gray-500 px-4 py-2 rounded hover:bg-gray-700"
+                className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
                 onClick={handleLogout}
               >
                 로그아웃
               </button>
-            </div>
+            </>
           ) : (
             <Link
               to="/login"
-              className="text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
             >
               로그인
             </Link>
           )}
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+    </header>
   );
 }

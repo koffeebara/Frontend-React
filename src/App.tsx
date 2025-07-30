@@ -10,6 +10,7 @@ import Mentors from "./pages/mentors";
 
 import "./App.css";
 import Mypage from "./pages/Mypage";
+import Footer from "./components/common/Footer";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -41,6 +42,7 @@ function App() {
         /> */}
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
