@@ -11,6 +11,7 @@ import Mentors from "./pages/mentors";
 import "./App.css";
 import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
+import CropInfo from "./pages/CropInfo";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -41,6 +42,7 @@ function App() {
           element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
         /> */}
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/cropinfo" element={<CropInfo />} />
       </Routes>
       <Footer />
     </div>
