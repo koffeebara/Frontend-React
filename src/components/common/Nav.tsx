@@ -11,45 +11,49 @@ export default function Nav() {
   };
 
   return (
-    <header className="w-full h-20 bg-gradient-to-r from-green-500 to-green-400">
-      <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-        <Link to="/" className="text-white text-2xl md:text-3xl font-bold">
-          🌱 가상농장
-        </Link>
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-white hover:text-green-100">
-            작물 둘러보기
-          </a>
-          <a href="#" className="text-white hover:text-green-100">
-            서비스 소개
-          </a>
-          <a href="#" className="text-white hover:text-green-100">
-            고객후기
-          </a>
+    <header className="w-full flex justify-center items-center py-4 bg-transparent">
+      <div className="w-full max-w-[1200px] px-6 py-4 bg-mint-700 rounded-[999px] inline-flex justify-between items-center">
+        {/* 좌측 여백/로고 */}
+        <div className="w-28 h-12 p-2.5 inline-flex flex-col justify-center items-center gap-2.5">
+          <Link
+            to="/"
+            className="text-common-000 text-2xl font-bold font-pretendard"
+          >
+            🌱 가상농장
+          </Link>
+        </div>
+        {/* 우측 버튼(로그인/마이페이지/로그아웃) */}
+        <div className="flex items-center gap-2">
           {isLoggedIn ? (
             <>
               <Link
                 to="/mypage"
-                className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
+                className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
               >
-                마이페이지
+                <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
+                  마이페이지
+                </span>
               </Link>
               <button
-                className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
                 onClick={handleLogout}
+                className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
               >
-                로그아웃
+                <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
+                  로그아웃
+                </span>
               </button>
             </>
           ) : (
             <Link
               to="/login"
-              className="bg-white/20 border border-white/30 px-4 py-2 rounded text-white hover:bg-white/30"
+              className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
             >
-              로그인
+              <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
+                로그인
+              </span>
             </Link>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );

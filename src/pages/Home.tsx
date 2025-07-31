@@ -124,41 +124,41 @@ export default function Home() {
   };
 
   return (
-    <div className="w-[1280px] max-w-[1280px] bg-Green-green-000 inline-flex flex-col justify-start items-center font-['pretendard']">
+    <div className="w-[1280px] max-w-[1280px] bg-green-000 inline-flex flex-col justify-start items-center font-pretendard">
       {/* 히어로 섹션 */}
-      <div className="self-stretch pt-12 pb-8 bg-Green-green-000 flex flex-col justify-start items-center gap-10">
+      <div className="self-stretch pt-12 pb-8 bg-green-000 flex flex-col justify-start items-center gap-10">
         <div className="self-stretch flex flex-col justify-start items-center gap-4">
-          <div className="text-center text-Mint-mint-900 text-4xl font-semibold leading-[56px]">
+          <div className="text-center text-mint-900 text-4xl font-semibold leading-[56px]">
             농부와 함께 키우는
             <br />
             믿음직한 농작물
           </div>
-          <div className="self-stretch text-center text-Green-green-600 text-base leading-normal">
+          <div className="self-stretch text-center text-green-600 text-base leading-normal">
             농부의 신선한 농작물을 펀딩하고, 성장 과정을 지켜보세요 🌱
           </div>
         </div>
-        <div className="w-60 max-w-[800px] px-10 py-4 bg-Mint-mint-600 rounded-lg inline-flex justify-center items-center">
-          <div className="text-center text-Common-common-000 text-base font-semibold leading-normal">
+        <div className="w-60 max-w-[800px] px-10 py-4 bg-mint-600 rounded-lg inline-flex justify-center items-center">
+          <div className="text-center text-common-000 text-base font-semibold leading-normal">
             시작하기
           </div>
         </div>
       </div>
       {/* 통계/카드 섹션 */}
-      <div className="w-full max-w-[1200px] px-4 pt-8 pb-40 bg-Common-common-000 flex flex-col justify-start items-center gap-4">
+      <div className="w-full max-w-[1200px] px-4 pt-8 pb-40 bg-common-000 flex flex-col justify-start items-center gap-4">
         <div className="self-stretch min-w-96 py-2 inline-flex justify-start items-center gap-6">
           {stats.map((stat, idx) => (
             <div
               key={idx}
               className="flex-1 inline-flex flex-col justify-start items-center gap-1"
             >
-              <div className="self-stretch text-center text-Gray-gray-600 text-sm leading-snug">
+              <div className="self-stretch text-center text-gray-600 text-sm leading-snug">
                 {stat.label}
               </div>
               <div className="inline-flex justify-start items-center">
-                <div className="text-center text-Green-green-700 text-xl font-bold leading-loose">
+                <div className="text-center text-green-700 text-xl font-bold leading-loose">
                   {stat.number.replace(/[^0-9]/g, "")}
                 </div>
-                <div className="text-center text-Green-green-700 text-lg leading-7">
+                <div className="text-center text-green-700 text-lg leading-7">
                   {stat.number.replace(/[0-9]/g, "")}
                 </div>
               </div>
@@ -166,15 +166,15 @@ export default function Home() {
           ))}
         </div>
         {/* 인기 농작물 섹션 */}
-        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-Common-common-000">
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-common-000">
           <div className="self-stretch flex flex-col justify-start items-center gap-1">
-            <div className="px-4 py-1 bg-Orange-orange-200 rounded-[99px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 inline-flex justify-start items-center gap-0.5">
-              <div className="text-center text-Orange-orange-900 text-sm font-semibold leading-snug">
+            <div className="px-4 py-1 bg-orange-200 rounded-[99px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 inline-flex justify-start items-center gap-0.5">
+              <div className="text-center text-orange-900 text-sm font-semibold leading-snug">
                 이번 주 인기 농작물
               </div>
             </div>
             <div className="self-stretch pt-2 inline-flex justify-start items-center">
-              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+              <div className="flex-1 text-center text-gray-900 text-3xl font-bold leading-[48px]">
                 지금 참여 가능한 위탁 농작물
               </div>
             </div>
@@ -187,109 +187,109 @@ export default function Home() {
               >
                 <div className="self-stretch flex flex-col justify-start items-start gap-3">
                   <div className="px-2 inline-flex justify-start items-center">
-                    <div className="text-Red-red-500 text-base font-semibold">
+                    <div className="text-red-500 text-base font-semibold">
                       ⏰ 마감까지 D-
                     </div>
-                    <div className="text-Red-red-500 text-base font-semibold">
+                    <div className="text-red-500 text-base font-semibold">
                       {crop.deadline?.replace(/[^0-9]/g, "") || "00"}
                     </div>
                   </div>
-                  <div className="self-stretch p-6 bg-Common-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-200/20 flex flex-col justify-start items-start gap-4">
-                    <div className="self-stretch h-60 bg-Opacity-opacity-000/5 rounded-2xl flex items-center justify-center text-6xl">
+                  <div className="self-stretch p-6 bg-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-opacity-200/20 flex flex-col justify-start items-start gap-4">
+                    <div className="self-stretch h-60 bg-opacity-000/5 rounded-2xl flex items-center justify-center text-6xl">
                       {crop.emoji}
                     </div>
                     <div className="self-stretch px-2 flex flex-col justify-start items-start gap-3">
                       <div className="pt-2 inline-flex justify-start items-center">
-                        <div className="text-Gray-gray-900 text-2xl font-bold leading-9">
+                        <div className="text-gray-900 text-2xl font-bold leading-9">
                           {crop.name}
                         </div>
                       </div>
                       <div className="self-stretch flex flex-col justify-start items-start gap-1">
                         <div className="self-stretch inline-flex justify-start items-center gap-2">
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             📍
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             {crop.farmer}
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             {crop.location}
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             {crop.experience}
                           </div>
                         </div>
                         <div className="inline-flex justify-start items-center gap-2">
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             ⭐️
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             {crop.rating}
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             / 5
                           </div>
-                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                          <div className="text-gray-600 text-xs font-light leading-none">
                             ({crop.reviews}개 후기)
                           </div>
                         </div>
                       </div>
                       <div className="self-stretch inline-flex justify-start items-center gap-2 flex-wrap content-center">
-                        <div className="text-Blue-blue-500 text-xl font-bold leading-loose">
+                        <div className="text-blue-500 text-xl font-bold leading-loose">
                           {crop.price}
                         </div>
-                        <div className="text-Blue-blue-500 text-xl font-bold leading-loose">
+                        <div className="text-blue-500 text-xl font-bold leading-loose">
                           원
                         </div>
-                        <div className="text-Gray-gray-600 text-sm leading-snug">
+                        <div className="text-gray-600 text-sm leading-snug">
                           박스당
                         </div>
-                        <div className="text-Gray-gray-600 text-sm leading-snug">
+                        <div className="text-gray-600 text-sm leading-snug">
                           {crop.weight}
                         </div>
                       </div>
                     </div>
-                    <div className="w-full max-w-[800px] px-6 py-4 bg-Mint-mint-000 rounded-2xl flex flex-col justify-start items-start gap-2">
+                    <div className="w-full max-w-[800px] px-6 py-4 bg-mint-000 rounded-2xl flex flex-col justify-start items-start gap-2">
                       <div className="px-1 inline-flex justify-start items-center gap-1">
-                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                        <div className="text-gray-800 text-base font-semibold leading-normal">
                           달성률
                         </div>
-                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                        <div className="text-gray-800 text-base font-semibold leading-normal">
                           {crop.percentage}
                         </div>
-                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                        <div className="text-gray-800 text-base font-semibold leading-normal">
                           %
                         </div>
                       </div>
                       <div className="self-stretch h-4 rounded-[999px] inline-flex justify-start items-start">
                         <div
-                          className="h-4 bg-Mint-mint-500 rounded-tl-[999px] rounded-bl-[999px]"
+                          className="h-4 bg-mint-500 rounded-tl-[999px] rounded-bl-[999px]"
                           style={{ width: `${crop.percentage}%` }}
                         ></div>
-                        <div className="flex-1 h-4 bg-Cool-gray-cool-gray-100 rounded-tr-[999px] rounded-br-[999px]"></div>
+                        <div className="flex-1 h-4 bg-cool-gray-100 rounded-tr-[999px] rounded-br-[999px]"></div>
                       </div>
                       <div className="px-1 inline-flex justify-start items-center gap-1">
-                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                        <div className="text-cool-gray-700 text-sm leading-snug">
                           총
                         </div>
-                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                        <div className="text-cool-gray-700 text-sm leading-snug">
                           {crop.totalBoxes}
                         </div>
-                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                        <div className="text-cool-gray-700 text-sm leading-snug">
                           박스 중
                         </div>
-                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                        <div className="text-cool-gray-700 text-sm leading-snug">
                           {crop.completedBoxes}
                         </div>
-                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                        <div className="text-cool-gray-700 text-sm leading-snug">
                           박스 위탁 완료!
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="w-60 px-10 py-4 bg-Orange-orange-400 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 inline-flex justify-center items-end">
-                  <div className="text-center text-Common-common-000 text-base font-semibold leading-normal">
+                <div className="w-60 px-10 py-4 bg-orange-400 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 inline-flex justify-center items-end">
+                  <div className="text-center text-common-000 text-base font-semibold leading-normal">
                     상품 둘러보기
                   </div>
                 </div>
@@ -298,10 +298,10 @@ export default function Home() {
           </div>
         </div>
         {/* 이용 방법 섹션 */}
-        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-Green-green-200">
-          <div className="self-stretch min-w-96 px-6 py-4 bg-Green-green-200 flex flex-col justify-center items-start gap-6">
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-green-200">
+          <div className="self-stretch min-w-96 px-6 py-4 bg-green-200 flex flex-col justify-center items-start gap-6">
             <div className="self-stretch pt-2 inline-flex justify-start items-center">
-              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+              <div className="flex-1 text-center text-gray-900 text-3xl font-bold leading-[48px]">
                 가상농장 이용 방법
               </div>
             </div>
@@ -309,19 +309,19 @@ export default function Home() {
               {steps.map((step) => (
                 <div
                   key={step.number}
-                  className="flex-1 min-w-96 px-6 py-4 bg-Common-common-000 rounded-2xl inline-flex flex-col justify-start items-center gap-6"
+                  className="flex-1 min-w-96 px-6 py-4 bg-common-000 rounded-2xl inline-flex flex-col justify-start items-center gap-6"
                 >
                   <div className="flex flex-col justify-start items-center gap-2">
-                    <div className="w-8 h-8 bg-Mint-mint-600 rounded-[999px] flex flex-col justify-center items-center">
-                      <div className="text-center text-Common-common-000 text-sm font-semibold leading-snug">
+                    <div className="w-8 h-8 bg-mint-600 rounded-[999px] flex flex-col justify-center items-center">
+                      <div className="text-center text-common-000 text-sm font-semibold leading-snug">
                         {step.number}
                       </div>
                     </div>
-                    <div className="text-center text-Gray-gray-900 text-xl font-bold leading-loose">
+                    <div className="text-center text-gray-900 text-xl font-bold leading-loose">
                       {step.title}
                     </div>
                   </div>
-                  <div className="self-stretch text-center text-Gray-gray-900 text-base leading-normal">
+                  <div className="self-stretch text-center text-gray-900 text-base leading-normal">
                     {step.description.map((line, idx) => (
                       <div key={idx}>{line}</div>
                     ))}
@@ -332,10 +332,10 @@ export default function Home() {
           </div>
         </div>
         {/* 후기 섹션 */}
-        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-Blue-blue-000">
-          <div className="self-stretch px-6 py-4 bg-Blue-blue-000 flex flex-col justify-start items-center gap-6">
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-blue-000">
+          <div className="self-stretch px-6 py-4 bg-blue-000 flex flex-col justify-start items-center gap-6">
             <div className="self-stretch pt-2 inline-flex justify-start items-center">
-              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+              <div className="flex-1 text-center text-gray-900 text-3xl font-bold leading-[48px]">
                 생생한 고객 후기
               </div>
             </div>
@@ -343,40 +343,40 @@ export default function Home() {
               {reviews.map((review, idx) => (
                 <div
                   key={idx}
-                  className="flex-1 max-w-96 p-6 bg-Common-common-000 rounded-2xl outline outline-1 outline-offset-[-1.5px] outline-Opacity-opacity-100/10 inline-flex flex-col justify-start items-start gap-6"
+                  className="flex-1 max-w-96 p-6 bg-common-000 rounded-2xl outline outline-1 outline-offset-[-1.5px] outline-opacity-100/10 inline-flex flex-col justify-start items-start gap-6"
                 >
                   <div className="self-stretch px-1 flex flex-col justify-start items-start gap-2">
-                    <div className="self-stretch text-Cool-gray-cool-gray-800 text-base leading-normal">
+                    <div className="self-stretch text-cool-gray-800 text-base leading-normal">
                       {"⭐️".repeat(review.rating)}
                     </div>
                     <div className="self-stretch inline-flex justify-start items-start">
-                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                      <div className="text-blue-500 text-base font-semibold leading-normal">
                         “
                       </div>
-                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                      <div className="text-blue-500 text-base font-semibold leading-normal">
                         {review.title}
                       </div>
-                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                      <div className="text-blue-500 text-base font-semibold leading-normal">
                         ”
                       </div>
                     </div>
-                    <div className="self-stretch text-Cool-gray-cool-gray-800 text-sm leading-snug">
+                    <div className="self-stretch text-cool-gray-800 text-sm leading-snug">
                       {review.content}
                     </div>
                   </div>
                   <div className="self-stretch inline-flex justify-start items-center gap-3">
-                    <div className="w-12 h-12 bg-Cool-gray-cool-gray-200 rounded-full outline outline-[1.5px] outline-offset-[-1.5px] outline-Opacity-opacity-100/10 flex justify-center items-center"></div>
+                    <div className="w-12 h-12 bg-cool-gray-200 rounded-full outline outline-[1.5px] outline-offset-[-1.5px] outline-opacity-100/10 flex justify-center items-center"></div>
                     <div className="inline-flex flex-col justify-center items-start gap-1">
-                      <div className="text-Blue-blue-800 text-sm font-semibold leading-snug">
+                      <div className="text-blue-800 text-sm font-semibold leading-snug">
                         {review.name}
                       </div>
                       <div className="inline-flex justify-start items-center gap-0.5">
-                        <div className="text-Cool-gray-cool-gray-300 text-xs font-light leading-none">
+                        <div className="text-cool-gray-300 text-xs font-light leading-none">
                           {review.date
                             .replace(/\./g, "년 ")
                             .replace(/\.$/, "월")}
                         </div>
-                        <div className="text-Cool-gray-cool-gray-300 text-xs font-light leading-none">
+                        <div className="text-cool-gray-300 text-xs font-light leading-none">
                           {" "}
                           참가자
                         </div>
@@ -389,9 +389,9 @@ export default function Home() {
           </div>
         </div>
         {/* 다른 농작물 섹션 */}
-        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-Common-common-000">
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-common-000">
           <div className="self-stretch pt-2 inline-flex justify-start items-center">
-            <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+            <div className="flex-1 text-center text-gray-900 text-3xl font-bold leading-[48px]">
               다른 농작물 둘러보기
             </div>
           </div>
@@ -399,39 +399,39 @@ export default function Home() {
             {extraCrops.map((crop, idx) => (
               <div
                 key={idx}
-                className="w-96 max-w-96 min-w-52 p-6 bg-Common-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-200/20 inline-flex flex-col justify-start items-start gap-4"
+                className="w-96 max-w-96 min-w-52 p-6 bg-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-opacity-200/20 inline-flex flex-col justify-start items-start gap-4"
               >
                 <div className="px-2 inline-flex justify-start items-center gap-1">
-                  <div className="text-Red-red-400 text-sm font-semibold leading-snug">
+                  <div className="text-red-400 text-sm font-semibold leading-snug">
                     🚩
                   </div>
-                  <div className="text-Red-red-400 text-base font-semibold leading-normal">
+                  <div className="text-red-400 text-base font-semibold leading-normal">
                     {crop.participants}
                   </div>
-                  <div className="text-Red-red-400 text-base font-semibold leading-normal">
+                  <div className="text-red-400 text-base font-semibold leading-normal">
                     명 참여중!
                   </div>
                 </div>
-                <div className="self-stretch h-60 bg-Opacity-opacity-000/5 rounded-2xl flex items-center justify-center text-4xl">
+                <div className="self-stretch h-60 bg-opacity-000/5 rounded-2xl flex items-center justify-center text-4xl">
                   {crop.emoji}
                 </div>
                 <div className="self-stretch px-2 flex flex-col justify-start items-start gap-3">
                   <div className="pt-2 inline-flex justify-start items-center">
-                    <div className="text-Gray-gray-900 text-2xl font-bold leading-9">
+                    <div className="text-gray-900 text-2xl font-bold leading-9">
                       {crop.name}
                     </div>
                   </div>
                   <div className="self-stretch inline-flex justify-start items-center gap-2 flex-wrap content-center">
-                    <div className="text-Mint-mint-700 text-xl font-bold leading-loose">
+                    <div className="text-mint-700 text-xl font-bold leading-loose">
                       {crop.price}
                     </div>
-                    <div className="text-Mint-mint-700 text-xl font-bold leading-loose">
+                    <div className="text-mint-700 text-xl font-bold leading-loose">
                       원
                     </div>
-                    <div className="text-Gray-gray-600 text-sm leading-snug">
+                    <div className="text-gray-600 text-sm leading-snug">
                       박스당
                     </div>
-                    <div className="text-Gray-gray-600 text-sm leading-snug">
+                    <div className="text-gray-600 text-sm leading-snug">
                       1박스
                     </div>
                   </div>
@@ -441,15 +441,15 @@ export default function Home() {
           </div>
         </div>
         {/* 구독 섹션 */}
-        <div className="self-stretch pt-16 pb-2 flex flex-col justify-start items-start bg-Orange-orange-000">
-          <div className="self-stretch px-4 pt-4 pb-6 bg-Orange-orange-000 flex flex-col justify-start items-center gap-6">
+        <div className="self-stretch pt-16 pb-2 flex flex-col justify-start items-start bg-orange-000">
+          <div className="self-stretch px-4 pt-4 pb-6 bg-orange-000 flex flex-col justify-start items-center gap-6">
             <div className="self-stretch flex flex-col justify-start items-center gap-3">
               <div className="pt-2 inline-flex justify-start items-center">
-                <div className="text-center text-Gray-gray-900 text-2xl font-bold leading-9">
+                <div className="text-center text-gray-900 text-2xl font-bold leading-9">
                   농장 소식 미리받기
                 </div>
               </div>
-              <div className="self-stretch text-center text-Cool-gray-cool-gray-600 text-sm leading-snug">
+              <div className="self-stretch text-center text-cool-gray-600 text-sm leading-snug">
                 새로운 농작물과 특별 혜택 소식을 가장 먼저 받아보세요!
               </div>
             </div>
@@ -462,14 +462,14 @@ export default function Home() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="이메일 주소를 입력하세요"
-                className="flex-1 max-w-[800px] min-w-60 px-6 py-3 bg-Common-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Green-green-400 text-base"
+                className="flex-1 max-w-[800px] min-w-60 px-6 py-3 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-green-400 text-base"
                 required
               />
               <button
                 type="submit"
-                className="px-6 py-2 bg-Green-green-600 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 flex justify-center items-center"
+                className="px-6 py-2 bg-green-600 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
               >
-                <div className="text-center text-Common-common-000 text-sm font-semibold leading-snug">
+                <div className="text-center text-common-000 text-sm font-semibold leading-snug">
                   구독하기
                 </div>
               </button>
