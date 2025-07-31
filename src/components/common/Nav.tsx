@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
+import Logo from "../../assets/logo.svg";
 
 export default function Nav() {
   const { isLoggedIn, removeToken } = useAuthStore();
@@ -19,7 +20,7 @@ export default function Nav() {
             to="/"
             className="text-common-000 text-2xl font-bold font-pretendard"
           >
-            🌱 가상농장
+            <img src={Logo} alt="로고" className="w-full h-full" />
           </Link>
         </div>
         {/* 우측 버튼(로그인/마이페이지/로그아웃) */}

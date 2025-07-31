@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="w-full min-h-screen bg-green-000">
       <Nav />
       <Routes>
         <Route
@@ -43,7 +43,7 @@ function App() {
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
