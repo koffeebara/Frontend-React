@@ -1,15 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import Logo from "../../assets/logo.svg";
 
 export default function Nav() {
-  const { isLoggedIn, removeToken } = useAuthStore();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    removeToken();
-    navigate("/");
-  };
+  const { isLoggedIn } = useAuthStore();
 
   return (
     <header className="w-full flex justify-center items-center py-4 bg-transparent">
