@@ -89,21 +89,23 @@ const steps = [
   {
     number: 1,
     title: "농작물 선택",
-    description: ["원하는 농작물과", "신뢰할 수 있는 농부를", "선택해주세요"],
+    description: [
+      "마음에 드는 농작물과 농부를 찾아",
+      "농작물 위탁에 참여하세요.",
+    ],
   },
   {
     number: 2,
     title: "실시간 관찰",
     description: [
-      "농장 일지와 사진을 통해",
-      "내 농작물의 성장 과정을",
-      "실시간으로 확인하세요",
+      "농부가 작성하는 농장 일지를 통해",
+      "농작물의 성장을 지켜보세요.",
     ],
   },
   {
     number: 3,
-    title: "신선한 수확",
-    description: ["수확 후 바로 포장해서", "집까지 신선하게", "배송해드려요"],
+    title: "안전한 배송",
+    description: ["수확한 신선한 농작물을", "집에서 편하게 받아보세요."],
   },
 ];
 
@@ -112,228 +114,325 @@ const stats = [
   { number: "5,680+", label: "위탁 완료" },
   { number: "98%", label: "만족도" },
   { number: "24개월", label: "평균 경력" },
-  { number: "100%", label: "친환경 인증" },
 ];
 
 export default function Home() {
   const [email, setEmail] = useState("");
-
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("구독 이메일:", email);
     setEmail("");
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 relative overflow-hidden">
-      {/* 배경 장식 요소들 */}
-      <div className="absolute w-20 h-20 left-15 top-40 opacity-60 bg-green-100 rounded-full"></div>
-      <div className="absolute w-28 h-28 right-32 top-24 opacity-40 bg-lime-50 rounded-full"></div>
-      <div className="absolute w-14 h-14 right-64 top-68 opacity-50 bg-green-100 rounded-full"></div>
-
-      {/* 메인 히어로 섹션 */}
-      <section className="w-full h-96 bg-gradient-to-br from-green-100 via-lime-50 to-green-100 flex items-center justify-center">
-        <div className="text-center px-4">
-          <h1 className="text-3xl md:text-5xl font-bold text-green-900 mb-4">
-            믿을 수 있는 농부와 함께
+    <div className="w-[1280px] max-w-[1280px] bg-Green-green-000 inline-flex flex-col justify-start items-center font-['pretendard']">
+      {/* 히어로 섹션 */}
+      <div className="self-stretch pt-12 pb-8 bg-Green-green-000 flex flex-col justify-start items-center gap-10">
+        <div className="self-stretch flex flex-col justify-start items-center gap-4">
+          <div className="text-center text-Mint-mint-900 text-4xl font-semibold leading-[56px]">
+            농부와 함께 키우는
             <br />
-            키우는 우리만의 농작물
-          </h1>
-          <p className="text-lg md:text-xl text-green-700 mb-8">
-            직접 농사짓기 어려워도 괜찮아요. 전문 농부가 대신 키워드릴게요!
-          </p>
-          <button className="bg-gradient-to-r from-orange-500 to-red-400 text-white text-lg font-bold px-8 py-3 rounded hover:shadow-lg transition-shadow">
-            🚀 지금 시작하기
-          </button>
+            믿음직한 농작물
+          </div>
+          <div className="self-stretch text-center text-Green-green-600 text-base leading-normal">
+            농부의 신선한 농작물을 펀딩하고, 성장 과정을 지켜보세요 🌱
+          </div>
         </div>
-      </section>
-
-      {/* 통계 섹션 */}
-      <section className="w-full h-28 bg-white flex items-center justify-center">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-          {stats.map((stat, index) => (
-            <div key={index}>
-              <div className="text-2xl md:text-3xl font-bold text-green-700">
-                {stat.number}
+        <div className="w-60 max-w-[800px] px-10 py-4 bg-Mint-mint-600 rounded-lg inline-flex justify-center items-center">
+          <div className="text-center text-Common-common-000 text-base font-semibold leading-normal">
+            시작하기
+          </div>
+        </div>
+      </div>
+      {/* 통계/카드 섹션 */}
+      <div className="w-full max-w-[1200px] px-4 pt-8 pb-40 bg-Common-common-000 flex flex-col justify-start items-center gap-4">
+        <div className="self-stretch min-w-96 py-2 inline-flex justify-start items-center gap-6">
+          {stats.map((stat, idx) => (
+            <div
+              key={idx}
+              className="flex-1 inline-flex flex-col justify-start items-center gap-1"
+            >
+              <div className="self-stretch text-center text-Gray-gray-600 text-sm leading-snug">
+                {stat.label}
               </div>
-              <div className="text-stone-500">{stat.label}</div>
+              <div className="inline-flex justify-start items-center">
+                <div className="text-center text-Green-green-700 text-xl font-bold leading-loose">
+                  {stat.number.replace(/[^0-9]/g, "")}
+                </div>
+                <div className="text-center text-Green-green-700 text-lg leading-7">
+                  {stat.number.replace(/[0-9]/g, "")}
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </section>
-
-      {/* 농작물 섹션 */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block bg-orange-600 text-white text-sm font-bold px-4 py-1 rounded mb-4">
-              🔥 이번 주 인기 농작물
+        {/* 인기 농작물 섹션 */}
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-Common-common-000">
+          <div className="self-stretch flex flex-col justify-start items-center gap-1">
+            <div className="px-4 py-1 bg-Orange-orange-200 rounded-[99px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 inline-flex justify-start items-center gap-0.5">
+              <div className="text-center text-Orange-orange-900 text-sm font-semibold leading-snug">
+                이번 주 인기 농작물
+              </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-              🌾 지금 참여 가능한 위탁 농작물
-            </h2>
-            <p className="text-lg text-green-700">
-              신선하고 안전한 농작물을 함께 키워보세요
-            </p>
+            <div className="self-stretch pt-2 inline-flex justify-start items-center">
+              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+                지금 참여 가능한 위탁 농작물
+              </div>
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div className="self-stretch px-2 inline-flex justify-start items-start gap-6 overflow-hidden">
             {cropCards.map((crop) => (
               <div
                 key={crop.id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                className="flex-1 max-w-96 min-w-96 py-1 inline-flex flex-col justify-start items-center gap-6"
               >
-                {crop.status === "HOT" && (
-                  <div className="bg-orange-600 text-white text-xs font-bold px-3 py-1 inline-block">
-                    HOT
+                <div className="self-stretch flex flex-col justify-start items-start gap-3">
+                  <div className="px-2 inline-flex justify-start items-center">
+                    <div className="text-Red-red-500 text-base font-semibold">
+                      ⏰ 마감까지 D-
+                    </div>
+                    <div className="text-Red-red-500 text-base font-semibold">
+                      {crop.deadline?.replace(/[^0-9]/g, "") || "00"}
+                    </div>
                   </div>
-                )}
-
+                  <div className="self-stretch p-6 bg-Common-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-200/20 flex flex-col justify-start items-start gap-4">
+                    <div className="self-stretch h-60 bg-Opacity-opacity-000/5 rounded-2xl flex items-center justify-center text-6xl">
+                      {crop.emoji}
+                    </div>
+                    <div className="self-stretch px-2 flex flex-col justify-start items-start gap-3">
+                      <div className="pt-2 inline-flex justify-start items-center">
+                        <div className="text-Gray-gray-900 text-2xl font-bold leading-9">
+                          {crop.name}
+                        </div>
+                      </div>
+                      <div className="self-stretch flex flex-col justify-start items-start gap-1">
+                        <div className="self-stretch inline-flex justify-start items-center gap-2">
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            📍
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            {crop.farmer}
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            {crop.location}
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            {crop.experience}
+                          </div>
+                        </div>
+                        <div className="inline-flex justify-start items-center gap-2">
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            ⭐️
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            {crop.rating}
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            / 5
+                          </div>
+                          <div className="text-Gray-gray-600 text-xs font-light leading-none">
+                            ({crop.reviews}개 후기)
+                          </div>
+                        </div>
+                      </div>
+                      <div className="self-stretch inline-flex justify-start items-center gap-2 flex-wrap content-center">
+                        <div className="text-Blue-blue-500 text-xl font-bold leading-loose">
+                          {crop.price}
+                        </div>
+                        <div className="text-Blue-blue-500 text-xl font-bold leading-loose">
+                          원
+                        </div>
+                        <div className="text-Gray-gray-600 text-sm leading-snug">
+                          박스당
+                        </div>
+                        <div className="text-Gray-gray-600 text-sm leading-snug">
+                          {crop.weight}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full max-w-[800px] px-6 py-4 bg-Mint-mint-000 rounded-2xl flex flex-col justify-start items-start gap-2">
+                      <div className="px-1 inline-flex justify-start items-center gap-1">
+                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                          달성률
+                        </div>
+                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                          {crop.percentage}
+                        </div>
+                        <div className="text-Gray-gray-800 text-base font-semibold leading-normal">
+                          %
+                        </div>
+                      </div>
+                      <div className="self-stretch h-4 rounded-[999px] inline-flex justify-start items-start">
+                        <div
+                          className="h-4 bg-Mint-mint-500 rounded-tl-[999px] rounded-bl-[999px]"
+                          style={{ width: `${crop.percentage}%` }}
+                        ></div>
+                        <div className="flex-1 h-4 bg-Cool-gray-cool-gray-100 rounded-tr-[999px] rounded-br-[999px]"></div>
+                      </div>
+                      <div className="px-1 inline-flex justify-start items-center gap-1">
+                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                          총
+                        </div>
+                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                          {crop.totalBoxes}
+                        </div>
+                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                          박스 중
+                        </div>
+                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                          {crop.completedBoxes}
+                        </div>
+                        <div className="text-Cool-gray-cool-gray-700 text-sm leading-snug">
+                          박스 위탁 완료!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-60 px-10 py-4 bg-Orange-orange-400 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 inline-flex justify-center items-end">
+                  <div className="text-center text-Common-common-000 text-base font-semibold leading-normal">
+                    상품 둘러보기
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* 이용 방법 섹션 */}
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-Green-green-200">
+          <div className="self-stretch min-w-96 px-6 py-4 bg-Green-green-200 flex flex-col justify-center items-start gap-6">
+            <div className="self-stretch pt-2 inline-flex justify-start items-center">
+              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+                가상농장 이용 방법
+              </div>
+            </div>
+            <div className="self-stretch inline-flex justify-start items-center gap-5 flex-wrap content-center">
+              {steps.map((step) => (
                 <div
-                  className={`h-48 bg-gradient-to-br ${crop.bgColor} flex items-center justify-center`}
+                  key={step.number}
+                  className="flex-1 min-w-96 px-6 py-4 bg-Common-common-000 rounded-2xl inline-flex flex-col justify-start items-center gap-6"
                 >
-                  <span className="text-7xl">{crop.emoji}</span>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-green-900 mb-2">
-                    {crop.name}
-                  </h3>
-                  <div className="text-sm text-stone-500 mb-1">
-                    👨‍🌾 {crop.farmer} | {crop.location} | 농사경력{" "}
-                    {crop.experience}
-                  </div>
-                  <div className="text-sm text-stone-500 mb-4">
-                    ⭐ {crop.rating}/5.0 ({crop.reviews}개 후기)
-                  </div>
-                  <div className="text-lg font-bold text-green-700 mb-6">
-                    박스당 {crop.price}원 ({crop.weight})
-                  </div>
-
-                  <div className="bg-green-100 p-4 rounded mb-4">
-                    <div className="text-sm font-bold text-green-700 mb-2">
-                      지금 {crop.participants}명이 참여 중! ✨
-                    </div>
-                    <div className="w-full bg-neutral-200 h-2.5 rounded-full mb-2">
-                      <div
-                        className="bg-gradient-to-r from-green-500 to-green-400 h-2.5 rounded-full"
-                        style={{ width: `${crop.percentage}%` }}
-                      ></div>
-                    </div>
-                    <div className="flex justify-between text-xs text-stone-500 mb-2">
-                      <span>
-                        총 {crop.totalBoxes}박스 중 {crop.completedBoxes}박스
-                        위탁 완료 ✅
-                      </span>
-                      <span className="text-green-500 font-bold">
-                        {crop.percentage}%
-                      </span>
-                    </div>
-                    {crop.status !== "HOT" && (
-                      <div
-                        className={`text-xs font-bold ${
-                          crop.status === "유기농 인증"
-                            ? "text-green-500"
-                            : "text-amber-500"
-                        }`}
-                      >
-                        {crop.status === "유기농 인증" ? "🌱" : "🏆"}{" "}
-                        {crop.status}
+                  <div className="flex flex-col justify-start items-center gap-2">
+                    <div className="w-8 h-8 bg-Mint-mint-600 rounded-[999px] flex flex-col justify-center items-center">
+                      <div className="text-center text-Common-common-000 text-sm font-semibold leading-snug">
+                        {step.number}
                       </div>
-                    )}
-                    {crop.deadline && (
-                      <div className="text-xs font-bold text-orange-600">
-                        ⏰ 마감 임박! {crop.deadline}
+                    </div>
+                    <div className="text-center text-Gray-gray-900 text-xl font-bold leading-loose">
+                      {step.title}
+                    </div>
+                  </div>
+                  <div className="self-stretch text-center text-Gray-gray-900 text-base leading-normal">
+                    {step.description.map((line, idx) => (
+                      <div key={idx}>{line}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* 후기 섹션 */}
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start gap-2.5 bg-Blue-blue-000">
+          <div className="self-stretch px-6 py-4 bg-Blue-blue-000 flex flex-col justify-start items-center gap-6">
+            <div className="self-stretch pt-2 inline-flex justify-start items-center">
+              <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+                생생한 고객 후기
+              </div>
+            </div>
+            <div className="self-stretch inline-flex justify-center items-start gap-4">
+              {reviews.map((review, idx) => (
+                <div
+                  key={idx}
+                  className="flex-1 max-w-96 p-6 bg-Common-common-000 rounded-2xl outline outline-1 outline-offset-[-1.5px] outline-Opacity-opacity-100/10 inline-flex flex-col justify-start items-start gap-6"
+                >
+                  <div className="self-stretch px-1 flex flex-col justify-start items-start gap-2">
+                    <div className="self-stretch text-Cool-gray-cool-gray-800 text-base leading-normal">
+                      {"⭐️".repeat(review.rating)}
+                    </div>
+                    <div className="self-stretch inline-flex justify-start items-start">
+                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                        “
                       </div>
-                    )}
+                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                        {review.title}
+                      </div>
+                      <div className="text-Blue-blue-500 text-base font-semibold leading-normal">
+                        ”
+                      </div>
+                    </div>
+                    <div className="self-stretch text-Cool-gray-cool-gray-800 text-sm leading-snug">
+                      {review.content}
+                    </div>
                   </div>
-
-                  <div className="bg-yellow-50 p-3 rounded text-center text-xs font-bold text-orange-600 mb-4">
-                    📦 내 박스를 예약하고, 농장 일지를 함께 지켜보세요!
+                  <div className="self-stretch inline-flex justify-start items-center gap-3">
+                    <div className="w-12 h-12 bg-Cool-gray-cool-gray-200 rounded-full outline outline-[1.5px] outline-offset-[-1.5px] outline-Opacity-opacity-100/10 flex justify-center items-center"></div>
+                    <div className="inline-flex flex-col justify-center items-start gap-1">
+                      <div className="text-Blue-blue-800 text-sm font-semibold leading-snug">
+                        {review.name}
+                      </div>
+                      <div className="inline-flex justify-start items-center gap-0.5">
+                        <div className="text-Cool-gray-cool-gray-300 text-xs font-light leading-none">
+                          {review.date
+                            .replace(/\./g, "년 ")
+                            .replace(/\.$/, "월")}
+                        </div>
+                        <div className="text-Cool-gray-cool-gray-300 text-xs font-light leading-none">
+                          {" "}
+                          참가자
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <button className="w-full bg-gradient-to-r from-orange-500 to-red-400 text-white font-bold py-3 rounded hover:shadow-lg transition-shadow">
-                    👉 공동 위탁 참여하기
-                  </button>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* 이용 방법 섹션 */}
-      <section className="w-full bg-gradient-to-br from-pink-100 to-sky-100 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-              🤝 가상농장 이용 방법
-            </h2>
-            <p className="text-lg text-green-700">
-              간단한 3단계로 나만의 농작물을 키워보세요
-            </p>
+        {/* 다른 농작물 섹션 */}
+        <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-center gap-6 bg-Common-common-000">
+          <div className="self-stretch pt-2 inline-flex justify-start items-center">
+            <div className="flex-1 text-center text-Gray-gray-900 text-3xl font-bold leading-[48px]">
+              다른 농작물 둘러보기
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map((step) => (
+          <div className="self-stretch inline-flex justify-center items-start gap-4 flex-wrap content-start">
+            {extraCrops.map((crop, idx) => (
               <div
-                key={step.number}
-                className="bg-white p-8 rounded-lg text-center"
+                key={idx}
+                className="w-96 max-w-96 min-w-52 p-6 bg-Common-common-000 rounded-3xl outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-200/20 inline-flex flex-col justify-start items-start gap-4"
               >
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-lg font-bold mx-auto mb-4">
-                  {step.number}
-                </div>
-                <h3 className="text-xl font-bold text-green-900 mb-4">
-                  {step.title}
-                </h3>
-                <div className="text-sm text-stone-500 space-y-1">
-                  {step.description.map((line, index) => (
-                    <div key={index}>{line}</div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 고객 후기 섹션 */}
-      <section className="w-full bg-gradient-to-r from-yellow-50 to-pink-100 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-              💬 고객 후기
-            </h2>
-            <p className="text-lg text-green-700">
-              가상농장을 이용한 고객들의 생생한 후기를 확인해보세요
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {reviews.map((review, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg">
-                <div className="text-yellow-400 text-xl mb-4">
-                  {"⭐".repeat(review.rating)}
-                </div>
-                <h4 className="text-green-900 font-bold mb-4">
-                  "{review.title}"
-                </h4>
-                <p className="text-stone-500 text-sm mb-6">
-                  "{review.content}"
-                </p>
-                <div className="flex items-center">
-                  <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-2xl mr-4">
-                    {index === 0 ? "👨" : "👵"}
+                <div className="px-2 inline-flex justify-start items-center gap-1">
+                  <div className="text-Red-red-400 text-sm font-semibold leading-snug">
+                    🚩
                   </div>
-                  <div>
-                    <div className="font-bold text-green-900">
-                      {review.name}
+                  <div className="text-Red-red-400 text-base font-semibold leading-normal">
+                    {crop.participants}
+                  </div>
+                  <div className="text-Red-red-400 text-base font-semibold leading-normal">
+                    명 참여중!
+                  </div>
+                </div>
+                <div className="self-stretch h-60 bg-Opacity-opacity-000/5 rounded-2xl flex items-center justify-center text-4xl">
+                  {crop.emoji}
+                </div>
+                <div className="self-stretch px-2 flex flex-col justify-start items-start gap-3">
+                  <div className="pt-2 inline-flex justify-start items-center">
+                    <div className="text-Gray-gray-900 text-2xl font-bold leading-9">
+                      {crop.name}
                     </div>
-                    <div className="text-stone-500 text-sm">
-                      {review.location}
+                  </div>
+                  <div className="self-stretch inline-flex justify-start items-center gap-2 flex-wrap content-center">
+                    <div className="text-Mint-mint-700 text-xl font-bold leading-loose">
+                      {crop.price}
                     </div>
-                    <div className="text-neutral-400 text-xs">
-                      {review.date} 구매
+                    <div className="text-Mint-mint-700 text-xl font-bold leading-loose">
+                      원
+                    </div>
+                    <div className="text-Gray-gray-600 text-sm leading-snug">
+                      박스당
+                    </div>
+                    <div className="text-Gray-gray-600 text-sm leading-snug">
+                      1박스
                     </div>
                   </div>
                 </div>
@@ -341,115 +440,43 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* 추가 농작물 섹션 */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-900 text-center mb-12">
-            🌽 다른 농작물도 둘러보세요
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {extraCrops.map((crop, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg overflow-hidden shadow-lg"
-              >
-                <div className="h-24 bg-gradient-to-br from-amber-500 to-amber-300 flex items-center justify-center">
-                  <span className="text-4xl">{crop.emoji}</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-green-900 mb-2">
-                    {crop.name}
-                  </h3>
-                  <div className="text-stone-500 text-sm mb-2">
-                    {crop.price}원/박스
-                  </div>
-                  <div className="text-green-500 text-xs">
-                    📍 {crop.participants}명 참여 중
-                  </div>
+        {/* 구독 섹션 */}
+        <div className="self-stretch pt-16 pb-2 flex flex-col justify-start items-start bg-Orange-orange-000">
+          <div className="self-stretch px-4 pt-4 pb-6 bg-Orange-orange-000 flex flex-col justify-start items-center gap-6">
+            <div className="self-stretch flex flex-col justify-start items-center gap-3">
+              <div className="pt-2 inline-flex justify-start items-center">
+                <div className="text-center text-Gray-gray-900 text-2xl font-bold leading-9">
+                  농장 소식 미리받기
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 뉴스레터 구독 섹션 */}
-      <section className="w-full bg-green-100 py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-green-900 mb-4">
-            📧 농장 소식 받아보기
-          </h2>
-          <p className="text-green-700 mb-8">
-            새로운 농작물과 특별 혜택 소식을 가장 먼저 받아보세요
-          </p>
-
-          <form
-            onSubmit={handleEmailSubmit}
-            className="flex flex-col md:flex-row gap-4 justify-center mb-8"
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="이메일 주소를 입력하세요"
-              className="flex-1 max-w-96 px-4 py-3 border-2 border-green-500 rounded focus:outline-none focus:border-green-600"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-orange-500 to-red-400 text-white font-bold px-8 py-3 rounded hover:shadow-lg transition-shadow"
+              <div className="self-stretch text-center text-Cool-gray-cool-gray-600 text-sm leading-snug">
+                새로운 농작물과 특별 혜택 소식을 가장 먼저 받아보세요!
+              </div>
+            </div>
+            <form
+              onSubmit={handleEmailSubmit}
+              className="self-stretch px-2 inline-flex justify-center items-center gap-3"
             >
-              구독하기
-            </button>
-          </form>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 text-stone-500 text-sm">
-            <div>✅ 신규 농작물 알림</div>
-            <div>✅ 특가 혜택 우선 제공</div>
-            <div>✅ 농장 이야기 & 레시피</div>
-            <div>✅ 계절별 농작물 추천</div>
-            <div>✅ 농부님 인터뷰</div>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="이메일 주소를 입력하세요"
+                className="flex-1 max-w-[800px] min-w-60 px-6 py-3 bg-Common-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Green-green-400 text-base"
+                required
+              />
+              <button
+                type="submit"
+                className="px-6 py-2 bg-Green-green-600 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-Opacity-opacity-100/10 flex justify-center items-center"
+              >
+                <div className="text-center text-Common-common-000 text-sm font-semibold leading-snug">
+                  구독하기
+                </div>
+              </button>
+            </form>
           </div>
         </div>
-      </section>
-
-      {/* 문의 섹션 */}
-      <section className="w-full bg-lime-50 py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-xl md:text-2xl font-bold text-green-900 text-center mb-8">
-            📞 문의하기
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-green-700 font-medium">
-                📞 고객센터: 1588-1234
-              </div>
-              <div className="text-stone-500 text-sm">
-                💬 카카오톡: @가상농장
-              </div>
-            </div>
-            <div>
-              <div className="text-green-700 font-medium">
-                ✉️ 이메일: info@virtualfarm.co.kr
-              </div>
-              <div className="text-stone-500 text-sm">
-                📍 서울시 강남구 테헤란로 123
-              </div>
-            </div>
-            <div>
-              <div className="text-green-700 font-medium">
-                ⏰ 운영시간: 평일 9:00-18:00
-              </div>
-              <div className="text-stone-500 text-sm">
-                🏢 사업자번호: 123-45-67890
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
