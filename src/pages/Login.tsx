@@ -3,6 +3,7 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import { authService } from "../../services/authService";
 import { useState } from "react";
 import { useAuthStore } from "../store/authStore";
+import IconLabel from "../components/IconLabel";
 
 export default function Login() {
   const {
@@ -43,78 +44,173 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mt-8 p-4">
-      {/* 간단한 소개 */}
-      <div className="text-center mt-8">
-        <h1 className="text-xl mb-2">시고르토크</h1>
-        <div className="bg-gray-200 p-4">
-          <p>시고르토크 img 위치</p>
-        </div>
-      </div>
-      <form className="mt-8" onSubmit={handleSubmit}>
-        {/* 이메일 */}
-        <div className="mt-4">
-          <input
-            type="email"
-            className="w-full bg-gray-200 p-4 text-center"
-            placeholder="이메일"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        {emailMessage && (
-          <p className="text-center text-sm text-red-500">{emailMessage}</p>
-        )}
-
-        {/* 비밀번호 */}
-        <div className="mt-4">
-          <input
-            className="w-full bg-gray-200 p-4 text-center"
-            placeholder="비밀번호"
-            type="password"
-            value={password}
-            autoComplete="current-password"
-
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-
-        {/* 로그인 에러 메시지 */}
-        {loginError && (
-          <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-            {loginError}
+    <>
+      <div className="flex flex-col w-full h-[1500px] bg-green-100 items-center justify-center
+      [@media(min-width:920px)]:flex-row 
+      [@media(min-width:920px)]:h-[900px] ">
+        {/* 왼쪽 */}
+        <div className="flex flex-col items-center w-[450px] h-[690px] bg-green-600 rounded-xl">
+          <img src="/test_img.png" alt="test" className="w-30 m-10" />
+          <p className="title-1 text-white text-center">가상농장에 <br /> 오신 것을 환영합니다!</p>
+          <p className="text-green-200 text-center m-4">믿을 수 있는 농부와 함께 키우는 <br /> 건강한 농작물</p>
+          <div className="w-[250px] m-4 flex flex-col justify-start">
+            <IconLabel icon="🌾" text="실시간 재배 일지 확인" />
+            <IconLabel icon="👩‍🌾" text="검증된 농부와 직거래" />
+            <IconLabel icon="📦" text="신선한 농작물 직배송" />
+            <IconLabel icon="🏠" text="농장 방문 체험 기회" />
           </div>
-        )}
 
-        {/* 로그인 버튼 */}
-        <div className="mt-8">
-          <button
-            className={`w-full p-4 text-center cursor-pointer 
-            ${isValid && !isLoading ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
-            disabled={!isValid || isLoading}
-            type="submit"
-          >
-            {isLoading ? "로그인 중..." : "로그인"}
-          </button>
         </div>
-      </form>
+        {/* 오른쪽 */}
+        <div className="flex flex-col w-[450px] h-[690px] bg-white rounded-xl items-center">
+          <div className="flex flex-col items-center">
+            <p className="title-1 text-green-700 mt-8">로그인</p>
+            <p className="text-gray-700 m-2">계정에 로그인하여 농작물을 확인해보세요</p>
 
-      {/* 하단 텍스트 */}
-      <div className="flex justify-center text-gray-500 mb-8">
-        <p>계정이 없으신가요?</p>
-        <p>
-          <Link to="/signup" className="text-blue-500">
-            회원가입
-          </Link>
-        </p>
+          </div>
+          <div>
+            <form className="mt-8" onSubmit={handleSubmit}>
+              {/* 이메일 */}
+              <div className="mt-4 w-[330px]">
+                <p>이메일</p>
+                <input
+                  type="email"
+                  className="w-full h-[50px] bg-gray-100 p-4 rounded-lg 
+                  border border-gray-300 text-left"
+                  placeholder="이메일을 입력하세요"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              {emailMessage && (
+                <p className="text-center text-sm text-red-500">{emailMessage}</p>
+              )}
+
+              {/* 비밀번호 */}
+              <div className="mt-4">
+                <p>비밀번호</p>
+                <input
+                  className="w-full h-[50px] bg-gray-100 p-4 rounded-lg 
+                  border border-gray-300 text-left"
+                  placeholder="비밀번호를 입력하세요"
+                  type="password"
+                  value={password}
+                  autoComplete="current-password"
+
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              {/* 로그인 에러 메시지 */}
+              {loginError && (
+                <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                  {loginError}
+                </div>
+              )}
+
+              {/* 로그인 버튼 */}
+              <div className="mt-8">
+                <button
+                  className={`w-full h-[50px] p-4 text-center cursor-pointer rounded-lg
+            ${isValid && !isLoading ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
+                  disabled={!isValid || isLoading}
+                  type="submit"
+                >
+                  {isLoading ? "로그인 중..." : "로그인"}
+                </button>
+              </div>
+            </form>
+          </div>
+          {/* 하단 텍스트 */}
+          <div className="flex flex-1 flex-col justify-center text-gray-500 mb-8 gap-8">
+            <div className="flex-grow" />
+            <div className="flex justify-center gap-16">
+              <p>계정이 없으신가요?</p>
+              <p>
+                <Link to="/signup" className="text-green-700">
+                  회원가입
+                </Link>
+              </p>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      {/* 하단 배너 */}
-      <div className="bg-gray-300 p-6 text-center">
-        <p className="mb-2">간단한 소개 멘트 footer</p>
-        <p>© coffeebara.</p>
-      </div>
-    </div>
+    </>
+    // <div className="w-full max-w-md mx-auto mt-8 p-4">
+    //   {/* 간단한 소개 */}
+    //   <div className="text-center mt-8">
+    //     <h1 className="text-xl mb-2">시고르토크</h1>
+    //     <div className="bg-gray-200 p-4">
+    //       <p>시고르토크 img 위치</p>
+    //     </div>
+    //   </div>
+    //   <form className="mt-8" onSubmit={handleSubmit}>
+    //     {/* 이메일 */}
+    //     <div className="mt-4">
+    //       <input
+    //         type="email"
+    //         className="w-full bg-gray-200 p-4 text-center"
+    //         placeholder="이메일"
+    //         value={email}
+    //         onChange={(e) => setEmail(e.target.value)}
+    //       />
+    //     </div>
+
+    //     {emailMessage && (
+    //       <p className="text-center text-sm text-red-500">{emailMessage}</p>
+    //     )}
+
+    //     {/* 비밀번호 */}
+    //     <div className="mt-4">
+    //       <input
+    //         className="w-full bg-gray-200 p-4 text-center"
+    //         placeholder="비밀번호"
+    //         type="password"
+    //         value={password}
+    //         autoComplete="current-password"
+
+    //         onChange={(e) => setPassword(e.target.value)}
+    //       />
+    //     </div>
+
+    //     {/* 로그인 에러 메시지 */}
+    //     {loginError && (
+    //       <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+    //         {loginError}
+    //       </div>
+    //     )}
+
+    //     {/* 로그인 버튼 */}
+    //     <div className="mt-8">
+    //       <button
+    //         className={`w-full p-4 text-center cursor-pointer 
+    //         ${isValid && !isLoading ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
+    //         disabled={!isValid || isLoading}
+    //         type="submit"
+    //       >
+    //         {isLoading ? "로그인 중..." : "로그인"}
+    //       </button>
+    //     </div>
+    //   </form>
+
+    //   {/* 하단 텍스트 */}
+    //   <div className="flex justify-center text-gray-500 mb-8">
+    //     <p>계정이 없으신가요?</p>
+    //     <p>
+    //       <Link to="/signup" className="text-blue-500">
+    //         회원가입
+    //       </Link>
+    //     </p>
+    //   </div>
+
+    //   {/* 하단 배너 */}
+    //   <div className="bg-gray-300 p-6 text-center">
+    //     <p className="mb-2">간단한 소개 멘트 footer</p>
+    //     <p>© coffeebara.</p>
+    //   </div>
+    // </div>
   );
 }
