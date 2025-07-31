@@ -142,12 +142,6 @@ export default function Signup() {
           </Link>
         </p>
       </div>
-
-      {/* 하단 배너 */}
-      <div className="bg-gray-300 p-6 text-center">
-        <p className="mb-2">간단한 소개 멘트 footer</p>
-        <p>© coffeebara.</p>
-      </div>
     </div>
   );
 }
