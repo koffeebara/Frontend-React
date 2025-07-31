@@ -1,248 +1,151 @@
-import { useState } from "react";
-import ArrowDownIcon from "../assets/IconArrowDown.svg";
-
 export default function Mypage() {
-  const [activeTab, setActiveTab] = useState("수락 대기");
-
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center">
-      {/* Header */}
-      <div className="w-full max-w-6xl p-4 bg-white border-b border-gray-100 flex justify-between items-center">
-        <div className="w-20 h-8 relative">
-          {/* Logo placeholder */}
-          <div className="text-amber-800 font-bold text-lg">LOGO</div>
+    <div className="w-full min-h-screen bg-green-50 flex flex-col items-center py-6">
+      {/* 프로필 및 통계 */}
+      <div className="w-full max-w-[480px] md:max-w-5xl mx-auto bg-white rounded-2xl shadow-md flex flex-col md:flex-row items-center md:justify-between gap-8 px-4 md:px-8 py-8 mb-8">
+        {/* 프로필 */}
+        <div className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-start">
+          <div className="w-20 h-20 rounded-full bg-cool-gray-200 flex items-center justify-center border border-gray-200" />
+          <div className="flex flex-col gap-1.5">
+            <div className="text-mint-700 text-2xl font-bold">이름</div>
+            <div className="text-cool-gray-600 text-xs font-light">
+              0000@email.com
+            </div>
+          </div>
         </div>
-        <div className="px-4 py-1.5 bg-amber-700 rounded-full">
-          <div className="text-white text-sm font-semibold">마이페이지</div>
+        {/* 통계 */}
+        <div className="flex flex-1 gap-4 w-full md:w-auto justify-center md:justify-end mt-6 md:mt-0">
+          {(
+            [
+              { label: "수확 완료", color: "green" },
+              { label: "참여 위탁", color: "green" },
+              { label: "진행중", color: "green" },
+            ] as const
+          ).map((stat) => (
+            <div
+              key={stat.label}
+              className="flex-1 min-w-[100px] px-4 py-4 bg-green-100 rounded-2xl border border-green-200 flex flex-col items-center"
+            >
+              <div className="text-gray-600 text-sm mb-1">{stat.label}</div>
+              <div className="text-green-700 text-xl font-bold">000</div>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="w-full max-w-6xl pb-28 bg-white flex flex-col items-center">
-        {/* 나의 커피챗 섹션 */}
-        <div className="self-stretch pl-5 pr-6 md:pr-24 pt-6 pb-2 flex justify-start items-center">
-          <div className="flex-1 text-gray-900 text-xl font-semibold">
-            나의 커피챗
-          </div>
-        </div>
+      {/* 탭 버튼 */}
+      <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex gap-4 justify-center mb-6">
+        <button className="flex-1 max-w-xs px-6 py-2 bg-mint-600 text-white rounded-lg font-semibold shadow hover:bg-mint-700 transition">
+          진행중
+        </button>
+        <button className="flex-1 max-w-xs px-6 py-2 bg-cool-gray-100 text-gray-800 rounded-lg font-semibold shadow hover:bg-cool-gray-200 transition">
+          수확 완료
+        </button>
+      </div>
 
-        <div className="self-stretch px-4 pt-2 pb-6 flex flex-col justify-start items-start gap-4">
-          {/* 탭 버튼들 */}
-          <div className="flex justify-start items-center gap-2 flex-wrap">
-            {["수락 대기", "진행 예정", "진행 완료"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-1.5 rounded-full border text-sm font-semibold ${
-                  activeTab === tab
-                    ? "bg-amber-700 text-white border-amber-700"
-                    : "bg-white text-gray-800 border-gray-200"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          {/* 커피챗 카드 */}
-          <div className="self-stretch px-4 py-5 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col gap-3">
-            <div className="self-stretch px-1 flex justify-between items-center">
-              <div className="text-gray-600 text-sm">김멘토와의 커피챗</div>
-              <div className="flex items-center gap-0.5 text-gray-600 text-sm">
-                <span>07월 25일 신청</span>
-              </div>
-            </div>
-
-            <div className="self-stretch flex flex-col md:flex-row justify-start items-center gap-6">
-              {/* 멘토 이미지 */}
-              <div className="w-full md:flex-1 h-48 md:h-80 md:max-w-96 md:min-w-48 bg-gray-100 rounded-lg border border-gray-200"></div>
-
-              {/* 멘토 정보 */}
-              <div className="w-full md:flex-1 md:min-w-60 px-1 flex flex-col gap-5">
-                <div className="flex flex-col gap-1">
-                  <div className="text-gray-900 text-xl font-semibold">
-                    김멘토
-                  </div>
-                  <div className="flex items-start gap-0.5">
-                    <span className="text-amber-800 text-sm">[</span>
-                    <span className="text-amber-800 text-sm">
-                      소프트웨어 엔지니어
-                    </span>
-                    <span className="text-amber-800 text-sm">]</span>
-                  </div>
-                </div>
-
-                <div className="self-stretch flex flex-col gap-4">
-                  <div className="self-stretch flex items-start gap-2">
-                    <div className="text-gray-900 text-base font-semibold">
-                      - 진행 날짜
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="text-gray-900 text-base">
-                        07월 30일 14:00
-                      </span>
-                    </div>
-                  </div>
-                  <div className="self-stretch flex items-start gap-2">
-                    <div className="text-gray-900 text-base font-semibold">
-                      - 진행 장소
-                    </div>
-                    <div className="text-gray-900 text-base">온라인</div>
-                  </div>
-                  <div className="self-stretch flex items-start gap-2">
-                    <div className="text-gray-900 text-base font-semibold">
-                      - 멘토 연락처
-                    </div>
-                    <div className="flex-1 text-gray-900 text-base">
-                      수락 시 공개됩니다.
-                    </div>
-                  </div>
+      {/* 카드 리스트 */}
+      <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex flex-col md:flex-row gap-6 mb-10 items-stretch justify-center">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="flex-1 min-w-[260px] max-w-md bg-white rounded-2xl shadow-md flex flex-col gap-4 p-6 relative"
+          >
+            <div className="h-32 bg-opacity-5 rounded-t-2xl bg-gray-100" />
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <div className="text-mint-700 text-xl font-bold">title</div>
+                <div className="flex gap-2 items-center text-xs text-gray-600">
+                  <span>📍</span>
+                  <span>이름</span>
+                  <span className="mx-1">|</span>
+                  <span>사는 지역</span>
+                  <span className="mx-1">|</span>
+                  <span>특이사항</span>
                 </div>
               </div>
-            </div>
-
-            <div className="self-stretch pt-4 flex flex-col gap-2.5">
-              <button className="self-stretch py-3 bg-sky-500 rounded-lg text-white text-base font-semibold hover:bg-sky-600">
-                멘토에게 메시지 보내기
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 리포트 생성 섹션 */}
-        <div className="self-stretch pl-5 pr-6 md:pr-24 pt-6 pb-2 flex justify-start items-center">
-          <div className="flex-1 text-gray-900 text-xl font-semibold">
-            리포트 생성
-          </div>
-        </div>
-
-        <div className="self-stretch px-4 pt-2 pb-6 flex flex-col justify-start items-center gap-3">
-          <div className="self-stretch flex flex-col gap-4">
-            <div className="self-stretch py-20 bg-gray-100 rounded-lg border border-gray-200 flex justify-center items-center">
-              <div className="text-center text-gray-700 text-sm font-semibold">
-                음성 파일을 업로드하거나
-                <br />
-                선택해 주세요.
-              </div>
-            </div>
-            <div className="self-stretch h-7 p-1 flex items-center gap-2">
-              <div className="text-gray-700 text-sm">업로드</div>
-              <div className="flex-1 h-2 bg-amber-700 rounded-full border border-gray-200"></div>
-              <div className="flex items-center">
-                <span className="w-6 text-right text-gray-700 text-sm">
-                  100
-                </span>
-                <span className="text-right text-gray-700 text-sm">% 완료</span>
-              </div>
-            </div>
-          </div>
-          <div className="self-stretch pt-4 flex flex-col gap-2.5">
-            <button className="self-stretch py-3 bg-sky-500 rounded-lg text-white text-base font-semibold hover:bg-sky-600">
-              리포트 생성하기
-            </button>
-          </div>
-        </div>
-
-        {/* 생성된 리포트 섹션 */}
-        <div className="self-stretch pl-5 pr-6 md:pr-24 pt-6 pb-2 flex justify-start items-center">
-          <div className="flex-1 text-gray-900 text-xl font-semibold">
-            생성된 리포트
-          </div>
-        </div>
-
-        <div className="self-stretch px-4 pt-2 pb-6 flex flex-col gap-2.5">
-          <div className="self-stretch px-4 py-5 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col gap-6">
-            <div className="self-stretch flex flex-col gap-4">
-              <div className="self-stretch flex flex-col gap-1">
-                <div className="self-stretch px-1 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                  <div className="text-gray-900 text-xl font-semibold">
-                    커피챗 인사이트 리포트
+              <div className="w-full flex flex-col gap-2">
+                <div className="flex justify-between items-center text-sm">
+                  <div className="flex gap-1 text-mint-900">
+                    <span>텍스트</span>
+                    <span>진행중</span>
                   </div>
-                  <div className="flex items-center gap-0.5 text-gray-600 text-sm">
-                    <span>생성날짜 2024년 07월 25일</span>
+                  <div className="flex gap-1 text-mint-700 font-semibold">
+                    <span>000</span>
+                    <span>%</span>
                   </div>
                 </div>
-                <div className="self-stretch py-1 flex items-center gap-2">
-                  <div className="px-2 py-1 bg-sky-100 rounded text-blue-800 text-xs">
-                    커리어 상담
-                  </div>
-                  <div className="px-2 py-1 bg-sky-100 rounded text-blue-800 text-xs">
-                    소프트웨어
-                  </div>
+                <div className="w-full h-2 rounded-full bg-mint-500/70 overflow-hidden flex">
+                  <div
+                    className="bg-mint-500 h-2 rounded-l-full"
+                    style={{ width: "50%" }}
+                  />
+                  <div className="bg-cool-gray-100 h-2 rounded-r-full flex-1" />
                 </div>
               </div>
-              <div className="self-stretch px-1 pt-6 border-t border-gray-200 flex flex-col gap-2">
-                <div className="text-gray-900 text-sm">
-                  멘토님과의 유익한 대화를 통해 많은 인사이트를 얻었습니다.
-                  <br />
-                  특히 커리어 전환에 대한 구체적인 조언과 실무 경험을 바탕으로
-                  한 실질적인 팁들이 매우 도움이 되었습니다.
-                </div>
-              </div>
-            </div>
-            <div className="self-stretch pt-4 flex justify-start items-start gap-2.5">
-              <button className="flex-1 py-3 bg-gray-200 rounded-lg text-gray-700 text-base font-semibold hover:bg-gray-300">
-                공유하기
-              </button>
-              <button className="flex-1 py-3 bg-sky-500 rounded-lg text-white text-base font-semibold hover:bg-sky-600">
-                저장하기
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 리포트 목록 섹션 */}
-        <div className="self-stretch pl-5 pr-6 md:pr-24 pt-6 pb-2 flex justify-start items-center">
-          <div className="flex-1 text-gray-900 text-xl font-semibold">
-            리포트 목록
-          </div>
-        </div>
-
-        <div className="self-stretch px-4 pt-2 pb-6 flex flex-col md:flex-row md:justify-start md:items-center gap-4 md:gap-6 md:flex-wrap">
-          {/* 리포트 카드들 */}
-          {[1, 2, 3].map((index) => (
-            <div
-              key={index}
-              className="w-full md:flex-1 md:max-w-md md:min-w-80 px-4 py-5 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col gap-6"
-            >
-              <div className="self-stretch flex flex-col gap-4">
-                <div className="self-stretch flex flex-col gap-1">
-                  <div className="self-stretch px-1 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                    <div className="text-gray-900 text-xl font-semibold">
-                      커피챗 리포트 #{index}
-                    </div>
-                    <div className="flex items-center gap-0.5 text-gray-600 text-sm">
-                      <span>생성날짜 2024년 07월 {20 + index}일</span>
-                    </div>
-                  </div>
-                  <div className="self-stretch py-1 flex items-center gap-2">
-                    <div className="px-2 py-1 bg-sky-100 rounded text-blue-800 text-xs">
-                      커리어 상담
-                    </div>
-                    <div className="px-2 py-1 bg-sky-100 rounded text-blue-800 text-xs">
-                      IT
-                    </div>
-                  </div>
-                </div>
-                <div className="self-stretch px-1 pt-6 border-t border-gray-200 flex flex-col gap-2">
-                  <div className="text-gray-900 text-sm">
-                    멘토님과의 대화에서 얻은 주요 인사이트들을 정리한
-                    리포트입니다...
-                  </div>
-                </div>
-              </div>
-              <div className="self-stretch pt-4 flex justify-start items-start gap-2.5">
-                <button className="flex-1 py-3 bg-sky-500 rounded-lg text-white text-base font-semibold hover:bg-sky-600">
-                  펼쳐서 확인하기
+              <div className="flex gap-3 mt-2">
+                <button className="flex-1 px-4 py-2 bg-blue-100 text-gray-800 rounded font-semibold hover:bg-blue-200 transition">
+                  상세정보
                 </button>
+                <button className="flex-1 px-4 py-2 bg-cool-gray-100 text-gray-800 rounded font-semibold hover:bg-cool-gray-200 transition">
+                  참여취소
+                </button>
+              </div>
+            </div>
+            {/* 상태별 뱃지 */}
+            {i === 0 && (
+              <div className="absolute top-4 right-4 px-4 py-1 bg-green-100 rounded-full text-green-900 text-sm font-semibold shadow">
+                재배중
+              </div>
+            )}
+            {i === 1 && (
+              <div className="absolute top-4 right-4 px-4 py-1 bg-red-100 rounded-full text-red-900 text-sm font-semibold shadow">
+                모집중
+              </div>
+            )}
+            {i === 2 && (
+              <div className="absolute top-4 right-4 px-4 py-1 bg-blue-100 rounded-full text-blue-900 text-sm font-semibold shadow">
+                수확완료
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* 최근 알림 */}
+      <div className="w-full max-w-[480px] md:max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-4 md:p-6 mb-10">
+        <div className="text-gray-900 text-2xl font-bold mb-6">최근 알림</div>
+        <div className="flex flex-col gap-4">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="flex justify-between items-center p-3 rounded-lg bg-gray-50"
+            >
+              <div className="flex items-center gap-4">
+                <div
+                  className={`w-12 h-12 flex items-center justify-center rounded-full text-2xl font-bold ${
+                    i === 0
+                      ? "bg-red-100 text-red-700"
+                      : i === 1
+                        ? "bg-orange-100 text-orange-700"
+                        : "bg-blue-100 text-blue-700"
+                  }`}
+                >
+                  {i === 0 ? "🚨" : i === 1 ? "💰" : "📦"}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <div className="text-gray-900 text-lg font-semibold">
+                    texttext
+                  </div>
+                  <div className="text-cool-gray-600 text-base">texttext</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-gray-400 text-xs">
+                <span>0</span>
+                <span>시간 전</span>
               </div>
             </div>
           ))}
         </div>
-
-        <button className="w-full max-w-72 py-3 bg-white rounded-lg border border-gray-200 flex justify-center items-center gap-2 hover:bg-gray-50">
-          <span className="text-gray-800 text-base font-semibold">더보기</span>
-          <img src={ArrowDownIcon} alt="더보기 아이콘" className="w-4 h-4" />
-        </button>
       </div>
     </div>
   );

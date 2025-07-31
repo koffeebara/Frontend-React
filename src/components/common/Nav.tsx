@@ -23,27 +23,17 @@ export default function Nav() {
             <img src={Logo} alt="로고" className="w-full h-full" />
           </Link>
         </div>
-        {/* 우측 버튼(로그인/마이페이지/로그아웃) */}
+
         <div className="flex items-center gap-2">
           {isLoggedIn ? (
-            <>
-              <Link
-                to="/mypage"
-                className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
-              >
-                <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
-                  마이페이지
-                </span>
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
-              >
-                <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
-                  로그아웃
-                </span>
-              </button>
-            </>
+            <Link
+              to="/mypage"
+              className="px-4 py-1 bg-common-000 rounded-[999px] outline outline-1 outline-offset-[-1px] outline-opacity-100/10 flex justify-center items-center"
+            >
+              <span className="text-gray-800 text-sm font-semibold font-pretendard leading-snug">
+                마이페이지
+              </span>
+            </Link>
           ) : (
             <Link
               to="/login"
