@@ -12,7 +12,13 @@ import "./App.css";
 import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
 import CropInfo from "./pages/CropInfo";
+
 import CropDiary from "./pages/CropDiary";
+
+import Cart from "./pages/Cart";
+import PaymentComplete from "./pages/PaymentComplete";
+import FarmLog from "./pages/FarmLog";
+
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -38,6 +44,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mentors" element={<Mentors />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/payment" element={<PaymentComplete />} />
+        <Route path="/farmLog" element={<FarmLog />} />
+
+
         {/* <Route
           path="/mypage"
           element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
