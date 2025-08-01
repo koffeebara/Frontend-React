@@ -183,7 +183,7 @@ export default function Cart() {
           {/* 결제하기 */}
           <div className='flex flex-col h-max rounded-lg w-full  gap-2'>
 
-            <button className='bg-green-600 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
+            <button className='bg-green-700 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
           </div>
         </div>
 

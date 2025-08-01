@@ -13,6 +13,7 @@ import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
 import CropInfo from "./pages/CropInfo";
 import Cart from "./pages/Cart";
+import PaymentComplete from "./pages/PaymentComplete";
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/mentors" element={<Mentors />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/payment" element={<PaymentComplete />} />
+
 
         {/* <Route
           path="/mypage"
