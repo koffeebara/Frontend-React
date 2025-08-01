@@ -29,7 +29,7 @@ export default function AddressSearch({ onSelect }: Props) {
     <>
       <button onClick={() => setIsOpen(true)} className='w-[100px] h-[50px] border rounded-lg'>주소 검색</button>
       {isOpen && (
-        <div className="absolute top-full mt-2 left-1/2 z-50 bg-white border shadow-lg">
+        <div className="absolute top-full mt-2 md:left-1/2 z-50 bg-white border shadow-lg">
           <div className="flex justify-end p-2  bg-gray-100">
             <button onClick={() => setIsOpen(false)} className="text-sm text-gray-500">
               ✕

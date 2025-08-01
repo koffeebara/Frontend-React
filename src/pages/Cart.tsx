@@ -58,7 +58,7 @@ export default function Cart() {
 
             <p className='heading-2 pb-4'>배송정보</p>
 
-            <div className='flex gap-12'>
+            <div className='flex gap-4'>
               {/* 이름 */}
               <div className=" w-full">
                 <p>이름</p>
@@ -155,7 +155,7 @@ export default function Cart() {
           </div>
           {/* 결제 수단 */}
           <div className='flex flex-col h-max bg-white p-8 m-4 border border-gray-300 rounded-lg w-full gap-2'>
-            <p className='heading-2 pb-4'>배송정보</p>
+            <p className='heading-2 pb-4'>결제 수단</p>
             <div className="flex flex-col gap-4">
               <PaymentOption
                 id='card'
@@ -183,7 +183,7 @@ export default function Cart() {
           {/* 결제하기 */}
           <div className='flex flex-col h-max rounded-lg w-full  gap-2'>
 
-            <button className='bg-green-700 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
+            <button className='bg-mint-700 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
           </div>
         </div>
 
