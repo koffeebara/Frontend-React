@@ -14,6 +14,7 @@ import Footer from "./components/common/Footer";
 import CropInfo from "./pages/CropInfo";
 import Cart from "./pages/Cart";
 import PaymentComplete from "./pages/PaymentComplete";
+import FarmLog from "./pages/FarmLog";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route path="/mentors" element={<Mentors />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<PaymentComplete />} />
+        <Route path="/farmLog" element={<FarmLog />} />
 
 
         {/* <Route
