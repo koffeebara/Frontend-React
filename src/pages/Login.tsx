@@ -45,28 +45,34 @@ export default function Login() {
 
   return (
     <>
-      <div className="flex flex-col w-full h-[1500px] bg-green-100 items-center justify-center
+      <div
+        className="flex flex-col w-full h-[1500px] bg-green-100 items-center justify-center
       [@media(min-width:920px)]:flex-row 
-      [@media(min-width:920px)]:h-[900px] ">
+      [@media(min-width:920px)]:h-[900px] "
+      >
         {/* 왼쪽 */}
         <div className="flex flex-col items-center w-[450px] h-[690px] bg-green-600 rounded-xl">
           <img src="/test_img.png" alt="test" className="w-30 m-10" />
-          <p className="title-1 text-white text-center">가상농장에 <br /> 오신 것을 환영합니다!</p>
-          <p className="text-green-200 text-center m-4">믿을 수 있는 농부와 함께 키우는 <br /> 건강한 농작물</p>
+          <p className="title-1 text-white text-center">
+            가상농장에 <br /> 오신 것을 환영합니다!
+          </p>
+          <p className="text-green-200 text-center m-4">
+            믿을 수 있는 농부와 함께 키우는 <br /> 건강한 농작물
+          </p>
           <div className="w-[250px] m-4 flex flex-col justify-start">
             <IconLabel icon="🌾" text="실시간 재배 일지 확인" />
             <IconLabel icon="👩‍🌾" text="검증된 농부와 직거래" />
             <IconLabel icon="📦" text="신선한 농작물 직배송" />
             <IconLabel icon="🏠" text="농장 방문 체험 기회" />
           </div>
-
         </div>
         {/* 오른쪽 */}
         <div className="flex flex-col w-[450px] h-[690px] bg-white rounded-xl items-center">
           <div className="flex flex-col items-center">
             <p className="title-1 text-green-700 mt-8">로그인</p>
-            <p className="text-gray-700 m-2">계정에 로그인하여 농작물을 확인해보세요</p>
-
+            <p className="text-gray-700 m-2">
+              계정에 로그인하여 농작물을 확인해보세요
+            </p>
           </div>
           <div>
             <form className="mt-8" onSubmit={handleSubmit}>
@@ -84,7 +90,9 @@ export default function Login() {
               </div>
 
               {emailMessage && (
-                <p className="text-center text-sm text-red-500">{emailMessage}</p>
+                <p className="text-center text-sm text-red-500">
+                  {emailMessage}
+                </p>
               )}
 
               {/* 비밀번호 */}
@@ -97,7 +105,6 @@ export default function Login() {
                   type="password"
                   value={password}
                   autoComplete="current-password"
-
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -133,11 +140,9 @@ export default function Login() {
                 </Link>
               </p>
             </div>
-
           </div>
         </div>
       </div>
-
     </>
     // <div className="w-full max-w-md mx-auto mt-8 p-4">
     //   {/* 간단한 소개 */}
@@ -186,7 +191,7 @@ export default function Login() {
     //     {/* 로그인 버튼 */}
     //     <div className="mt-8">
     //       <button
-    //         className={`w-full p-4 text-center cursor-pointer 
+    //         className={`w-full p-4 text-center cursor-pointer
     //         ${isValid && !isLoading ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
     //         disabled={!isValid || isLoading}
     //         type="submit"

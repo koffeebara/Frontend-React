@@ -12,6 +12,7 @@ import "./App.css";
 import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
 import CropInfo from "./pages/CropInfo";
+import CropDiary from "./pages/CropDiary";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -43,6 +44,7 @@ function App() {
         /> */}
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/cropinfo" element={<CropInfo />} />
+        <Route path="/cropdiary" element={<CropDiary />} />
       </Routes>
       <Footer />
     </div>
