@@ -12,6 +12,8 @@ import "./App.css";
 import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
 import CropInfo from "./pages/CropInfo";
+import Cart from "./pages/Cart";
+
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -37,6 +39,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mentors" element={<Mentors />} />
+        <Route path="/cart" element={<Cart />} />
+
         {/* <Route
           path="/mypage"
           element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
