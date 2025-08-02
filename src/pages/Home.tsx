@@ -15,12 +15,6 @@ import {
 } from "../api/Home";
 import type { ProductResponse, ReviewResponse } from "../api/Home";
 
-const extraCrops = [
-  { emoji: "🥕", name: "유기농 당근", price: "15,000", participants: 12 },
-  { emoji: "🥬", name: "친환경 배추", price: "25,000", participants: 8 },
-  { emoji: "🥒", name: "무농약 오이", price: "18,000", participants: 20 },
-];
-
 const steps = [
   {
     number: 1,
@@ -195,7 +189,14 @@ export default function Home() {
         />
         <StepsSection steps={steps} />
         <ReviewSection reviews={reviews || undefined} />
-        <ExtraCropSection extraCrops={extraCrops} />
+        <ExtraCropSection
+          product4={product4}
+          product5={product5}
+          product6={product6}
+          product7={product7}
+          product8={product8}
+          product9={product9}
+        />
         <SubscribeSection
           email={email}
           setEmail={setEmail}
