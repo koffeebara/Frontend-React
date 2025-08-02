@@ -31,7 +31,7 @@ function ProductCard(props: ProductCardProps) {
   };
 
   return (
-    <div className="w-full aspect-[2/3] rounded-2xl border border-gray-300 overflow-hidden bg-white">
+    <div className="w-full rounded-2xl  border-gray-300 overflow-hidden bg-white">
       {/* 이미지 및 마감 뱃지 */}
       <div className="relative aspect-[5/5] bg-gray-100">
         <img

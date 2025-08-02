@@ -29,9 +29,9 @@ export default function ProductCardList() {
   );
 
   return (
-    <div className="px-4">
+    <div className="">
       {/* 카드 리스트 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-6">
+      <div className="grid grid-cols-4 gap-10 my-10">
         {pagedData.map((item) => (
           <ProductCard key={item.id} {...item} />
         ))}
@@ -43,10 +43,11 @@ export default function ProductCardList() {
           <button
             key={i}
             onClick={() => goToNextPage(i)}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${currentPage === i
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-black hover:bg-gray-300"
-              }`}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === i
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-black hover:bg-gray-300"
+            }`}
           >
             {i + 1}
           </button>

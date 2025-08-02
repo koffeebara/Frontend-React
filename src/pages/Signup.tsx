@@ -102,7 +102,7 @@ export default function Signup() {
   ];
 
   return (
-    <div className="w-full mx-auto bg-green-000 p-4">
+    <div className="w-full mx-auto bg-white p-4">
       {/* 뒤로 가기 */}
       <div className="flex flex-col w-full h-max items-center ">
         <Link
@@ -121,7 +121,7 @@ export default function Signup() {
           시고르팜에 가입하고, 전문가와 함께 농작물을 키워보세요!
         </p>
       </div>
-      <div className="w-full h-full bg-green-000 rounded-2xl my-6 py-3">
+      <div className="w-full h-full bg-white rounded-2xl my-6 py-3">
         <p className="text-lg font-semibold px-4">어떤 역할로 가입하시나요?</p>
         <div className="flex h-[160px] gap-4 p-4">
           {roles.map((role) => (

@@ -32,20 +32,20 @@ function App() {
   }
 
   return (
-    <div className="w-full min-h-screen m-auto bg-green-000">
-      <div className="w-full max-w-[1280px] m-auto bg-white">
+    <div className="w-full min-h-screen m-auto bg-white">
+      <div className="w-full max-w-[1280px] m-auto bg-white pt-20">
         <Nav />
         <ScrollToTop />
         <Routes>
           <Route
             path="/"
-            element={isLoggedIn ? <Navigate to="/home" replace /> : <Home />}
+            element={isLoggedIn ? <Navigate to="/list" replace /> : <Home />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<PaymentComplete />} />
-          <Route path="/projectList" element={<ProjectList />} />
+          <Route path="/list" element={<ProjectList />} />
           <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
           <Route
             path="/mypage"
@@ -56,7 +56,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-
     </div>
   );
 }
