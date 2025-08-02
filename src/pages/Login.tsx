@@ -139,7 +139,7 @@ export default function Login() {
                 onSubmit={handleSubmit}
               >
                 {/* Email Field */}
-                <div className="self-stretch flex flex-col justify-start items-start gap-3">
+                <div className="self-stretch flex flex-col justify-start items-start gap-1">
                   <div className="self-stretch inline-flex justify-start items-start">
                     <div className="justify-start text-gray-900 text-base font-semibold leading-6">
                       이메일
@@ -154,13 +154,13 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  {emailMessage && (
-                    <div className="pl-0.5 inline-flex justify-center items-center gap-2.5">
+                  <div className="pl-0.5 inline-flex justify-center items-center h-3">
+                    {emailMessage && (
                       <div className="justify-start text-red-500 text-xs font-light leading-none">
                         {emailMessage}
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
 
                 {/* Password Field */}

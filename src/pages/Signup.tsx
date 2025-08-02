@@ -59,21 +59,19 @@ export default function Signup() {
     setSignupError("");
 
     try {
-      console.log("회원가입 시도:", {
+      const signupPayload = {
         email,
         password,
         name,
-        phone: fullPhone,
-        userType: selectedKey.toUpperCase(),
-      });
-      const signupResponse = await authService.signup({
-        email,
-        password,
-        name,
-        phone: fullPhone,
+        phoneNumber: fullPhone,
         userType: selectedKey.toUpperCase() as "BUYER" | "FARMER",
-      });
-      console.log("회원가입 성공:", signupResponse);
+      };
+      console.log("회원가입 시도 payload:", signupPayload);
+      const signupResponse = await authService.signup(signupPayload);
+      console.log("회원가입 성공 response:", signupResponse);
+      if (signupResponse && signupResponse.user) {
+        console.log("가입된 유저 정보:", signupResponse.user);
+      }
       navigate("/login");
     } catch (error) {
       console.error("회원가입 실패:", error);
