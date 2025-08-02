@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
+import toast from "react-hot-toast";
 
 export default function Mypage() {
   const { removeToken } = useAuthStore();
@@ -7,6 +8,7 @@ export default function Mypage() {
 
   const handleLogout = () => {
     removeToken();
+    toast.success("로그아웃되었습니다.");
     navigate("/");
   };
 
