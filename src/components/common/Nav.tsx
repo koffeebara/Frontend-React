@@ -12,7 +12,7 @@ export default function Nav() {
   };
 
   return (
-    <header className="w-full flex justify-center items-center py-3 md:py-4 bg-transparent px-3 md:px-0">
+    <header className="w-full bg-green-000 flex justify-center items-center py-3 md:py-4 px-3 md:px-0">
       <div className="w-full max-w-[1200px] px-4 md:px-6 py-3 md:py-4 bg-mint-700 rounded-[999px] flex justify-between items-center">
         {/* 좌측 여백/로고 */}
         <div className="w-20 md:w-28 h-10 md:h-12 p-2 md:p-2.5 flex flex-col justify-center items-center gap-2.5">
