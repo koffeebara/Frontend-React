@@ -19,6 +19,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 
 import NotFound from "./pages/NotFound";
 import ProjectList from "./pages/ProjectList";
+import Reserve from "./pages/Reserve";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -46,6 +47,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<PaymentComplete />} />
           <Route path="/list" element={<ProjectList />} />
+          <Route path="/reserve" element={<Reserve />} />
+
           <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
           <Route
             path="/mypage"
