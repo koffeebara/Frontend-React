@@ -146,7 +146,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
   return (
     <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8">
       <div className="flex flex-col items-center gap-2">
-        <span className="px-4 py-1 bg-orange-200 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-orange-900 text-sm font-semibold">
+        <span className="px-4 py-1 bg-mint-000 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-mint-700 text-sm font-semibold">
           이번 주 인기 농작물
         </span>
         <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center">
@@ -156,23 +156,6 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
       <div className="w-full flex flex-wrap justify-center gap-8">
         {/* 첫 번째 상품 */}
         <div className="w-full max-w-[340px] flex flex-col gap-4 bg-common-000 rounded-3xl shadow-md p-6 outline-1 outline-offset-[-1px] outline-opacity-200/20">
-
-          {/* const CropSection = ({ cropCards }: { cropCards: CropCard[] }) => (
-  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8">
-    <div className="flex flex-col items-center gap-2">
-      <span className="px-4 py-1 bg-mint-000 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-mint-700 text-sm font-semibold">
-        이번 주 인기 농작물
-      </span>
-      <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center">
-        지금 참여 가능한 위탁 농작물
-      </h2>
-    </div>
-    <div className="w-full flex flex-wrap justify-center gap-8">
-      {cropCards.map((crop) => (
-        <div
-          key={crop.id}
-          className="w-full max-w-[340px] flex flex-col gap-4 bg-common-000 rounded-3xl shadow-md p-6 outline-1 outline-offset-[-1px] outline-opacity-200/20"
-        > */}
 
           <div className="flex items-center gap-2 text-red-500 text-base font-semibold">
             ⏰ 마감까지 D-{products[0].deadline?.replace(/[^0-9]/g, "") || "00"}
@@ -232,7 +215,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-mint-700 rounded-lg outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-mint-700 rounded-lg outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
             상품 둘러보기
           </button>
         </div>
@@ -273,7 +256,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <div className="w-full bg-mint-000 rounded-2xl px-4 py-3 flex flex-col gap-2">
+          <div className="w-full bg-green-000 rounded-2xl px-4 py-3 flex flex-col gap-2">
             <div className="flex gap-1 items-center text-gray-800 text-base font-semibold">
               <span>달성률</span>
               <span>{products[1].percentage}%</span>
@@ -292,7 +275,8 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-orange-400 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-mint-700 rounded-lg outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
+
             상품 둘러보기
           </button>
         </div>
@@ -333,7 +317,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <div className="w-full bg-mint-000 rounded-2xl px-4 py-3 flex flex-col gap-2">
+          <div className="w-full bg-green-000 rounded-2xl px-4 py-3 flex flex-col gap-2">
             <div className="flex gap-1 items-center text-gray-800 text-base font-semibold">
               <span>달성률</span>
               <span>{products[2].percentage}%</span>
@@ -352,7 +336,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-orange-400 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-mint-700 rounded-lg outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
             상품 둘러보기
           </button>
         </div>
