@@ -1,33 +1,19 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const CropInfo: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"details" | "guide" | "reviews">(
     "details"
   );
 
   return (
-    <div className="w-full bg-white flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       {/* 브레드크럼 */}
-      <div className="w-full max-w-[1200px] px-4 pt-8 pb-4">
-        <div className="px-2 flex items-center gap-1">
-          <span className="text-green-700 text-sm font-semibold">홈</span>
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-          <span className="text-green-700 text-sm font-semibold">
-            농작물 상세
-          </span>
-        </div>
+      <div className="flex max-w-[1168px] w-full items-center text-mint-700 gap-2 p-6">
+        <Link to="/">홈</Link>
+        <span className="text-mint-600">&gt;</span>
+        <Link to="/list">작물 목록</Link>
+        <span className="text-mint-600">&gt;</span>
+        <span className="text-mint-700">상세 정보</span>
       </div>
 
       {/* 메인 콘텐츠 */}
