@@ -1,8 +1,5 @@
 import axios from "axios";
 
-// 개발 환경에서는 프록시 사용, 배포 환경에서는 실제 API URL 사용
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
-
 export interface ProductResponse {
   id: number;
   title: string;
@@ -32,18 +29,46 @@ export interface ReviewApiResponse {
 }
 
 export const fetchProducts = async (): Promise<ApiResponse> => {
-  const response = await axios.get(`${API_BASE_URL}/api/products`);
-  console.log("Fetched products:", response.data);
-  return response.data;
+  try {
+    const response = await axios.get("api/products");
+    console.log("Fetched products:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Products API 에러:", error);
+    return {
+      success: false,
+      response: [],
+      error: "상품 데이터를 불러올 수 없습니다.",
+    };
+  }
 };
 
 export const fetchProductsReview1 = async (): Promise<ReviewApiResponse> => {
-  const response = await axios.get(`${API_BASE_URL}/api/products/1/reviews`);
-  console.log("Fetched reviews for product 1:", response.data);
-  return response.data;
+  try {
+    const response = await axios.get("api/projects/1/reviews");
+    console.log("Fetched reviews for product 1:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Product 1 리뷰 API 에러:", error);
+    return {
+      success: false,
+      response: [],
+      error: "리뷰 데이터를 불러올 수 없습니다.",
+    };
+  }
 };
 
 export const fetchProductsReview2 = async (): Promise<ReviewApiResponse> => {
-  const response = await axios.get(`${API_BASE_URL}/api/products/2/reviews`);
-  return response.data;
+  try {
+    const response = await axios.get("api/projects/2/reviews");
+    console.log("Fetched reviews for product 2:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Product 2 리뷰 API 에러:", error);
+    return {
+      success: false,
+      response: [],
+      error: "리뷰 데이터를 불러올 수 없습니다.",
+    };
+  }
 };

@@ -17,13 +17,6 @@ import {
 import type { ProductResponse, ReviewResponse } from "../api/Home";
 
 
-const dummyExtraCrops = [
-  { emoji: "🥕", name: "유기농 당근", price: "15,000", participants: 12 },
-  { emoji: "🥬", name: "친환경 배추", price: "25,000", participants: 8 },
-  { emoji: "🥒", name: "무농약 오이", price: "18,000", participants: 20 },
-];
-
-
 const steps = [
 
   {
@@ -78,6 +71,10 @@ export default function Home() {
   >(null);
 
 
+  const [email, setEmail] = useState("");
+  const [showEmailAlert, setShowEmailAlert] = useState(false);
+
+
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -109,20 +106,27 @@ export default function Home() {
 
     const loadReviews = async () => {
       try {
-        // 여러 상품의 리뷰를 가져와서 병합
-        const [review1Response, review2Response] = await Promise.all([
-          fetchProductsReview1(),
-          fetchProductsReview2(),
-        ]);
-
+        // 여러 상품의 리뷰를 가져와서 병합 - 각각 개별적으로 처리
         const allReviews: ReviewResponse[] = [];
 
-        if (review1Response.success && review1Response.response) {
-          allReviews.push(...review1Response.response);
+        // 첫 번째 리뷰 API 호출
+        try {
+          const review1Response = await fetchProductsReview1();
+          if (review1Response.success && review1Response.response) {
+            allReviews.push(...review1Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 1 리뷰 로딩 실패:", error);
         }
 
-        if (review2Response.success && review2Response.response) {
-          allReviews.push(...review2Response.response);
+        // 두 번째 리뷰 API 호출
+        try {
+          const review2Response = await fetchProductsReview2();
+          if (review2Response.success && review2Response.response) {
+            allReviews.push(...review2Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 2 리뷰 로딩 실패:", error);
         }
 
         // API 데이터를 ReviewSection 형태로 변환
@@ -151,10 +155,6 @@ export default function Home() {
     loadProducts();
     loadReviews();
   }, []);
-  const [email, setEmail] = useState("");
-  const [showEmailAlert, setShowEmailAlert] = useState(false);
-
-  // 더미데이터만 사용, API 호출 및 product1~product9 상태 제거
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -198,7 +198,16 @@ export default function Home() {
         />
         <StepsSection steps={steps} />
         <ReviewSection reviews={reviews || undefined} />
-        <ExtraCropSection extraCrops={dummyExtraCrops} />
+
+        <ExtraCropSection
+          product4={product4}
+          product5={product5}
+          product6={product6}
+          product7={product7}
+          product8={product8}
+          product9={product9}
+        />
+
         <SubscribeSection
           email={email}
           setEmail={setEmail}
