@@ -14,7 +14,7 @@ const ExtraCropSection = ({ extraCrops }: { extraCrops: ExtraCrop[] }) => (
       {extraCrops.map((crop, idx) => (
         <div
           key={idx}
-          className="w-full max-w-[320px] flex flex-col gap-4 bg-common-000 rounded-3xl shadow p-6 border border-opacity-200/20"
+          className="w-full max-w-[320px] flex flex-col gap-4 bg-common-000 rounded-3xl  p-6 border border-opacity-200/20"
         >
           <div className="flex gap-1 items-center text-red-400 text-base font-semibold">
             <span>🚩</span>

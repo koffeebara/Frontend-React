@@ -9,7 +9,7 @@ export default function StepBox({ stepNumber, title, content }: StepBoxProps) {
   return (
     <div className="flex items-start gap-4 py-4 rounded-lg w-full">
       {/* 왼쪽 파란 원 */}
-      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 text-white font-bold">
+      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-green-600 text-white font-bold">
         {stepNumber}
       </div>
 
