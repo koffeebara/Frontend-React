@@ -58,7 +58,7 @@ const ReviewSection = ({ reviews: apiReviews }: ReviewSectionProps) => {
         {reviews.map((review, idx) => (
           <div
             key={idx}
-            className="w-full max-w-[340px] flex flex-col gap-4 bg-common-000 rounded-2xl shadow p-6 border border-opacity-100/10"
+            className="w-full max-w-[380px] flex flex-col gap-4 bg-common-000 rounded-2xl shadow p-6 border border-opacity-100/10"
           >
             <div className="flex gap-2 items-center text-cool-gray-800 text-base">
               {"⭐️".repeat(review.rating)}

@@ -45,7 +45,7 @@ export const fetchProducts = async (): Promise<ApiResponse> => {
 
 export const fetchProductsReview1 = async (): Promise<ReviewApiResponse> => {
   try {
-    const response = await axios.get("api/products/1/reviews");
+    const response = await axios.get("api/projects/1/reviews");
     console.log("Fetched reviews for product 1:", response.data);
     return response.data;
   } catch (error) {
@@ -60,7 +60,7 @@ export const fetchProductsReview1 = async (): Promise<ReviewApiResponse> => {
 
 export const fetchProductsReview2 = async (): Promise<ReviewApiResponse> => {
   try {
-    const response = await axios.get("api/products/2/reviews");
+    const response = await axios.get("api/projects/2/reviews");
     console.log("Fetched reviews for product 2:", response.data);
     return response.data;
   } catch (error) {
