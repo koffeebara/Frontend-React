@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { fetchLatestProjects, type ProjectResponse } from "../../api/Home";
 
+
 interface ProjectCardData {
   id: number;
   imageUrl: string;
@@ -30,6 +31,7 @@ const dummyData: ProjectCardData[] = Array.from({ length: 33 }, (_, i) => ({
   rating: 4,
   reviewCount: i * 3,
 }));
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -72,17 +74,17 @@ export default function ProductCardList() {
   const dataToShow: ProjectCardData[] =
     projects.length > 0
       ? projects.map((project) => ({
-          id: project.projectId,
-          imageUrl: project.productImageUrl,
-          title: project.projectTitle,
-          price: `${project.price.toLocaleString()}원`,
-          weightPerBox: "1박스",
-          daysLeft: Math.floor(Math.random() * 30),
-          rating: 4 + Math.random(),
-          reviewCount: Math.floor(Math.random() * 50),
-          farmer: project.farmer,
-          projectId: project.projectId,
-        }))
+        id: project.projectId,
+        imageUrl: project.productImageUrl,
+        title: project.projectTitle,
+        price: `${project.price.toLocaleString()}원`,
+        weightPerBox: "1박스",
+        daysLeft: Math.floor(Math.random() * 30),
+        rating: 4 + Math.random(),
+        reviewCount: Math.floor(Math.random() * 50),
+        farmer: project.farmer,
+        projectId: project.projectId,
+      }))
       : dummyData;
 
   const totalPages = Math.ceil(dataToShow.length / ITEMS_PER_PAGE);
@@ -120,11 +122,10 @@ export default function ProductCardList() {
           <button
             key={i}
             onClick={() => goToNextPage(i)}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-              currentPage === i
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${currentPage === i
                 ? "bg-green-700 text-white"
                 : "bg-gray-200 text-black hover:bg-gray-300"
-            }`}
+              }`}
           >
             {i + 1}
           </button>
