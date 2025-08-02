@@ -1,7 +1,7 @@
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import Logo from "../../assets/logo.svg";
-import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
 
 export default function Nav() {
@@ -42,27 +42,6 @@ export default function Nav() {
 
   return (
     <>
-      <Toaster
-        position="top-center"
-        gutter={12}
-        containerStyle={{
-          top: 100,
-        }}
-        toastOptions={{
-          duration: 3000,
-          style: {
-            background: "#fff",
-            color: "#374151",
-            border: "1px solid #e5e7eb",
-            borderRadius: "12px",
-            fontSize: "14px",
-            fontWeight: "500",
-            padding: "12px 16px",
-            boxShadow:
-              "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-          },
-        }}
-      />
       <header className="fixed top-0 left-0 w-full bg-transparent flex justify-center items-center pt-4 px-0 z-50">
         <div className="w-full max-w-[1200px] px-6 py-2 bg-mint-700 rounded-[999px] inline-flex justify-between items-center shadow">
           {/* 좌측 여백/로고 */}
@@ -112,6 +91,7 @@ export default function Nav() {
           </div>
         </div>
       </header>
+      {/* Toaster는 App.tsx에서 전역으로 렌더링 */}
     </>
   );
 }
