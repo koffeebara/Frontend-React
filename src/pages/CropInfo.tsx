@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { fetchProjectDiaries, type DiaryResponse } from "../api/Home";
 
 const CropInfo: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<
     "details" | "guide" | "reviews" | "diaries"
   >("diaries");
@@ -16,6 +17,22 @@ const CropInfo: React.FC = () => {
       loadProjectDiaries(parseInt(projectId));
     }
   }, [projectId]);
+
+  const handleAddToCart = () => {
+    // 상품 정보를 localStorage에 저장
+    const productInfo = {
+      projectId: projectId,
+      name: "유기농 토마토",
+      price: 150000,
+      quantity: 1,
+      imageUrl: "/test_img.png",
+      farmer: "김농부",
+      location: "충청남도 논산시",
+    };
+
+    localStorage.setItem("selectedProduct", JSON.stringify(productInfo));
+    navigate("/cart");
+  };
 
   const loadProjectDiaries = async (id: number) => {
     try {
@@ -193,7 +210,10 @@ const CropInfo: React.FC = () => {
 
           {/* 참여하기 버튼 */}
           <div className="w-full max-w-[800px]">
-            <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
+            <button
+              onClick={handleAddToCart}
+              className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold hover:bg-green-700 transition"
+            >
               지금 참여하기
             </button>
           </div>
@@ -608,7 +628,10 @@ const CropInfo: React.FC = () => {
       {/* 하단 참여하기 버튼 */}
       <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex justify-center">
         <div className="w-full max-w-[800px]">
-          <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
+          <button
+            onClick={handleAddToCart}
+            className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold hover:bg-green-700 transition"
+          >
             지금 참여하기
           </button>
         </div>
