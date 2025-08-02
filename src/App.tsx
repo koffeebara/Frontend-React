@@ -15,7 +15,6 @@ import CropDiary from "./pages/CropDiary";
 
 import Cart from "./pages/Cart";
 import PaymentComplete from "./pages/PaymentComplete";
-import FarmLog from "./pages/FarmLog";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 import NotFound from "./pages/NotFound";
@@ -45,13 +44,11 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<PaymentComplete />} />
-          <Route path="/farmLog" element={<FarmLog />} />
           <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
-          {/* <Route
-          path="/mypage"
-          element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
-        /> */}
-          <Route path="/mypage" element={<Mypage />} />
+          <Route
+            path="/mypage"
+            element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
+          />
           <Route path="/cropinfo" element={<CropInfo />} />
           <Route path="/cropdiary" element={<CropDiary />} />
         </Routes>
