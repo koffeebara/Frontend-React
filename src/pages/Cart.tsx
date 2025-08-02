@@ -25,7 +25,7 @@ export default function Cart() {
   const navigate = useNavigate();
   return (
     <>
-      <div className='w-full h-max bg-gray-100 p-4'>
+      <div className='w-full h-max p-8'>
         {/* 상품 */}
 
         <div className='flex flex-col w-full h-max items-center'>
