@@ -29,7 +29,7 @@ export default function Login() {
       const response = await authService.login({ email, password });
       console.log("로그인 성공:", response);
       setToken(response.accessToken);
-      navigate("/home");
+      navigate("/list");
     } catch (error) {
       console.error("로그인 실패:", error);
       setLoginError("아이디 또는 비밀번호가 올바르지 않습니다.");
@@ -39,9 +39,9 @@ export default function Login() {
   };
 
   return (
-    <div className="w-[1280px] max-w-[1280px] min-w-[480px] bg-green-000 inline-flex flex-col justify-start items-center">
+    <div className="w-[1280px] max-w-[1280px] min-w-[480px] bg-white inline-flex flex-col justify-start items-center">
       {/* Main Content */}
-      <div className="w-full max-w-[1200px] px-4 pt-6 pb-15 bg-green-000 flex flex-col justify-start items-center gap-4">
+      <div className="w-full max-w-[1200px] px-4 pt-6 pb-15 bg-white flex flex-col justify-start items-center gap-4">
         {/* Back Button */}
         <div className="self-stretch px-2 inline-flex justify-start items-center gap-1 p-1">
           <Link

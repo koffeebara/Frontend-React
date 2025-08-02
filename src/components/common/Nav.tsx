@@ -63,18 +63,18 @@ export default function Nav() {
           },
         }}
       />
-      <header className="w-full bg-green-000 flex justify-center items-center pt-4 px-0">
-        <div className="w-full max-w-[1200px] px-6 py-2 bg-mint-700 rounded-[999px] inline-flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full bg-transparent flex justify-center items-center pt-4 px-0 z-50">
+        <div className="w-full max-w-[1200px] px-6 py-2 bg-mint-700 rounded-[999px] inline-flex justify-between items-center shadow">
           {/* 좌측 여백/로고 */}
           <div className="w-28 h-12 p-2.5 inline-flex flex-col justify-center items-center gap-2.5">
             <Link
               to="/"
-              className="text-common-000 text-2xl font-bold font-pretendard"
+              className="text-white text-2xl font-bold font-pretendard"
             >
               <img
                 src={Logo}
                 alt="로고"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain "
               />
             </Link>
           </div>

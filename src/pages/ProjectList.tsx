@@ -1,14 +1,43 @@
 import { useEffect, useRef, useState } from "react";
-import ProductCard from "../components/project-list/ProductCard";
+// import ProductCard from "../components/project-list/ProductCard";
 import ProductCardList from "../components/project-list/ProductCardList";
 
 const slides = [
-  { id: 1, image: "/test_img.png", alt: "Image 1", title: "슬라이드 1", content: "슬라이드 내용 1" },
-  { id: 2, image: "/test_img.png", alt: "Image 2", title: "슬라이드 2", content: "슬라이드 내용 2" },
-  { id: 3, image: "/test_img.png", alt: "Image 3", title: "슬라이드 3", content: "슬라이드 내용 3" },
-  { id: 4, image: "/test_img.png", alt: "Image 3", title: "슬라이드 3", content: "슬라이드 내용 3" },
-  { id: 5, image: "/test_img.png", alt: "Image 3", title: "슬라이드 3", content: "슬라이드 내용 3" },
-
+  {
+    id: 1,
+    image: "/test_img.png",
+    alt: "Image 1",
+    title: "슬라이드 1",
+    content: "슬라이드 내용 1",
+  },
+  {
+    id: 2,
+    image: "/test_img.png",
+    alt: "Image 2",
+    title: "슬라이드 2",
+    content: "슬라이드 내용 2",
+  },
+  {
+    id: 3,
+    image: "/test_img.png",
+    alt: "Image 3",
+    title: "슬라이드 3",
+    content: "슬라이드 내용 3",
+  },
+  {
+    id: 4,
+    image: "/test_img.png",
+    alt: "Image 3",
+    title: "슬라이드 3",
+    content: "슬라이드 내용 3",
+  },
+  {
+    id: 5,
+    image: "/test_img.png",
+    alt: "Image 3",
+    title: "슬라이드 3",
+    content: "슬라이드 내용 3",
+  },
 ];
 
 export default function CustomImageSlider() {
@@ -48,10 +77,7 @@ export default function CustomImageSlider() {
             }}
           >
             {slides.map((slide) => (
-              <div
-                key={slide.id}
-                className="w-full"
-              >
+              <div key={slide.id} className="w-full">
                 <img
                   src={slide.image}
                   alt={slide.alt}
@@ -77,22 +103,20 @@ export default function CustomImageSlider() {
         </div>
         <div className="hidden md:flex flex-col w-1/4 p-2 gap-2">
           {slides.map((slide, index) => (
-            <div key={slide.id} className=" border rounded-lg p-2  bg-white"
-              onClick={() => goToSlide(index)}>
+            <div
+              key={slide.id}
+              className=" border rounded-lg p-2  bg-white"
+              onClick={() => goToSlide(index)}
+            >
               <p>{slide.title}</p>
               <p>{slide.content}</p>
             </div>
-
           ))}
         </div>
-
-
       </div>
-      <div className="px-8">
+      <div className="mx-4">
         <ProductCardList />
       </div>
-
     </div>
-
   );
 }

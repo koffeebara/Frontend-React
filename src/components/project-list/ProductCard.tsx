@@ -1,3 +1,5 @@
+import i from "../../assets/i.jpg";
+
 type ProductCardProps = {
   imageUrl: string;
   title: string;
@@ -31,14 +33,10 @@ function ProductCard(props: ProductCardProps) {
   };
 
   return (
-    <div className="w-full aspect-[2/3] rounded-2xl border border-gray-300 overflow-hidden bg-white">
+    <div className="w-full rounded-2xl  border-gray-300 overflow-hidden bg-white">
       {/* 이미지 및 마감 뱃지 */}
       <div className="relative aspect-[5/5] bg-gray-100">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+        <img src={i} alt={title} className="w-full h-full object-cover" />
         <span className="absolute top-4 left-4 bg-white text-red-500 text-sm font-semibold px-3 py-1 rounded-full border border-gray-300">
           마감까지 {daysLeft}일
         </span>
