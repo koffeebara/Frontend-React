@@ -16,9 +16,9 @@ export default function Mypage() {
     <>
       <div className="w-full min-h-screen bg-green-50 flex flex-col items-center py-6">
         {/* 프로필 및 통계 */}
-        <div className="w-full max-w-[480px] md:max-w-5xl mx-auto bg-white rounded-2xl shadow-md flex flex-col md:flex-row items-center md:justify-between gap-8 px-4 md:px-8 py-8 mb-8">
+        <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-md flex flex-row items-center justify-between gap-8 px-8 py-8 mb-8">
           {/* 프로필 */}
-          <div className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-start">
+          <div className="flex items-center gap-6 w-auto justify-start">
             <div className="w-20 h-20 rounded-full bg-cool-gray-200 flex items-center justify-center border border-gray-200" />
             <div className="flex flex-col gap-1.5">
               <div className="text-mint-700 text-2xl font-bold">이름</div>
@@ -28,7 +28,7 @@ export default function Mypage() {
             </div>
           </div>
           {/* 통계 */}
-          <div className="flex flex-1 gap-4 w-full md:w-auto justify-center md:justify-end mt-6 md:mt-0">
+          <div className="flex flex-1 gap-4 w-auto justify-end mt-0">
             {(
               [
                 { label: "수확 완료", color: "green" },
@@ -47,7 +47,7 @@ export default function Mypage() {
           </div>
         </div>
         {/* 탭 버튼 */}
-        <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex gap-4 justify-center mb-6">
+        <div className="w-full max-w-5xl mx-auto flex gap-4 justify-center mb-6">
           <button className="flex-1 max-w-xs px-6 py-2 bg-mint-600 text-white rounded-lg font-semibold shadow hover:bg-mint-700 transition">
             진행중
           </button>
@@ -56,7 +56,7 @@ export default function Mypage() {
           </button>
         </div>
         {/* 카드 리스트 */}
-        <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex flex-col md:flex-row gap-6 mb-10 items-stretch justify-center">
+        <div className="w-full max-w-5xl mx-auto flex flex-row gap-6 mb-10 items-stretch justify-center">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
@@ -123,7 +123,7 @@ export default function Mypage() {
           ))}
         </div>
         {/* 최근 알림 */}
-        <div className="w-full max-w-[480px] md:max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-4 md:p-6 mb-10">
+        <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-6 mb-10">
           <div className="text-gray-900 text-2xl font-bold mb-6">최근 알림</div>
           <div className="flex flex-col gap-4">
             {[0, 1, 2].map((i) => (

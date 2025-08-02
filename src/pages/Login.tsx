@@ -3,7 +3,7 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import { authService } from "../../services/authService";
 import { useState } from "react";
 import { useAuthStore } from "../store/authStore";
-import IconLabel from "../components/IconLabel";
+import backIcon from "../assets/backIcon.svg";
 
 export default function Login() {
   const { email, setEmail, emailMessage, password, setPassword } =
@@ -13,6 +13,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [rememberLogin, setRememberLogin] = useState(false);
 
   const isValid = email && password && !emailMessage;
 
@@ -38,121 +39,212 @@ export default function Login() {
   };
 
   return (
-    <>
-      <div className="w-full mx-auto  px-8">
-        {/* 뒤로 가기 */}
-        <div className="flex flex-col w-full h-max items-center ">
+    <div className="w-[1280px] max-w-[1280px] min-w-[480px] bg-green-000 inline-flex flex-col justify-start items-center">
+      {/* Main Content */}
+      <div className="w-full max-w-[1200px] px-4 pt-6 pb-15 bg-green-000 flex flex-col justify-start items-center gap-4">
+        {/* Back Button */}
+        <div className="self-stretch px-2 inline-flex justify-start items-center gap-1 p-1">
           <Link
             to="/"
-            className="text-green-700 w-full text-left cursor-pointer m-4"
+            className="inline-flex items-center gap-1 cursor-pointer"
           >
-            &lt; 홈으로 돌아가기
+            <div className="w-4 h-4 relative flex justify-center items-center overflow-hidden">
+              <img src={backIcon} alt="Back" className="w-4 h-4" />
+            </div>
+            <div className="justify-start text-green-700 text-xs font-semibold leading-snug">
+              홈으로 돌아가기
+            </div>
           </Link>
         </div>
-        <div className="flex flex-col w-full h-max justify-center md:flex-row  ">
-          {/* 왼쪽 */}
-          <div
-            className="flex flex-col items-center w-full md:w-[350px] h-max bg-mint-600 rounded-t-2xl 
-        md:h-[690px] md:rounded-t-none md:rounded-l-2xl"
-          >
-            <img src="/test_img.png" alt="test" className="w-30 m-10" />
-            <div className="w-[300px]">
-              <p className="title-1 text-white text-center">
-                시고르팜에 오신 것을 환영합니다!
-              </p>
-              <p className="text-green-200 text-center m-4">
-                전문가와 함께 키우는 건강한 농작물!
-              </p>
-            </div>
 
-            <div className="w-[250px] m-4 flex-col justify-start hidden md:flex">
-              <IconLabel icon="🌾" text="실시간 재배 일지 확인" />
-              <IconLabel icon="👩‍🌾" text="검증된 농부와 직거래" />
-              <IconLabel icon="📦" text="신선한 농작물 직배송" />
-              <IconLabel icon="🏠" text="농장 방문 체험 기회" />
+        {/* Login Container */}
+        <div className="self-stretch inline-flex justify-start items-start">
+          {/* Left Side - Welcome Section */}
+          <div className="flex-1 self-stretch max-w-[480px] px-6 py-8 bg-mint-600 rounded-tl-3xl rounded-bl-3xl inline-flex flex-col justify-center items-center gap-8 border-l border-t border-b border-gray-200">
+            <div className="self-stretch flex flex-col justify-start items-center gap-6">
+              <div className="w-16 h-16 bg-white/40 rounded-[999px] border border-white flex flex-col justify-center items-center">
+                <div className="text-center justify-start text-gray-900 text-2xl font-bold leading-[40px]">
+                  🌱
+                </div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-center gap-3">
+                <div className="self-stretch text-center justify-start text-white text-3xl font-semibold leading-[48px]">
+                  시고르팜에
+                  <br />
+                  오신 것을 환영합니다!
+                </div>
+                <div className="self-stretch text-center justify-start text-white text-base font-normal leading-6">
+                  전문가와 함께 키우는 건강한 농작물!
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col justify-start items-start gap-6">
+              <div className="self-stretch inline-flex justify-start items-center gap-3">
+                <div className="w-10 h-10 bg-white/40 rounded-[832.50px] border border-white/40 inline-flex flex-col justify-center items-center">
+                  <div className="text-center justify-start text-gray-900 text-lg font-bold leading-normal">
+                    📔
+                  </div>
+                </div>
+                <div className="justify-start text-white text-sm font-normal leading-normal">
+                  농작물의 성장 일지 확인!
+                </div>
+              </div>
+              <div className="self-stretch inline-flex justify-start items-center gap-3">
+                <div className="w-10 h-10 bg-white/40 rounded-[832.50px] border border-white/40 inline-flex flex-col justify-center items-center">
+                  <div className="text-center justify-start text-gray-900 text-lg font-bold leading-normal">
+                    👨‍🌾
+                  </div>
+                </div>
+                <div className="justify-start text-white text-sm font-normal leading-normal">
+                  검증된 농부와의 안전한 직거래!
+                </div>
+              </div>
+              <div className="self-stretch inline-flex justify-start items-center gap-3">
+                <div className="w-10 h-10 bg-white/40 rounded-[832.50px] border border-white/40 inline-flex flex-col justify-center items-center">
+                  <div className="text-center justify-start text-gray-900 text-lg font-bold leading-normal">
+                    📦
+                  </div>
+                </div>
+                <div className="justify-start text-white text-sm font-normal leading-normal">
+                  신선한 농작물 직배송!
+                </div>
+              </div>
+              <div className="self-stretch inline-flex justify-start items-center gap-3">
+                <div className="w-10 h-10 bg-white/40 rounded-[832.50px] border border-white/40 inline-flex flex-col justify-center items-center">
+                  <div className="text-center justify-start text-gray-900 text-lg font-bold leading-normal">
+                    🏠
+                  </div>
+                </div>
+                <div className="justify-start text-white text-sm font-normal leading-normal">
+                  농장 방문 체험 연계!
+                </div>
+              </div>
             </div>
           </div>
-          {/* 오른쪽 */}
-          <div
-            className="flex flex-1 flex-col w-full h-[690px] bg-white rounded-b-2xl items-center
-        md:rounded-t-none md:rounded-r-2xl mb-8"
-          >
-            <div className="flex flex-col items-center">
-              <p className="title-1 text-green-700 mt-8">로그인</p>
-              <p className="text-gray-700 m-2">
-                로그인하고, 농작물 위탁에 참여하세요!
-              </p>
-            </div>
-            <div className="w-full px-8">
-              <form className="mt-8 w-full" onSubmit={handleSubmit}>
-                {/* 이메일 */}
-                <div className="mt-4 w-full">
-                  <p className="mb-2 font-bold">이메일</p>
+
+          {/* Right Side - Login Form */}
+          <div className="flex-1 px-8 py-12 bg-white rounded-tr-3xl rounded-br-3xl inline-flex flex-col justify-start items-center gap-12 border-r border-t border-b border-gray-200">
+            <div className="self-stretch flex flex-col justify-start items-center gap-8">
+              <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                <div className="self-stretch text-center justify-start text-mint-700 text-3xl font-semibold leading-[48px]">
+                  로그인
+                </div>
+                <div className="self-stretch text-center justify-start text-gray-700 text-base font-normal leading-6">
+                  로그인하고, 농작물 위탁에 참여하세요!
+                </div>
+              </div>
+
+              <form
+                className="self-stretch flex flex-col justify-start items-center gap-4"
+                onSubmit={handleSubmit}
+              >
+                {/* Email Field */}
+                <div className="self-stretch flex flex-col justify-start items-start gap-3">
+                  <div className="self-stretch inline-flex justify-start items-start">
+                    <div className="justify-start text-gray-900 text-base font-semibold leading-6">
+                      이메일
+                    </div>
+                  </div>
                   <input
                     type="email"
-                    className="w-full h-[50px] bg-gray-100 p-4 rounded-lg 
-                  border border-gray-300 text-left"
-                    placeholder="이메일을 입력하세요"
+                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${
+                      emailMessage ? "border-red-500" : "border-black/10"
+                    } text-sm font-normal leading-normal placeholder-gray-600`}
+                    placeholder="이메일 주소를 입력해주세요."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                  {emailMessage && (
+                    <div className="pl-0.5 inline-flex justify-center items-center gap-2.5">
+                      <div className="justify-start text-red-500 text-xs font-light leading-none">
+                        {emailMessage}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {emailMessage && (
-                  <p className="ml-4 text-sm text-red-500">{emailMessage}</p>
-                )}
-
-                {/* 비밀번호 */}
-                <div className="mt-4">
-                  <p className="mb-2 font-bold">비밀번호</p>
+                {/* Password Field */}
+                <div className="self-stretch flex flex-col justify-start items-start gap-3">
+                  <div className="self-stretch inline-flex justify-start items-start">
+                    <div className="justify-start text-gray-900 text-base font-semibold leading-6">
+                      비밀번호
+                    </div>
+                  </div>
                   <input
-                    className="w-full h-[50px] bg-gray-100 p-4 rounded-lg 
-                  border border-gray-300 text-left"
-                    placeholder="비밀번호를 입력하세요"
                     type="password"
+                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${
+                      loginError ? "border-red-500" : "border-black/10"
+                    } text-sm font-normal leading-normal placeholder-gray-600`}
+                    placeholder="비밀번호를 입력해주세요."
                     value={password}
                     autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
+                  {loginError && (
+                    <div className="pl-0.5 inline-flex justify-center items-center gap-2.5">
+                      <div className="justify-start text-red-500 text-xs font-light leading-none">
+                        {loginError}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* 로그인 에러 메시지 */}
-                {loginError && (
-                  <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-                    {loginError}
+                {/* Remember Login Checkbox */}
+                <div className="self-stretch h-6 px-1 inline-flex justify-start items-center gap-3">
+                  <div className="flex justify-start items-start">
+                    <input
+                      type="checkbox"
+                      id="rememberLogin"
+                      checked={rememberLogin}
+                      onChange={(e) => setRememberLogin(e.target.checked)}
+                      className="w-6 h-6 rounded border-[1.50px] border-gray-500"
+                    />
                   </div>
-                )}
-
-                <input type="checkbox" className="mr-2 mt-4" />
-                <span> 로그인 상태 유지 </span>
-                {/* 로그인 버튼 */}
-                <div className="mt-8">
-                  <button
-                    className={`w-full h-[50px] text-center cursor-pointer rounded-lg
-            ${isValid && !isLoading ? "bg-mint-700 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
-                    disabled={!isValid || isLoading}
-                    type="submit"
+                  <label
+                    htmlFor="rememberLogin"
+                    className="flex justify-start items-center gap-1 cursor-pointer"
                   >
-                    {isLoading ? "로그인 중..." : "로그인"}
-                  </button>
+                    <div className="justify-start text-gray-900 text-sm font-semibold leading-normal">
+                      로그인 상태 유지
+                    </div>
+                  </label>
                 </div>
+
+                {/* Login Button */}
+                <button
+                  type="submit"
+                  className={`self-stretch px-6 py-4 rounded-2xl text-sm font-semibold leading-normal transition-colors ${
+                    isValid && !isLoading
+                      ? "bg-mint-700 text-white hover:bg-mint-800"
+                      : "bg-gray-300 text-gray-400 cursor-not-allowed"
+                  }`}
+                  disabled={!isValid || isLoading}
+                >
+                  {isLoading ? "로그인 중..." : "로그인"}
+                </button>
               </form>
             </div>
-            {/* 하단 텍스트 */}
-            <div className="flex flex-1 flex-col justify-center text-gray-500 mb-8 gap-8">
-              <div className="flex-grow" />
-              <div className="flex justify-center">
-                <p>계정이 없으신가요?</p>
-                <p>
-                  <Link to="/signup" className="text-green-700 p-2">
-                    회원가입
-                  </Link>
-                </p>
+
+            {/* Bottom Links */}
+            <div className="w-56 flex flex-col justify-start items-center gap-2">
+              <div className="self-stretch h-6 text-center justify-start text-green-700 text-sm font-semibold leading-normal cursor-pointer">
+                비밀번호 찾기
+              </div>
+              <div className="flex justify-start items-center gap-1">
+                <div className="justify-start text-gray-700 text-sm font-normal leading-normal">
+                  계정이 없으신가요?
+                </div>
+                <Link
+                  to="/signup"
+                  className="text-right justify-start text-green-700 text-sm font-semibold leading-normal p-2"
+                >
+                  회원가입
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

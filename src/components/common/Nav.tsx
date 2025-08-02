@@ -63,13 +63,13 @@ export default function Nav() {
           },
         }}
       />
-      <header className="w-full bg-green-000 flex justify-center items-center py-3 md:py-4 px-3 md:px-0">
-        <div className="w-full max-w-[1200px] px-4 md:px-6 py-3 md:py-4 bg-mint-700 rounded-[999px] flex justify-between items-center">
+      <header className="w-full bg-green-000 flex justify-center items-center pt-4 px-0">
+        <div className="w-full max-w-[1200px] px-6 py-2 bg-mint-700 rounded-[999px] inline-flex justify-between items-center">
           {/* 좌측 여백/로고 */}
-          <div className="w-20 md:w-28 h-10 md:h-12 p-2 md:p-2.5 flex flex-col justify-center items-center gap-2.5">
+          <div className="w-28 h-12 p-2.5 inline-flex flex-col justify-center items-center gap-2.5">
             <Link
               to="/"
-              className="text-common-000 text-xl md:text-2xl font-bold font-pretendard"
+              className="text-common-000 text-2xl font-bold font-pretendard"
             >
               <img
                 src={Logo}
@@ -79,34 +79,34 @@ export default function Nav() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex justify-end items-center gap-3">
             {isLoggedIn ? (
               <>
                 <Link
                   to="/mypage"
-                  className="px-3 md:px-4 py-1 bg-common-000 rounded-[999px] border border-gray-200 flex justify-center items-center"
+                  className="px-4 py-1 bg-white rounded-[999px] border border-black/10 flex justify-center items-center"
                 >
-                  <span className="text-gray-800 text-xs md:text-sm font-semibold font-pretendard leading-snug">
+                  <div className="text-center justify-start text-gray-800 text-sm font-semibold font-pretendard leading-snug">
                     마이페이지
-                  </span>
+                  </div>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="hidden md:flex px-3 md:px-4 py-1 bg-common-000 rounded-[999px] border border-gray-200 justify-center items-center"
+                  className="px-4 py-1 bg-white rounded-[999px] border border-black/10 flex justify-center items-center"
                 >
-                  <span className="text-gray-800 text-xs md:text-sm font-semibold font-pretendard leading-snug">
+                  <div className="text-center justify-start text-gray-800 text-sm font-semibold font-pretendard leading-snug">
                     로그아웃
-                  </span>
+                  </div>
                 </button>
               </>
             ) : (
               <Link
                 to="/login"
-                className="px-3 md:px-4 py-1 bg-common-000 rounded-[999px] border border-gray-200 flex justify-center items-center"
+                className="px-4 py-1 bg-white rounded-[999px] border border-black/10 flex justify-center items-center"
               >
-                <span className="text-gray-800 text-xs md:text-sm font-semibold font-pretendard leading-snug">
+                <div className="text-center justify-start text-gray-800 text-sm font-semibold font-pretendard leading-snug">
                   로그인
-                </span>
+                </div>
               </Link>
             )}
           </div>

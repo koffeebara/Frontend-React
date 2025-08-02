@@ -31,10 +31,10 @@ const CropInfo: React.FC = () => {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <div className="w-full max-w-[1168px] px-4 pb-8 flex flex-col lg:flex-row justify-start items-start gap-8">
+      <div className="w-full max-w-[1168px] px-4 pb-8 flex flex-row justify-start items-start gap-8">
         {/* 이미지 섹션 */}
-        <div className="w-full lg:flex-1 lg:max-w-[480px] lg:min-w-96 flex flex-col gap-6">
-          <div className="w-full h-80 lg:aspect-[4/3] lg:h-auto bg-gray-100 rounded-2xl overflow-hidden">
+        <div className="w-full flex-1 max-w-[480px] min-w-96 flex flex-col gap-6">
+          <div className="w-full aspect-[4/3] h-auto bg-gray-100 rounded-2xl overflow-hidden">
             <div className="w-full h-full bg-gray-100"></div>
           </div>
           <div className="px-1 flex items-center gap-4">
@@ -51,7 +51,7 @@ const CropInfo: React.FC = () => {
         </div>
 
         {/* 정보 섹션 */}
-        <div className="w-full lg:flex-1 lg:min-w-96 flex flex-col gap-8 lg:gap-16">
+        <div className="w-full flex-1 min-w-96 flex flex-col gap-16">
           <div className="flex flex-col gap-6">
             <div className="pt-2">
               <h1 className="text-gray-900 text-3xl font-bold leading-[48px]">
@@ -129,48 +129,35 @@ const CropInfo: React.FC = () => {
           </div>
 
           {/* 참여하기 버튼 */}
-          <div className="w-full max-w-[800px]">   
+          <div className="w-full max-w-[800px]">
             <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
               지금 참여하기
             </button>
-
           </div>
         </div>
       </div>
 
       {/* 참여 현황 */}
       <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex flex-col gap-5">
-        <div className="p-4 sm:p-6 bg-blue-50 flex flex-col gap-4">
+        <div className="p-6 bg-blue-50 flex flex-col gap-4">
           <div className="flex items-center gap-1">
-            <span className="text-gray-800 text-lg sm:text-xl font-bold">
-              🔥 지금
-            </span>
-            <span className="text-gray-800 text-lg sm:text-xl font-bold">
+            <span className="text-gray-800 text-xl font-bold">🔥 지금</span>
+            <span className="text-gray-800 text-xl font-bold">
               25명이 참여 중 🔥
             </span>
           </div>
-          <div className="flex gap-2 sm:gap-4">
-            <div className="flex-1 px-2 sm:px-4 pt-3 sm:pt-4 pb-2 sm:pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
-              <span className="text-gray-700 text-xs sm:text-sm">참여자</span>
-              <span className="text-blue-400 text-2xl sm:text-4xl font-semibold">
-                25
-              </span>
+          <div className="flex gap-4">
+            <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
+              <span className="text-gray-700 text-sm">참여자</span>
+              <span className="text-blue-400 text-4xl font-semibold">25</span>
             </div>
-            <div className="flex-1 px-2 sm:px-4 pt-3 sm:pt-4 pb-2 sm:pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
-              <span className="text-gray-700 text-xs sm:text-sm">
-                위탁 완료
-              </span>
-              <span className="text-blue-400 text-2xl sm:text-4xl font-semibold">
-                18
-              </span>
+            <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
+              <span className="text-gray-700 text-sm">위탁 완료</span>
+              <span className="text-blue-400 text-4xl font-semibold">18</span>
             </div>
-            <div className="flex-1 px-2 sm:px-4 pt-3 sm:pt-4 pb-2 sm:pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
-              <span className="text-gray-700 text-xs sm:text-sm">
-                남은 날짜
-              </span>
-              <span className="text-blue-400 text-2xl sm:text-4xl font-semibold">
-                45
-              </span>
+            <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
+              <span className="text-gray-700 text-sm">남은 날짜</span>
+              <span className="text-blue-400 text-4xl font-semibold">45</span>
             </div>
           </div>
         </div>
@@ -236,7 +223,7 @@ const CropInfo: React.FC = () => {
             <h2 className="text-gray-900 text-2xl font-bold">🌿 농작물 정보</h2>
             <div className="px-4 py-5 rounded-2xl border border-gray-300 flex flex-col gap-6">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-full max-w-[800px] h-60 sm:h-80 lg:aspect-video lg:h-auto bg-gray-100 rounded-lg overflow-hidden">
+                <div className="w-full max-w-[800px] aspect-video bg-gray-100 rounded-lg overflow-hidden">
                   <div className="w-full h-full bg-gray-100"></div>
                 </div>
                 <div className="w-full max-w-[800px] flex items-center gap-1">
@@ -282,7 +269,7 @@ const CropInfo: React.FC = () => {
           {/* 농장 정보 */}
           <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex flex-col gap-6">
             <h2 className="text-gray-900 text-2xl font-bold">🧑‍🌾 농장 정보</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div className="px-6 py-5 bg-gray-50 rounded-lg border border-gray-100 flex flex-col gap-4">
                 <h3 className="text-green-800 text-xl font-bold">
                   농장 운영 경력
@@ -436,22 +423,22 @@ const CropInfo: React.FC = () => {
 
                 {index % 2 === 0 && (
                   <div className="flex gap-2 overflow-hidden">
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
                   </div>
                 )}
 
                 {index === 1 && (
                   <div className="flex gap-2 overflow-hidden">
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
                   </div>
                 )}
 
                 {index === 3 && (
                   <div className="flex gap-2 overflow-hidden">
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
-                    <div className="flex-1 h-32 sm:h-44 lg:h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
+                    <div className="flex-1 h-48 max-w-60 min-w-40 bg-gray-100 rounded-lg"></div>
                   </div>
                 )}
 

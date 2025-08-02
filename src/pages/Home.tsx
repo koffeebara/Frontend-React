@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "../components/common/Alert";
 
 const cropCards = [
   {
@@ -114,12 +115,14 @@ export default function Home() {
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setEmail("");
+    <Alert />;
+    console.log("이메일 제출:", email);
   };
 
   return (
     <>
-      {/* 모바일 전용: Figma 스타일 */}
-      <div className="md:hidden w-full max-w-[480px] mx-auto flex flex-col justify-start items-start font-pretendard">
+      {/* 메인 홈 페이지 */}
+      <div className="w-full min-h-screen bg-green-000 font-pretendard">
         <div className="self-stretch px-4 pt-12 pb-10 bg-green-50 flex flex-col justify-start items-center gap-10">
           <div className="self-stretch flex flex-col justify-start items-center gap-6">
             <div className="text-center text-green-900 text-4xl font-semibold leading-[56px] font-pretendard px-4">
@@ -432,7 +435,7 @@ export default function Home() {
       </div>
 
       {/* 데스크탑/태블릿: 기존 반응형 Home UI */}
-      <div className="hidden md:block w-full min-h-screen bg-green-000 font-pretendard">
+      <div className="w-full min-h-screen bg-green-000 font-pretendard">
         <main className="w-full min-h-screen flex flex-col items-center">
           {/* 히어로 섹션 */}
           <section className="w-full max-w-[1200px] px-6 pt-24 pb-16 flex flex-col items-center gap-8">
