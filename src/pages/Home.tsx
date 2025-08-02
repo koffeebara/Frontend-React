@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import EmailAlert from "../components/common/EmailAlert";
 
 const cropCards = [
   {
@@ -111,17 +113,43 @@ const steps = [
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const [showEmailAlert, setShowEmailAlert] = useState(false);
+
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (email.trim()) {
+      setShowEmailAlert(true);
+    }
+  };
+
+  const handleConfirmSubscription = () => {
+    setShowEmailAlert(false);
+    toast.success("구독완료!", {
+      position: "bottom-center",
+      style: {
+        background: "#10b981",
+        color: "#fff",
+        fontSize: "16px",
+        fontWeight: "600",
+        padding: "12px 20px",
+        borderRadius: "9999px",
+        marginBottom: "100px",
+      },
+      duration: 3000,
+    });
     setEmail("");
     console.log("이메일 제출:", email);
   };
 
+  const handleCloseAlert = () => {
+    setShowEmailAlert(false);
+  };
+
   return (
-    <div className="w-full min-h-screen bg-white font-pretendard mt-3">
+    <div className="w-full min-h-screen bg-white font-pretendard mt-3 relative">
       <main className="w-full min-h-screen flex flex-col items-center">
         {/* 히어로 섹션 */}
-        <section className="w-full max-w-[1200px] px-6 pt-24 pb-16 flex flex-col items-center gap-8 bg-green-000">
+        <section className="w-full max-w-[1200px] px-6 pt-24 pb-16 flex flex-col items-center gap-8 bg-green-000 ">
           <h1 className="text-mint-900 text-[40px] md:text-[48px] font-bold leading-tight text-center">
             농부와 함께 키우는
             <br />
@@ -350,6 +378,7 @@ export default function Home() {
           <form
             onSubmit={handleEmailSubmit}
             className="w-full max-w-[480px] flex gap-3 mt-2"
+            noValidate
           >
             <input
               type="email"
@@ -368,6 +397,23 @@ export default function Home() {
           </form>
         </section>
       </main>
+
+      {/* Email Alert 모달 */}
+      {showEmailAlert && (
+        <div
+          className="fixed inset-0 flex items-center justify-center z-[60]"
+          style={{ background: "rgba(0,0,0,0.2)" }}
+        >
+          <EmailAlert
+            email={email}
+            onConfirm={handleConfirmSubscription}
+            onCancel={handleCloseAlert}
+          />
+        </div>
+      )}
+
+      {/* Toast 컨테이너 */}
+      <Toaster />
     </div>
   );
 }
