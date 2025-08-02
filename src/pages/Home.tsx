@@ -46,6 +46,7 @@ const cropCards = [
     completedBoxes: 90,
     percentage: 45,
     status: "유기농 인증",
+    deadline: "3일 남음",
     bgColor: "from-amber-400 to-yellow-300",
   },
   {
@@ -64,6 +65,7 @@ const cropCards = [
     completedBoxes: 120,
     percentage: 80,
     status: "베스트셀러",
+    deadline: "1일 남음",
     bgColor: "from-green-300 to-green-300",
   },
 ];
