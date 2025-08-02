@@ -1,16 +1,6 @@
-import toast from "react-hot-toast";
-import { useState, useEffect } from "react";
-import { fetchProducts } from "../api/Home";
-import EmailAlert from "../components/common/EmailAlert";
-import HeroSection from "../components/home/HeroSection";
-import StatsSection from "../components/home/StatsSection";
-import CropSection from "../components/home/CropSection";
-import StepsSection from "../components/home/StepsSection";
-import ReviewSection from "../components/home/ReviewSection";
-import ExtraCropSection from "../components/home/ExtraCropSection";
-import SubscribeSection from "../components/home/SubscribeSection";
-
-const cropCards = [
+import { useEffect, useState } from "react";
+// 더미 데이터 유지
+const dummyCropCards = [
   {
     id: 1,
     emoji: "🍅",
@@ -70,13 +60,13 @@ const cropCards = [
   },
 ];
 
-const extraCrops = [
+const dummyExtraCrops = [
   { emoji: "🥕", name: "유기농 당근", price: "15,000", participants: 12 },
   { emoji: "🥬", name: "친환경 배추", price: "25,000", participants: 8 },
   { emoji: "🥒", name: "무농약 오이", price: "18,000", participants: 20 },
 ];
 
-const reviews = [
+const dummyReviews = [
   {
     rating: 5,
     title: "정말 신선하고 맛있어요!",
@@ -97,7 +87,7 @@ const reviews = [
   },
 ];
 
-const steps = [
+const dummySteps = [
   {
     number: 1,
     title: "농작물 선택",
@@ -120,17 +110,43 @@ const steps = [
     description: ["수확한 신선한 농작물을", "집에서 편하게 받아보세요."],
   },
 ];
+import { fetchProducts } from "../api/Home";
+import toast from "react-hot-toast";
+import HeroSection from "../components/home/HeroSection";
+import StatsSection from "../components/home/StatsSection";
+import CropSection from "../components/home/CropSection";
+import StepsSection from "../components/home/StepsSection";
+import ReviewSection from "../components/home/ReviewSection";
+import ExtraCropSection from "../components/home/ExtraCropSection";
+import SubscribeSection from "../components/home/SubscribeSection";
+import EmailAlert from "../components/common/EmailAlert";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [showEmailAlert, setShowEmailAlert] = useState(false);
+  const [cropCards, setCropCards] = useState<any[]>(dummyCropCards);
+  const [extraCrops, setExtraCrops] = useState<any[]>(dummyExtraCrops);
+  const [reviews, setReviews] = useState<any[]>(dummyReviews);
+  const [steps, setSteps] = useState<any[]>(dummySteps);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const data = await fetchProducts();
-        console.log("products:", data);
+        if (data && data.response && Array.isArray(data.response)) {
+          const cards = data.response.map((item: any) => ({
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl,
+          }));
+          setCropCards(cards);
+        } else {
+          setCropCards(dummyCropCards);
+        }
+        // extraCrops, reviews, steps도 API에서 받아오면 setExtraCrops, setReviews, setSteps에 세팅
       } catch (error) {
+        setCropCards(dummyCropCards);
         console.error("Failed to fetch products:", error);
       }
     };
