@@ -1,21 +1,49 @@
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
+import Logo from "../../assets/logo.svg";
 
 export default function Nav() {
+  const { isLoggedIn } = useAuthStore();
+
   return (
-    <div className="m-w-screen flex flex-col justify-center items-center">
-      <nav className="w-1/2 p-4 border-l border-r border-b border-gray-500 bg-white shadow-md">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-black text-lg font-bold">
-            <Link to="/">시고르토크</Link>
-          </div>
+    <header className="w-full flex justify-center items-center py-3 md:py-4 bg-transparent px-3 md:px-0">
+      <div className="w-full max-w-[1200px] px-4 md:px-6 py-3 md:py-4 bg-mint-700 rounded-[999px] flex justify-between items-center">
+        {/* 좌측 여백/로고 */}
+        <div className="w-20 md:w-28 h-10 md:h-12 p-2 md:p-2.5 flex flex-col justify-center items-center gap-2.5">
           <Link
-            to="/login"
-            className="text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700"
+            to="/"
+            className="text-common-000 text-xl md:text-2xl font-bold font-pretendard"
           >
-            로그인
+            <img
+              src={Logo}
+              alt="로고"
+              className="w-full h-full object-contain"
+            />
           </Link>
         </div>
-      </nav>
-    </div>
+
+        <div className="flex items-center gap-2">
+          {isLoggedIn ? (
+            <Link
+              to="/mypage"
+              className="px-3 md:px-4 py-1 bg-common-000 rounded-[999px] border border-gray-200 flex justify-center items-center"
+            >
+              <span className="text-gray-800 text-xs md:text-sm font-semibold font-pretendard leading-snug">
+                마이페이지
+              </span>
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="px-3 md:px-4 py-1 bg-common-000 rounded-[999px] border border-gray-200 flex justify-center items-center"
+            >
+              <span className="text-gray-800 text-xs md:text-sm font-semibold font-pretendard leading-snug">
+                로그인
+              </span>
+            </Link>
+          )}
+        </div>
+      </div>
+    </header>
   );
 }

@@ -1,34 +1,63 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthStore } from "./store/authStore";
 
-import "./App.css";
-import Lee from "./pages/Lee";
-import Moon from "./pages/Moon";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/common/Nav";
+import Home from "./pages/Home";
 
-// npm run format → prettier로 코드 정렬
-// npm run lint → eslint로 코드 검사
+
+import "./App.css";
+import Mypage from "./pages/Mypage";
+import Footer from "./components/common/Footer";
+import CropInfo from "./pages/CropInfo";
+
+import CropDiary from "./pages/CropDiary";
+
+import Cart from "./pages/Cart";
+import PaymentComplete from "./pages/PaymentComplete";
+import FarmLog from "./pages/FarmLog";
+import ScrollToTop from "./components/common/ScrollToTop";
+
+import NotFound from "./pages/NotFound";
 
 function App() {
-  return (
-    <>
-      {/* 아래 div 코드는 추후 메인페이지가 만들어지면 삭제될 코드 */}
-      <div className="flex flex-col">
-        <Nav />
-        <Link to="/lee">LEE</Link>
-        <Link to="/moon">MOON</Link>
-        <Link to="/login">LOGIN</Link>
-        <Link to="/signup">SIGNUP</Link>
-      </div>
+  const { isLoggedIn, _hasHydrated } = useAuthStore();
 
+  if (!_hasHydrated) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-lg">로딩 중...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full min-h-screen bg-green-000">
+      <Nav />
+      <ScrollToTop />
       <Routes>
-        <Route path="/lee" element={<Lee />} />
-        <Route path="/moon" element={<Moon />} />
+        <Route
+          path="/"
+          element={isLoggedIn ? <Navigate to="/mentors" replace /> : <Home />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/payment" element={<PaymentComplete />} />
+        <Route path="/farmLog" element={<FarmLog />} />
+        <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
+
+        {/* <Route
+          path="/mypage"
+          element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
+        /> */}
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/cropinfo" element={<CropInfo />} />
+        <Route path="/cropdiary" element={<CropDiary />} />
       </Routes>
-    </>
+      <Footer />
+    </div>
   );
 }
 
