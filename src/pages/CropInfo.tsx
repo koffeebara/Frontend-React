@@ -5,9 +5,9 @@ import { fetchProjectDiaries, type DiaryResponse } from "../api/Home";
 
 const CropInfo: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>();
-  const [activeTab, setActiveTab] = useState<"details" | "guide" | "reviews" | "diaries">(
-    "diaries"
-  );
+  const [activeTab, setActiveTab] = useState<
+    "details" | "guide" | "reviews" | "diaries"
+  >("diaries");
   const [diaries, setDiaries] = useState<DiaryResponse[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -35,28 +35,36 @@ const CropInfo: React.FC = () => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'GROWING': return '성장 중';
-      case 'HARVESTED': return '수확 완료';
-      case 'PLANTED': return '파종 완료';
-      default: return status;
+      case "GROWING":
+        return "성장 중";
+      case "HARVESTED":
+        return "수확 완료";
+      case "PLANTED":
+        return "파종 완료";
+      default:
+        return status;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'GROWING': return 'bg-green-100 text-green-800';
-      case 'HARVESTED': return 'bg-orange-100 text-orange-800';
-      case 'PLANTED': return 'bg-blue-100 text-blue-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case "GROWING":
+        return "bg-green-100 text-green-800";
+      case "HARVESTED":
+        return "bg-orange-100 text-orange-800";
+      case "PLANTED":
+        return "bg-blue-100 text-blue-800";
+      default:
+        return "bg-gray-100 text-gray-800";
     }
   };
 
@@ -277,27 +285,6 @@ const CropInfo: React.FC = () => {
           onClick={() => setActiveTab("diaries")}
         >
           농장 일지
-        </button>
-      </div>
-        <button
-          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${
-            activeTab === "guide"
-              ? "border-green-600 text-gray-800 font-semibold"
-              : "border-transparent text-gray-500"
-          }`}
-          onClick={() => setActiveTab("guide")}
-        >
-          재배안내
-        </button>
-        <button
-          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${
-            activeTab === "reviews"
-              ? "border-green-600 text-gray-800 font-semibold"
-              : "border-transparent text-gray-500"
-          }`}
-          onClick={() => setActiveTab("reviews")}
-        >
-          후기
         </button>
       </div>
 
@@ -549,7 +536,7 @@ const CropInfo: React.FC = () => {
           <h2 className="text-gray-900 text-2xl font-bold border-t border-gray-100 pt-6">
             📝 농장 일지 (프로젝트 ID: {projectId})
           </h2>
-          
+
           {loading ? (
             <div className="flex justify-center items-center min-h-[200px]">
               <div className="text-lg">일지를 불러오는 중...</div>
@@ -557,11 +544,16 @@ const CropInfo: React.FC = () => {
           ) : diaries.length > 0 ? (
             <div className="flex flex-col gap-6">
               {diaries.map((diary) => (
-                <div key={diary.diaryId} className="flex flex-col gap-4 p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+                <div
+                  key={diary.diaryId}
+                  className="flex flex-col gap-4 p-6 bg-white border border-gray-200 rounded-lg shadow-sm"
+                >
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(diary.status)}`}>
+                        <span
+                          className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(diary.status)}`}
+                        >
                           {getStatusText(diary.status)}
                         </span>
                         <span className="text-sm text-gray-500">
@@ -573,25 +565,25 @@ const CropInfo: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   {diary.imageUrl && (
                     <div className="w-full max-w-[400px] aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                      <img 
-                        src={diary.imageUrl} 
+                      <img
+                        src={diary.imageUrl}
                         alt="농장 일지 사진"
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
+                          target.style.display = "none";
                         }}
                       />
                     </div>
                   )}
-                  
+
                   {diary.tag && (
                     <div className="flex flex-wrap gap-2">
-                      {diary.tag.split(',').map((tag, index) => (
-                        <span 
+                      {diary.tag.split(",").map((tag, index) => (
+                        <span
                           key={index}
                           className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
                         >
@@ -605,7 +597,9 @@ const CropInfo: React.FC = () => {
             </div>
           ) : (
             <div className="flex justify-center items-center min-h-[200px]">
-              <div className="text-gray-500">아직 등록된 농장 일지가 없습니다.</div>
+              <div className="text-gray-500">
+                아직 등록된 농장 일지가 없습니다.
+              </div>
             </div>
           )}
         </div>
