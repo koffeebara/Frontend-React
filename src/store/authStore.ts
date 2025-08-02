@@ -21,6 +21,8 @@ export const useAuthStore = create<AuthState>()(
       },
       removeToken: () => {
         set({ accessToken: null, isLoggedIn: false });
+        // localStorage에서 auth-storage 키를 완전히 제거
+        localStorage.removeItem("auth-storage");
       },
       setHasHydrated: (state) => {
         set({ _hasHydrated: state });

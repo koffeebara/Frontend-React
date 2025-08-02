@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
+
 export default function Mypage() {
+  const { removeToken } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeToken();
+    navigate("/");
+  };
+
   return (
     <div className="w-full min-h-screen bg-green-50 flex flex-col items-center py-6">
       {/* 프로필 및 통계 */}
@@ -32,7 +43,6 @@ export default function Mypage() {
           ))}
         </div>
       </div>
-
       {/* 탭 버튼 */}
       <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex gap-4 justify-center mb-6">
         <button className="flex-1 max-w-xs px-6 py-2 bg-mint-600 text-white rounded-lg font-semibold shadow hover:bg-mint-700 transition">
@@ -42,7 +52,6 @@ export default function Mypage() {
           수확 완료
         </button>
       </div>
-
       {/* 카드 리스트 */}
       <div className="w-full max-w-[480px] md:max-w-5xl mx-auto flex flex-col md:flex-row gap-6 mb-10 items-stretch justify-center">
         {[0, 1, 2].map((i) => (
@@ -110,7 +119,6 @@ export default function Mypage() {
           </div>
         ))}
       </div>
-
       {/* 최근 알림 */}
       <div className="w-full max-w-[480px] md:max-w-5xl mx-auto bg-white rounded-2xl shadow-md p-4 md:p-6 mb-10">
         <div className="text-gray-900 text-2xl font-bold mb-6">최근 알림</div>
@@ -147,6 +155,12 @@ export default function Mypage() {
           ))}
         </div>
       </div>
+      <p
+        className="cursor-pointer text-gray-500 text-sm hover:text-green-700 transition p-2"
+        onClick={handleLogout}
+      >
+        로그아웃
+      </p>
     </div>
   );
 }
