@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
 import AddressSearch from '../components/AddressSearch';
 import { useCartStore } from '../store/cartStore';
@@ -22,6 +22,8 @@ export default function Cart() {
 
   //결제 수단
   const [selected, setSelected] = useState('card');
+
+  const navigate = useNavigate();
   return (
     <>
       <div className='w-full h-max bg-gray-100 p-4'>
@@ -29,7 +31,8 @@ export default function Cart() {
 
         <div className='flex flex-col w-full h-max items-center'>
 
-          <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 뒤로가기</p>
+          <p className='text-green-700 w-full text-left cursor-pointer m-4'
+            onClick={() => navigate(-1)}>&lt; 뒤로가기</p>
 
           <div className='flex flex-col h-max bg-white p-8 border border-gray-300 rounded-lg w-full'>
             <div className="flex flex-col gap-4">

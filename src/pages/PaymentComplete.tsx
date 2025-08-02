@@ -1,9 +1,12 @@
 import StepBox from "../components/StepBox"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function PaymentComplete() {
   const farmer = "홍길동"
   const item = "옥수수 두 상자"
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex flex-col p-4 gap-4 bg-gray-200 ">

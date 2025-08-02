@@ -124,7 +124,7 @@ export default function Login() {
                 {/* 로그인 버튼 */}
                 <div className="mt-8">
                   <button
-                    className={`w-full h-[50px] p-4 text-center cursor-pointer rounded-lg
+                    className={`w-full h-[50px] text-center cursor-pointer rounded-lg
             ${isValid && !isLoading ? "bg-mint-700 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
                     disabled={!isValid || isLoading}
                     type="submit"
