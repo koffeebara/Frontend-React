@@ -27,6 +27,10 @@ export default function EmailAlert({
         <div className="self-stretch justify-start text-black text-base font-normal font-pretendard leading-normal">
           농장 소식을 구독하시겠습니까?
           <br />
+          <span className="text-mint-700 font-bold">
+            소식 받을 이메일 : {email}
+          </span>
+          <br />
           새로운 농작물과 특별 혜택 소식을 가장 먼저 받아보세요!
         </div>
       </div>
