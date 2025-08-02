@@ -1,12 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/authStore";
-import Lee from "./pages/Lee";
-import Moon from "./pages/Moon";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/common/Nav";
 import Home from "./pages/Home";
-import Mentors from "./pages/mentors";
+
 
 import "./App.css";
 import Mypage from "./pages/Mypage";
@@ -18,7 +17,9 @@ import CropDiary from "./pages/CropDiary";
 import Cart from "./pages/Cart";
 import PaymentComplete from "./pages/PaymentComplete";
 import FarmLog from "./pages/FarmLog";
+import ScrollToTop from "./components/common/ScrollToTop";
 
+import NotFound from "./pages/NotFound";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -34,20 +35,18 @@ function App() {
   return (
     <div className="w-full min-h-screen bg-green-000">
       <Nav />
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
           element={isLoggedIn ? <Navigate to="/mentors" replace /> : <Home />}
         />
-        <Route path="/lee" element={<Lee />} />
-        <Route path="/moon" element={<Moon />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mentors" element={<Mentors />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/payment" element={<PaymentComplete />} />
         <Route path="/farmLog" element={<FarmLog />} />
-
+        <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
 
         {/* <Route
           path="/mypage"

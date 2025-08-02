@@ -12,7 +12,6 @@ export default function Login() {
     emailMessage,
     password,
     setPassword,
-    passwordMessage,
   } = useFormValidation({ type: "login" });
 
   const setToken = useAuthStore((state) => state.setToken);
@@ -20,7 +19,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  const isValid = email && password && !emailMessage && !passwordMessage;
+  const isValid = email && password && !emailMessage;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ export default function Login() {
       const response = await authService.login({ email, password });
       console.log("로그인 성공:", response);
       setToken(response.accessToken);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error("로그인 실패:", error);
       setLoginError("아이디 또는 비밀번호가 올바르지 않습니다.");
@@ -48,7 +47,9 @@ export default function Login() {
       <div className="w-full mx-auto  px-8">
         {/* 뒤로 가기 */}
         <div className='flex flex-col w-full h-max items-center '>
-          <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 홈으로 돌아가기</p>
+          <Link to="/" className='text-green-700 w-full text-left cursor-pointer m-4'>
+            &lt; 홈으로 돌아가기
+          </Link>
         </div>
         <div className="flex flex-col w-full h-max justify-center md:flex-row  ">
 
@@ -122,7 +123,7 @@ export default function Login() {
                 {/* 로그인 버튼 */}
                 <div className="mt-8">
                   <button
-                    className={`w-full h-[50px] p-4 text-center cursor-pointer rounded-lg
+                    className={`w-full h-[50px] text-center cursor-pointer rounded-lg
             ${isValid && !isLoading ? "bg-mint-700 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
                     disabled={!isValid || isLoading}
                     type="submit"

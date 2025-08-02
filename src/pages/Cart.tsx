@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import DaumPostcode from 'react-daum-postcode';
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import AddressSearch from '../components/AddressSearch';
 import { useCartStore } from '../store/cartStore';
 import CartItem from '../components/CartItem';
@@ -21,6 +21,8 @@ export default function Cart() {
 
   //결제 수단
   const [selected, setSelected] = useState('card');
+
+  const navigate = useNavigate();
   return (
     <>
       <div className='w-full h-max bg-gray-100 p-4'>
@@ -28,7 +30,8 @@ export default function Cart() {
 
         <div className='flex flex-col w-full h-max items-center'>
 
-          <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 뒤로가기</p>
+          <p className='text-green-700 w-full text-left cursor-pointer m-4'
+            onClick={() => navigate(-1)}>&lt; 뒤로가기</p>
 
           <div className='flex flex-col h-max bg-white p-8 border border-gray-300 rounded-lg w-full'>
             <div className="flex flex-col gap-4">
@@ -180,11 +183,13 @@ export default function Cart() {
 
           </div>
 
+
           {/* 결제하기 */}
-          <div className='flex flex-col h-max rounded-lg w-full  gap-2'>
+
+          <Link to="/payment" className='flex flex-col h-max rounded-lg w-full  gap-2'>
 
             <button className='bg-mint-700 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
-          </div>
+          </Link>
         </div>
 
       </div >

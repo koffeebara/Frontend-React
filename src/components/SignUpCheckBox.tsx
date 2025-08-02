@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function SignUpCheckBox() {
+interface SignUpCheckBoxProps {
+  onValidationChange?: (isValid: boolean) => void;
+}
+
+export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxProps) {
   const [agreements, setAgreements] = useState({
     terms: false,
     privacy: false,
@@ -8,6 +12,11 @@ export default function SignUpCheckBox() {
   });
 
   const allChecked = Object.values(agreements).every(Boolean);
+  const requiredChecked = agreements.terms && agreements.privacy;
+
+  useEffect(() => {
+    onValidationChange?.(requiredChecked);
+  }, [requiredChecked, onValidationChange]);
 
 
   const toggleAll = () => {

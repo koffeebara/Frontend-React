@@ -1,8 +1,13 @@
 import StepBox from "../components/StepBox"
+// import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function PaymentComplete() {
   const farmer = "홍길동"
   const item = "옥수수 두 상자"
+
+  // const navigate = useNavigate();
+
   return (
     <>
       <div className="flex flex-col p-4 gap-4 bg-gray-200 ">
@@ -54,7 +59,10 @@ export default function PaymentComplete() {
             <StepBox stepNumber={4} title="배송 시작" content="수확 완료 후, 농작물은 안전하게 포장되어 배송됩니다." />
 
           </div>
-          <button className="bg-mint-700 text-white rounded-xl h-15">다른 작물 둘러보기</button>
+
+          <Link to="/farmLog" className="flex items-center justify-center bg-mint-700 rounded-xl h-15">
+            <p className="text-white">다른 작물 둘러보기</p>
+          </Link>
           <button className="bg-gray-200 rounded-xl h-15 mb-8">농장 일지 미리보기</button>
         </div>
       </div>
