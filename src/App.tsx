@@ -6,7 +6,6 @@ import Signup from "./pages/Signup";
 import Nav from "./components/common/Nav";
 import Home from "./pages/Home";
 
-
 import "./App.css";
 import Mypage from "./pages/Mypage";
 import Footer from "./components/common/Footer";
@@ -33,30 +32,31 @@ function App() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-green-000">
-      <Nav />
-      <ScrollToTop />
-      <Routes>
-        <Route
-          path="/"
-          element={isLoggedIn ? <Navigate to="/mentors" replace /> : <Home />}
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/payment" element={<PaymentComplete />} />
-        <Route path="/farmLog" element={<FarmLog />} />
-        <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
-
-        {/* <Route
+    <div className="w-full min-h-screen m-auto bg-green-000">
+      <div className="w-full max-w-[1280px] m-auto bg-white">
+        <Nav />
+        <ScrollToTop />
+        <Routes>
+          <Route
+            path="/"
+            element={isLoggedIn ? <Navigate to="/mentors" replace /> : <Home />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<PaymentComplete />} />
+          <Route path="/farmLog" element={<FarmLog />} />
+          <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
+          {/* <Route
           path="/mypage"
           element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
         /> */}
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/cropinfo" element={<CropInfo />} />
-        <Route path="/cropdiary" element={<CropDiary />} />
-      </Routes>
-      <Footer />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/cropinfo" element={<CropInfo />} />
+          <Route path="/cropdiary" element={<CropDiary />} />
+        </Routes>
+        <Footer />
+      </div>
     </div>
   );
 }
