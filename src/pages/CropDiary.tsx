@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CropDiary: React.FC = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "growth" | "management" | "problem"
   >("all");
+  const navigate = useNavigate();
 
   // 필터 타입 정의
   const types = [
@@ -50,102 +52,196 @@ const CropDiary: React.FC = () => {
       ? diaryEntries
       : diaryEntries.filter((entry) => entry.type === activeTab);
 
+  const handleDetailView = () => {
+    navigate("/reserve");
+  };
+
   return (
-    <div className="w-full min-h-screen bg-green-50">
-      <div className="w-full max-w-[1280px] mx-auto px-4 py-8">
+    <div className="w-[1280px] max-w-[1280px] min-w-[481px] bg-white inline-flex flex-col justify-start items-center">
+      <div className="w-full max-w-[1200px] px-4 pt-8 pb-40 relative bg-white flex flex-col justify-start items-center gap-4">
         {/* Back Button */}
-        <div className="flex items-center gap-2 mb-6 px-2">
-          <div className="w-4 h-4 flex items-center justify-center">
-            <svg
-              className="w-3 h-3 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
+        <div className="self-stretch px-2 inline-flex justify-start items-center gap-1">
+          <div className="w-4 h-4 relative flex justify-center items-center overflow-hidden">
+            <div className="w-5 h-5 left-[-2px] top-[-2px] absolute" />
+            <div className="w-1.5 h-2.5 left-[10px] top-[13px] absolute origin-top-left rotate-180 border-[1.4px] border-green-500" />
           </div>
-          <span className="text-green-700 text-sm font-bold">뒤로가기</span>
+          <div className="justify-start text-mint-700 text-sm font-semibold font-['pretendard'] leading-snug">
+            뒤로가기
+          </div>
         </div>
 
         {/* Main Content Container */}
         <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-4">
           {/* Crop Profile Card */}
-          <div className="w-full min-w-full bg-white rounded-2xl border border-gray-200 p-8 mx-auto">
-            <div className="flex flex-col items-center gap-8">
-              {/* Profile Section */}
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-28 h-28 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center">
-                  <span className="text-4xl">🌱</span>
+          <div className="self-stretch px-6 pt-10 pb-8 bg-common-000 rounded-2xl border border-opacity-200 flex flex-col justify-start items-center gap-8">
+            <div className="flex flex-col justify-start items-center gap-4">
+              <div
+                data-value="1:1"
+                className="w-28 h-28 bg-opacity-000 rounded-full"
+              />
+              <div className="flex flex-col justify-start items-center gap-2">
+                <div className="text-center justify-start text-mint-700 text-3xl font-bold font-['pretendard'] leading-[48px]">
+                  토마토
                 </div>
-                <div className="text-center">
-                  <h1 className="text-teal-700 text-3xl font-bold mb-2">
-                    토마토
-                  </h1>
-                  <p className="text-gray-600 text-sm">
-                    <span className="font-medium">김농부</span>님의 작물 일지를
-                    확인해 보세요!
-                  </p>
+                <div className="inline-flex justify-start items-start">
+                  <div className="text-center justify-start text-gray-500 text-xs font-light font-['pretendard'] leading-none">
+                    김농부
+                  </div>
+                  <div className="text-center justify-start text-gray-500 text-xs font-light font-['pretendard'] leading-none">
+                    님의 작물 일지를 확인해 보세요!
+                  </div>
                 </div>
               </div>
+            </div>
+            <div className="self-stretch min-w-52 inline-flex justify-center items-start gap-4 flex-wrap content-start">
+              <div
+                data-showicon="true"
+                className="px-16 py-4 bg-green-000 rounded-2xl inline-flex flex-col justify-start items-center gap-2"
+              >
+                <div className="text-center justify-start text-gray-700 text-base font-normal font-['pretendard'] leading-normal">
+                  재배 진행률
+                </div>
+                <div className="inline-flex justify-start items-center gap-0.5">
+                  <div className="text-center justify-start text-mint-700 text-3xl font-semibold font-['pretendard'] leading-9">
+                    75
+                  </div>
+                  <div className="text-center justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                    %
+                  </div>
+                </div>
+              </div>
+              <div
+                data-showicon="true"
+                className="px-16 py-4 bg-green-000 rounded-2xl inline-flex flex-col justify-start items-center gap-2"
+              >
+                <div className="text-center justify-start text-gray-700 text-base font-normal font-['pretendard'] leading-normal">
+                  참여자
+                </div>
+                <div className="inline-flex justify-start items-center gap-0.5">
+                  <div className="text-center justify-start text-mint-700 text-3xl font-semibold font-['pretendard'] leading-9">
+                    24
+                  </div>
+                  <div className="text-center justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                    명
+                  </div>
+                </div>
+              </div>
+              <div
+                data-showicon="true"
+                className="px-16 py-4 bg-green-000 rounded-2xl inline-flex flex-col justify-start items-center gap-2"
+              >
+                <div className="text-center justify-start text-gray-700 text-base font-normal font-['pretendard'] leading-normal">
+                  재배 기간
+                </div>
+                <div className="inline-flex justify-start items-center gap-0.5">
+                  <div className="text-center justify-start text-mint-700 text-3xl font-semibold font-['pretendard'] leading-9">
+                    90
+                  </div>
+                  <div className="text-center justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                    일
+                  </div>
+                </div>
+              </div>
+              <div
+                data-showicon="true"
+                className="px-16 py-4 bg-green-000 rounded-2xl inline-flex flex-col justify-start items-center gap-2"
+              >
+                <div className="text-center justify-start text-gray-700 text-base font-normal font-['pretendard'] leading-normal">
+                  진행중
+                </div>
+                <div className="inline-flex justify-start items-center gap-0.5">
+                  <div className="text-center justify-start text-mint-700 text-3xl font-semibold font-['pretendard'] leading-9">
+                    23
+                  </div>
+                  <div className="text-center justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                    일
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              {/* Stats Grid */}
-              <div className="w-full grid grid-cols-4 gap-4">
-                <div className="bg-teal-50 rounded-2xl border border-teal-100 p-6 text-center">
-                  <div className="text-gray-600 text-sm font-normal mb-2">
-                    재배 진행률
+          {/* Farm Experience Section */}
+          <div className="self-stretch pt-8 pb-2 flex flex-col justify-start items-start">
+            <div className="w-[1168px] flex flex-col justify-start items-start">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch py-6 relative bg-mint-700 rounded-tl-2xl rounded-tr-2xl flex flex-col justify-center items-center gap-8">
+                  <div className="self-stretch inline-flex justify-center items-center gap-1">
+                    <div className="justify-start text-common-000 text-2xl font-bold font-['pretendard'] leading-9">
+                      농작물
+                    </div>
+                    <div className="justify-start text-common-000 text-2xl font-bold font-['pretendard'] leading-9">
+                      재배
+                    </div>
+                    <div className="justify-start text-common-000 text-2xl font-bold font-['pretendard'] leading-9">
+                      체험이 가능해요!
+                    </div>
                   </div>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-green-700 text-2xl font-bold">
-                      75
-                    </span>
-                    <span className="text-green-700 text-lg font-normal ml-1">
-                      %
-                    </span>
-                  </div>
-                </div>
-                <div className="bg-teal-50 rounded-2xl border border-teal-100 p-6 text-center">
-                  <div className="text-gray-600 text-sm font-normal mb-2">
-                    참여자
-                  </div>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-green-700 text-2xl font-bold">
-                      24
-                    </span>
-                    <span className="text-green-700 text-lg font-normal ml-1">
-                      명
-                    </span>
+                  <div className="w-8 h-8 left-[1112px] top-[26px] absolute inline-flex justify-center items-center overflow-hidden">
+                    <div className="w-10 h-10 left-[-4px] top-[-4px] absolute" />
                   </div>
                 </div>
-                <div className="bg-teal-50 rounded-2xl border border-teal-100 p-6 text-center">
-                  <div className="text-gray-600 text-sm font-normal mb-2">
-                    재배 기간
+                <div className="self-stretch px-6 pt-10 pb-16 bg-cool-gray-000 flex flex-col justify-center items-center gap-12">
+                  <div className="flex flex-col justify-start items-center gap-6">
+                    <div className="px-4 py-2 rounded-lg inline-flex justify-start items-center gap-1">
+                      <div className="flex justify-start items-center">
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          08
+                        </div>
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          월
+                        </div>
+                      </div>
+                      <div className="flex justify-start items-center">
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          10
+                        </div>
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          일
+                        </div>
+                      </div>
+                      <div className="flex justify-start items-center">
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          토
+                        </div>
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          요일
+                        </div>
+                      </div>
+                      <div className="flex justify-start items-center">
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          14
+                        </div>
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          시
+                        </div>
+                      </div>
+                      <div className="flex justify-start items-center">
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          00
+                        </div>
+                        <div className="justify-start text-mint-700 text-2xl font-semibold font-['pretendard'] leading-9">
+                          분
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-center justify-start text-gray-700 text-lg font-normal font-['pretendard'] leading-7">
+                      농장에 방문하고, 우리 농작물이 잘 자라고 있는지
+                      확인해보세요.
+                      <br />
+                      전문가의 도움을 받아 실제 농작물을 키우는 과정을 생생하게
+                      체험할 수 있어요.
+                    </div>
                   </div>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-green-700 text-2xl font-bold">
-                      90
-                    </span>
-                    <span className="text-green-700 text-lg font-normal ml-1">
-                      일
-                    </span>
-                  </div>
-                </div>
-                <div className="bg-teal-50 rounded-2xl border border-teal-100 p-6 text-center">
-                  <div className="text-gray-600 text-sm font-normal mb-2">
-                    수확까지
-                  </div>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-green-700 text-2xl font-bold">
-                      23
-                    </span>
-                    <span className="text-green-700 text-lg font-normal ml-1">
-                      일
-                    </span>
+                  <div className="w-full max-w-[840px] inline-flex justify-center items-center gap-6">
+                    <div
+                      className="flex-1 max-w-[800px] px-10 py-4 bg-mint-600 rounded-lg flex justify-center items-center cursor-pointer"
+                      onClick={handleDetailView}
+                    >
+                      <div className="text-center justify-start text-common-000 text-base font-semibold font-['pretendard'] leading-normal">
+                        자세히 보기
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -153,146 +249,249 @@ const CropDiary: React.FC = () => {
           </div>
 
           {/* Growing Progress Section */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-8">
-            <h2 className="text-gray-900 text-2xl font-bold text-center mb-8">
-              재배 진행 상황
-            </h2>
-            <div className="relative max-w-4xl mx-auto">
-              {/* Progress Line */}
-              <div className="absolute top-6 left-6 right-6 h-1 bg-gray-300 rounded-full">
-                <div className="h-full w-3/5 bg-blue-400 rounded-full"></div>
+          <div className="self-stretch px-5 pt-4 pb-8 bg-common-000 rounded-2xl border border-opacity-100 flex flex-col justify-center items-center gap-4">
+            <div
+              data-size="large"
+              className="pt-2 inline-flex justify-start items-center"
+            >
+              <div className="justify-start text-common-900 text-3xl font-bold font-['pretendard'] leading-[48px]">
+                재배 진행 상황
               </div>
-
-              {/* Progress Steps */}
-              <div className="flex justify-between items-start relative z-10">
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-200 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">😁</span>
+            </div>
+            <div className="h-20 max-w-[800px] relative inline-flex justify-start items-start gap-6">
+              <div className="w-96 h-0 left-[24px] top-[24px] absolute border-t-4 border-cool-gray-300" />
+              <div className="w-52 h-0 left-[24px] top-[24px] absolute border-t-4 border-blue-300" />
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="3"
+                  className="self-stretch h-12 bg-blue-200 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    😁
                   </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    준비
-                  </span>
                 </div>
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-200 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">👨‍🌾</span>
-                  </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    파종
-                  </span>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  준비
                 </div>
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-200 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">🌱</span>
+              </div>
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="3"
+                  className="self-stretch h-12 bg-blue-200 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    👨‍🌾
                   </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    발아
-                  </span>
                 </div>
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-green-200 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">🌾</span>
-                  </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    성장
-                  </span>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  파종
                 </div>
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">⭐️</span>
+              </div>
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="3"
+                  className="self-stretch h-12 bg-blue-200 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    🌱
                   </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    수확
-                  </span>
                 </div>
-                <div className="flex flex-col items-center gap-2 min-w-0 flex-shrink-0">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full border-2 border-white shadow-md flex items-center justify-center">
-                    <span className="text-2xl">📦</span>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  발아
+                </div>
+              </div>
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="2"
+                  className="self-stretch h-12 bg-green-200 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    🌾
                   </div>
-                  <span className="text-gray-700 text-sm font-semibold text-center">
-                    배송
-                  </span>
+                </div>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  성장
+                </div>
+              </div>
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="1"
+                  className="self-stretch h-12 bg-cool-gray-100 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    ⭐️
+                  </div>
+                </div>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  수확
+                </div>
+              </div>
+              <div className="w-12 inline-flex flex-col justify-start items-start gap-2">
+                <div
+                  data-status="1"
+                  className="self-stretch h-12 bg-cool-gray-100 rounded-full border border-opacity-100 flex flex-col justify-center items-center"
+                >
+                  <div className="text-center justify-start text-gray-700 text-2xl font-bold font-['pretendard'] leading-9">
+                    📦
+                  </div>
+                </div>
+                <div className="self-stretch text-center justify-start text-gray-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                  배송
                 </div>
               </div>
             </div>
           </div>
 
           {/* Tab Navigation */}
-          <div className="w-full max-w-[880px] mx-auto">
-            <div className="flex gap-2 mb-4 justify-center">
-              {types.map((type) => (
-                <button
-                  key={type.value}
-                  onClick={() =>
-                    setActiveTab(
-                      type.value as "all" | "growth" | "management" | "problem"
-                    )
-                  }
-                  className={`w-[211px] h-[40px] rounded-lg border text-sm font-semibold transition-all ${
-                    activeTab === type.value
-                      ? "bg-teal-600 text-white shadow-md"
-                      : "bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  {type.label}
-                </button>
-              ))}
+          <div className="w-[1168px] pt-10 pb-4 inline-flex justify-start items-center">
+            <div
+              data-active="on"
+              className="flex-1 h-12 pt-3 pb-4 border-b-[3px] border-mint-600 flex justify-center items-center"
+            >
+              <div className="justify-start text-gray-800 text-base font-semibold font-['pretendard'] leading-normal">
+                전체 일지
+              </div>
+            </div>
+            <div
+              data-active="off"
+              className="flex-1 h-12 pt-3 pb-4 flex justify-center items-center"
+            >
+              <div className="justify-start text-gray-500 text-base font-normal font-['pretendard'] leading-normal">
+                성장 기록
+              </div>
+            </div>
+            <div
+              data-active="off"
+              className="flex-1 h-12 pt-3 pb-4 flex justify-center items-center"
+            >
+              <div className="justify-start text-gray-500 text-base font-normal font-['pretendard'] leading-normal">
+                관리 작업
+              </div>
+            </div>
+            <div
+              data-active="off"
+              className="flex-1 h-12 pt-3 pb-4 flex justify-center items-center"
+            >
+              <div className="justify-start text-gray-500 text-base font-normal font-['pretendard'] leading-normal">
+                문제 해결
+              </div>
             </div>
           </div>
 
           {/* Diary Timeline */}
-          <div className="relative w-full">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-green-600"></div>
-
-            <div className="space-y-8 pl-20">
+          <div className="w-full max-w-[880px] px-4 pt-8 pb-2 rounded-tl-2xl inline-flex justify-start items-start gap-8">
+            <div className="w-0 self-stretch border-l-2 border-opacity-200" />
+            <div className="flex-1 inline-flex flex-col justify-start items-start gap-8">
               {filteredEntries.map((entry, index) => (
-                <div key={index} className="relative">
+                <div
+                  key={index}
+                  className="self-stretch py-2 relative flex flex-col justify-start items-start"
+                >
                   <div
-                    className={`absolute -left-[76px] top-8 w-8 h-8 bg-${entry.color} rounded-full border-4 border-white shadow-md`}
-                  ></div>
-                  <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                    <div className="mb-4">
-                      <div className="flex items-center gap-2 text-green-600 text-sm font-semibold mb-2">
-                        <span>{entry.date}</span>
+                    data-showimg="true"
+                    className="self-stretch px-6 pt-6 pb-8 bg-common-000 rounded-2xl border border-opacity-100 flex flex-col justify-start items-start gap-6"
+                  >
+                    <div className="self-stretch flex flex-col justify-start items-start gap-1">
+                      <div className="inline-flex justify-start items-center gap-1">
+                        <div className="flex justify-start items-center">
+                          <div className="justify-start text-mint-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                            07
+                          </div>
+                          <div className="justify-start text-mint-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                            월
+                          </div>
+                        </div>
+                        <div className="flex justify-start items-center">
+                          <div className="justify-start text-mint-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                            15
+                          </div>
+                          <div className="justify-start text-mint-700 text-sm font-semibold font-['pretendard'] leading-snug">
+                            일
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-gray-900 text-xl font-bold mb-3">
-                        {entry.title}
-                      </h3>
-                      <p className="text-gray-700 text-base leading-relaxed">
-                        {entry.description}
-                      </p>
-                    </div>
-
-                    {/* Image Gallery */}
-                    <div className="grid grid-cols-3 gap-3 mb-4">
-                      <div className="aspect-[4/3] h-auto bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                        <span className="text-2xl">🌱</span>
-                      </div>
-                      <div className="aspect-[4/3] h-auto bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                        <span className="text-2xl">💧</span>
-                      </div>
-                      <div className="aspect-[4/3] h-auto bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center">
-                        <span className="text-2xl">☀️</span>
-                      </div>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {entry.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className={`px-3 py-1 rounded-full text-sm border ${
-                            entry.type === "growth"
-                              ? "bg-blue-50 text-blue-800 border-blue-200"
-                              : entry.type === "management"
-                                ? "bg-orange-50 text-orange-800 border-orange-200"
-                                : "bg-red-50 text-red-800 border-red-200"
-                          }`}
+                      <div className="self-stretch flex flex-col justify-start items-start gap-3">
+                        <div
+                          data-size="medium"
+                          className="self-stretch pt-2 inline-flex justify-start items-center"
                         >
-                          {tag}
-                        </span>
+                          <div className="flex-1 justify-start text-common-900 text-2xl font-bold font-['pretendard'] leading-9">
+                            {entry.title}
+                          </div>
+                        </div>
+                        <div className="self-stretch justify-start text-gray-700 text-lg font-normal font-['pretendard'] leading-7">
+                          {entry.description}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="self-stretch inline-flex justify-start items-start gap-1.5">
+                      <div
+                        data-value="5:4"
+                        className="flex-1 h-64 bg-opacity-000 rounded-2xl"
+                      />
+                      <div
+                        data-value="5:4"
+                        className="flex-1 h-64 bg-opacity-000 rounded-2xl"
+                      />
+                      <div
+                        data-value="1:1"
+                        className="flex-1 h-64 bg-opacity-000 rounded-2xl"
+                      />
+                    </div>
+                    <div className="inline-flex justify-start items-start gap-3">
+                      {entry.tags.map((tag, tagIndex) => (
+                        <div
+                          key={tagIndex}
+                          data-value={entry.type}
+                          className="flex justify-start items-start"
+                        >
+                          <div
+                            data-showmoretext="false"
+                            data-showtag="true"
+                            className={`px-4 py-1 rounded-full border border-opacity-100 flex justify-start items-center gap-0.5 ${
+                              entry.type === "growth"
+                                ? "bg-blue-000"
+                                : entry.type === "management"
+                                  ? "bg-orange-000"
+                                  : "bg-red-000"
+                            }`}
+                          >
+                            <div
+                              className={`text-center justify-start text-sm font-normal font-['pretendard'] leading-snug ${
+                                entry.type === "growth"
+                                  ? "text-blue-900"
+                                  : entry.type === "management"
+                                    ? "text-orange-900"
+                                    : "text-red-900"
+                              }`}
+                            >
+                              #
+                            </div>
+                            <div
+                              className={`text-center justify-start text-sm font-semibold font-['pretendard'] leading-snug ${
+                                entry.type === "growth"
+                                  ? "text-blue-900"
+                                  : entry.type === "management"
+                                    ? "text-orange-900"
+                                    : "text-red-900"
+                              }`}
+                            >
+                              {tag.replace("#", "")}
+                            </div>
+                          </div>
+                        </div>
                       ))}
+                    </div>
+                  </div>
+                  <div className="w-8 h-8 left-[-48px] top-[250px] absolute inline-flex justify-center items-center overflow-hidden">
+                    <div className="w-10 h-10 left-[-4px] top-[-4px] absolute overflow-hidden">
+                      <div
+                        className={`w-5 h-5 left-[10px] top-[10px] absolute rounded-full ${
+                          entry.type === "growth"
+                            ? "bg-mint-600"
+                            : "bg-cool-gray-500"
+                        }`}
+                      />
                     </div>
                   </div>
                 </div>
@@ -302,22 +501,11 @@ const CropDiary: React.FC = () => {
         </div>
 
         {/* Floating Action Button */}
-        <div className="fixed bottom-8 right-8">
-          <button className="w-14 h-14 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </button>
+        <div className="w-12 h-12 p-2 left-[1152px] top-[3518px] absolute bg-mint-700 rounded-full flex flex-col justify-center items-center gap-2">
+          <div className="w-8 h-8 relative inline-flex justify-center items-center overflow-hidden">
+            <div className="w-10 h-10 left-[-4px] top-[-4px] absolute" />
+            <div className="w-3 h-5 left-[6px] top-[20px] absolute origin-top-left -rotate-90 border-[2.8px] border-common-000" />
+          </div>
         </div>
       </div>
     </div>
