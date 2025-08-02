@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="w-full self-stretch py-7 bg-mint-700 inline-flex flex-col justify-end items-center gap-4">
-      <div className="text-center text-gray-000 text-xs font-light font-['pretendard'] leading-none">
+    <footer className="w-full self-stretch py-7 bg-gray-100 inline-flex flex-col justify-end items-center gap-4">
+      <div className="text-center text-gray-600 text-xs font-light font-['pretendard'] leading-none">
         나 대신 전문가가 키워주는 신선한 농작물!
         <br />
         내가 펀딩한 농작물의 성장을 온라인으로 지켜보고, 집으로 배송 받아보세요.

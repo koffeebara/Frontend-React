@@ -145,7 +145,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
   return (
     <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8">
       <div className="flex flex-col items-center gap-2">
-        <span className="px-4 py-1 bg-orange-200 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-orange-900 text-sm font-semibold">
+        <span className="px-4 py-1 bg-green-000 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-orange-900 text-sm font-semibold">
           이번 주 인기 농작물
         </span>
         <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center">
@@ -208,7 +208,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-orange-400 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-green-700 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
             상품 둘러보기
           </button>
         </div>
@@ -268,7 +268,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-orange-400 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-green-700 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
             상품 둘러보기
           </button>
         </div>
@@ -328,7 +328,7 @@ const CropSection = ({ product1, product2, product3 }: CropSectionProps) => {
               </span>
             </div>
           </div>
-          <button className="w-full mt-2 px-6 py-3 bg-orange-400 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-orange-500 transition">
+          <button className="w-full mt-2 px-6 py-3 bg-green-700 rounded-full outline-1 outline-offset-[-1px] outline-opacity-100/10 text-common-000 text-base font-semibold hover:bg-green-500 transition">
             상품 둘러보기
           </button>
         </div>

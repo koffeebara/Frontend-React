@@ -5,7 +5,7 @@ interface Step {
 }
 
 const StepsSection = ({ steps }: { steps: Step[] }) => (
-  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8 bg-green-200 rounded-3xl">
+  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8 bg-green-000 rounded-3xl">
     <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center mb-4">
       가상농장 이용 방법
     </h2>

@@ -14,12 +14,12 @@ export default function Mypage() {
 
   return (
     <>
-      <div className="w-full min-h-screen bg-green-50 flex flex-col items-center py-6">
+      <div className="w-full min-h-screen  flex flex-col items-center py-6">
         {/* 프로필 및 통계 */}
-        <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-md flex flex-row items-center justify-between gap-8 px-8 py-8 mb-8">
+        <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl flex flex-row items-center justify-between gap-8 px-8 py-8 mb-8">
           {/* 프로필 */}
           <div className="flex items-center gap-6 w-auto justify-start">
-            <div className="w-20 h-20 rounded-full bg-cool-gray-200 flex items-center justify-center border border-gray-200 overflow-hidden">
+            <div className="w-20 h-20 rounded-full bg-cool-gray-200 flex items-center justify-center  overflow-hidden">
               <img
                 src="/src/assets/agriculture-6749210_1280.jpg"
                 alt="프로필"
@@ -44,7 +44,7 @@ export default function Mypage() {
             ).map((stat) => (
               <div
                 key={stat.label}
-                className="flex-1 min-w-[100px] px-4 py-4 bg-green-100 rounded-2xl border border-green-200 flex flex-col items-center"
+                className="flex-1 min-w-[100px] px-4 py-4 bg-green-000 rounded-2xl flex flex-col items-center"
               >
                 <div className="text-gray-600 text-sm mb-1">{stat.label}</div>
                 <div className="text-green-700 text-xl font-bold">
@@ -62,21 +62,19 @@ export default function Mypage() {
         <div className="w-full max-w-5xl mx-auto flex gap-4 justify-center mb-6">
           <button
             onClick={() => setActiveTab("진행중")}
-            className={`flex-1 max-w-xs px-6 py-2 rounded-lg font-semibold shadow transition ${
-              activeTab === "진행중"
-                ? "bg-mint-600 text-white hover:bg-mint-700"
-                : "bg-cool-gray-100 text-gray-800 hover:bg-cool-gray-200"
-            }`}
+            className={`flex-1 max-w-xs px-6 py-2 rounded-lg font-semibold shadow transition ${activeTab === "진행중"
+              ? "bg-mint-600 text-white hover:bg-mint-700"
+              : "bg-cool-gray-100 text-gray-800 hover:bg-cool-gray-200"
+              }`}
           >
             진행중
           </button>
           <button
             onClick={() => setActiveTab("수확 완료")}
-            className={`flex-1 max-w-xs px-6 py-2 rounded-lg font-semibold shadow transition ${
-              activeTab === "수확 완료"
-                ? "bg-mint-600 text-white hover:bg-mint-700"
-                : "bg-cool-gray-100 text-gray-800 hover:bg-cool-gray-200"
-            }`}
+            className={`flex-1 max-w-xs px-6 py-2 rounded-lg font-semibold shadow transition ${activeTab === "수확 완료"
+              ? "bg-mint-600 text-white hover:bg-mint-700"
+              : "bg-cool-gray-100 text-gray-800 hover:bg-cool-gray-200"
+              }`}
           >
             수확 완료
           </button>

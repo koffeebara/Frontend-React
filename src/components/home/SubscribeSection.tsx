@@ -9,7 +9,7 @@ const SubscribeSection = ({
   setEmail,
   handleEmailSubmit,
 }: SubscribeSectionProps) => (
-  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col items-center gap-6 bg-orange-000 rounded-3xl mt-12 mb-16">
+  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col items-center gap-6 bg-green-000 rounded-3xl mt-12 mb-16">
     <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center">
       농장 소식 미리받기
     </h2>
