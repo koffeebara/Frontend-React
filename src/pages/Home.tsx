@@ -48,16 +48,7 @@ const steps = [
     description: ["수확한 신선한 농작물을", "집에서 편하게 받아보세요."],
   },
 ];
-import { fetchProducts } from "../api/Home";
-import toast from "react-hot-toast";
-import HeroSection from "../components/home/HeroSection";
-import StatsSection from "../components/home/StatsSection";
-import CropSection from "../components/home/CropSection";
-import StepsSection from "../components/home/StepsSection";
-import ReviewSection from "../components/home/ReviewSection";
-import ExtraCropSection from "../components/home/ExtraCropSection";
-import SubscribeSection from "../components/home/SubscribeSection";
-import EmailAlert from "../components/common/EmailAlert";
+
 
 export default function Home() {
 
@@ -75,14 +66,14 @@ export default function Home() {
   // 리뷰 상태 - ReviewSection에서 사용하는 형태로 정의
   const [reviews, setReviews] = useState<
     | {
-        id: number;
-        rating: number;
-        title: string;
-        content: string;
-        name: string;
-        location: string;
-        date: string;
-      }[]
+      id: number;
+      rating: number;
+      title: string;
+      content: string;
+      name: string;
+      location: string;
+      date: string;
+    }[]
     | null
   >(null);
 
@@ -207,7 +198,7 @@ export default function Home() {
         />
         <StepsSection steps={steps} />
         <ReviewSection reviews={reviews || undefined} />
-        <ExtraCropSection extraCrops={extraCrops} />
+        <ExtraCropSection extraCrops={dummyExtraCrops} />
         <SubscribeSection
           email={email}
           setEmail={setEmail}
