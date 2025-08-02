@@ -5,10 +5,10 @@ const HeroSection = () => (
       <br />
       믿음직한 농작물
     </h1>
-    <p className="text-green-600 text-lg md:text-xl text-center">
+    <p className="text-mint-600 text-lg md:text-xl text-center">
       농부의 신선한 농작물을 펀딩하고, 성장 과정을 지켜보세요 🌱
     </p>
-    <button className="mt-4 px-10 py-4 bg-mint-600 rounded-full shadow-md hover:bg-mint-700 transition text-common-000 text-lg font-semibold">
+    <button className="w-60 mt-4 px-10 py-4 bg-mint-600 rounded-lg shadow-md hover:bg-mint-700 transition text-common-000 text-lg font-semibold">
       시작하기
     </button>
   </section>

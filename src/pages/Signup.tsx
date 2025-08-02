@@ -110,8 +110,12 @@ export default function Signup() {
           &lt; 홈으로 돌아가기
         </Link>
       </div>
-      <div className="flex flex-col w-full h-[200px] bg-mint-700 rounded-2xl px-4 justify-center items-center">
-        <img src="/test_img.png" alt="" className="w-20 h-20" />
+      <div className="flex flex-col w-full h-[200px] bg-mint-600 rounded-2xl px-4 justify-center items-center">
+        <div className="w-16 h-16 bg-white/40 rounded-[999px] border border-white flex flex-col justify-center items-center">
+          <div className="text-center justify-start text-gray-900 text-2xl font-bold leading-[40px]">
+            🌱
+          </div>
+        </div>
         <p className="text-[32px] text-white font-bold py-2">
           시고르팜 회원가입
         </p>
@@ -127,11 +131,10 @@ export default function Signup() {
               key={role.key}
               onClick={() => setSelectedKey(role.key)}
               className={`flex-1 flex flex-col items-center px-3 py-4 rounded-xl border text-center
-              ${
-                selectedKey === role.key
-                  ? "bg-green-100 border-green-500 shadow text-green-700"
+              ${selectedKey === role.key
+                  ? "bg-green-000 border-green-500 shadow text-green-700"
                   : "bg-gray-100 border-gray-200 text-gray-800"
-              }
+                }
             `}
             >
               <p className="text-2xl">{role.icon}</p>

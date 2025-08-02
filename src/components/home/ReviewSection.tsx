@@ -8,7 +8,7 @@ interface Review {
 }
 
 const ReviewSection = ({ reviews }: { reviews: Review[] }) => (
-  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8 bg-blue-000 rounded-3xl mt-12">
+  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8 bg-green-000 rounded-3xl mt-12">
     <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center mb-4">
       생생한 고객 후기
     </h2>
@@ -34,7 +34,8 @@ const ReviewSection = ({ reviews }: { reviews: Review[] }) => (
                 {review.name}
               </span>
               <span className="text-cool-gray-300 text-xs">
-                {review.date.replace(/\./g, "년 ").replace(/\.$/, "월")} 참가자
+                {review.date.replace(/^(\d{4})\.(\d{2})\.(\d{2})\.$/, "$1년 $2월 $3일")} 참가자
+
               </span>
             </div>
           </div>
