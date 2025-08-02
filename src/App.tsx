@@ -67,12 +67,12 @@ function App() {
           <Route path="/payment" element={<PaymentComplete />} />
           <Route path="/list" element={<ProjectList />} />
           <Route path="/reserve" element={<Reserve />} />
-
           <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
           <Route
             path="/mypage"
             element={isLoggedIn ? <Mypage /> : <Navigate to="/login" replace />}
           />
+          <Route path="/cropinfo/:projectId" element={<CropInfo />} />
           <Route path="/cropinfo" element={<CropInfo />} />
           <Route path="/cropdiary" element={<CropDiary />} />
         </Routes>
