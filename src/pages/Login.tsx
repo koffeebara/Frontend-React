@@ -48,7 +48,9 @@ export default function Login() {
       <div className="w-full mx-auto  px-8">
         {/* 뒤로 가기 */}
         <div className='flex flex-col w-full h-max items-center '>
-          <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 홈으로 돌아가기</p>
+          <Link to="/" className='text-green-700 w-full text-left cursor-pointer m-4'>
+            &lt; 홈으로 돌아가기
+          </Link>
         </div>
         <div className="flex flex-col w-full h-max justify-center md:flex-row  ">
 

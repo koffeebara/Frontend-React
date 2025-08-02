@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
 import AddressSearch from '../components/AddressSearch';
 import { useCartStore } from '../store/cartStore';
@@ -180,11 +181,13 @@ export default function Cart() {
 
           </div>
 
+
           {/* 결제하기 */}
-          <div className='flex flex-col h-max rounded-lg w-full  gap-2'>
+
+          <Link to="/payment" className='flex flex-col h-max rounded-lg w-full  gap-2'>
 
             <button className='bg-mint-700 text-white rounded-lg py-4'>{total.toLocaleString()}원 결제하기</button>
-          </div>
+          </Link>
         </div>
 
       </div >

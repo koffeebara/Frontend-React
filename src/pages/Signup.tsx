@@ -83,8 +83,10 @@ export default function Signup() {
   return (
     <div className="w-full mx-auto  p-4">
       {/* 뒤로 가기 */}
-      <div className='flex flex-col w-full h-max items-center mx-4'>
-        <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 홈으로 돌아가기</p>
+      <div className='flex flex-col w-full h-max items-center '>
+        <Link to="/" className='text-green-700 w-full text-left cursor-pointer m-4'>
+          &lt; 홈으로 돌아가기
+        </Link>
       </div>
       <div className="flex flex-col w-full h-[272px] bg-mint-700 rounded-2xl px-4 justify-center items-center">
         <img src="/test_img.png" alt="" />

@@ -3,6 +3,7 @@ import IconStep from "../components/farm-log/IconStep";
 import RecordCard from "../components/farm-log/RecordCard";
 import SummaryCard from "../components/farm-log/SummaryCard";
 import type { RecordType } from "../components/farm-log/RecordCard"
+import { useNavigate } from 'react-router-dom';
 
 const recordData = [
   {
@@ -95,12 +96,17 @@ export default function FarmLog() {
     ? recordData
     : recordData.filter((item) => item.type === filter as RecordType);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className='w-full h-max p-4'>
         {/* 뒤로 가기 */}
-        <div className='flex flex-col w-full h-max items-center'>
-          <p className='text-green-700 w-full text-left cursor-pointer m-4'>&lt; 뒤로가기</p>
+        <div className='flex flex-col w-full h-max items-center '>
+          <p className='text-green-700 w-full text-left cursor-pointer m-4'
+            onClick={() => navigate(-1)}>
+            &lt; 뒤로가기
+          </p>
         </div>
 
         {/* 작물명 */}
