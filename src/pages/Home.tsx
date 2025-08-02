@@ -1,93 +1,27 @@
-import { useEffect, useState } from "react";
-// 더미 데이터 유지
-const dummyCropCards = [
-  {
-    id: 1,
-    emoji: "🍅",
-    name: "무농약 대추방울토마토",
-    farmer: "김농부",
-    location: "경기도 양평군",
-    experience: "15년",
-    rating: "4.9",
-    reviews: 127,
-    price: "20,000",
-    weight: "2kg",
-    participants: 25,
-    totalBoxes: 300,
-    completedBoxes: 180,
-    percentage: 60,
-    status: "HOT",
-    deadline: "5일 남음",
-    bgColor: "from-red-400 to-orange-400",
-  },
-  {
-    id: 2,
-    emoji: "🥔",
-    name: "유기농 감자 세트",
-    farmer: "이농부",
-    location: "강원도 평창군",
-    experience: "12년",
-    rating: "4.7",
-    reviews: 89,
-    price: "18,000",
-    weight: "3kg",
-    participants: 18,
-    totalBoxes: 200,
-    completedBoxes: 90,
-    percentage: 45,
-    status: "유기농 인증",
-    deadline: "3일 남음",
-    bgColor: "from-amber-400 to-yellow-300",
-  },
-  {
-    id: 3,
-    emoji: "🥬",
-    name: "친환경 쌈채소 모음",
-    farmer: "박농부",
-    location: "충남 아산시",
-    experience: "8년",
-    rating: "4.8",
-    reviews: 156,
-    price: "15,000",
-    weight: "1.5kg",
-    participants: 32,
-    totalBoxes: 150,
-    completedBoxes: 120,
-    percentage: 80,
-    status: "베스트셀러",
-    deadline: "1일 남음",
-    bgColor: "from-green-300 to-green-300",
-  },
-];
+import toast from "react-hot-toast";
+import { useState, useEffect } from "react";
+import HeroSection from "../components/home/HeroSection";
+import StatsSection from "../components/home/StatsSection";
+import CropSection from "../components/home/CropSection";
+import StepsSection from "../components/home/StepsSection";
+import ReviewSection from "../components/home/ReviewSection";
+import ExtraCropSection from "../components/home/ExtraCropSection";
+import SubscribeSection from "../components/home/SubscribeSection";
+import EmailAlert from "../components/common/EmailAlert";
+import {
+  fetchProducts,
+  fetchProductsReview1,
+  fetchProductsReview2,
+} from "../api/Home";
+import type { ProductResponse, ReviewResponse } from "../api/Home";
 
-const dummyExtraCrops = [
+const extraCrops = [
   { emoji: "🥕", name: "유기농 당근", price: "15,000", participants: 12 },
   { emoji: "🥬", name: "친환경 배추", price: "25,000", participants: 8 },
   { emoji: "🥒", name: "무농약 오이", price: "18,000", participants: 20 },
 ];
 
-const dummyReviews = [
-  {
-    rating: 5,
-    title: "정말 신선하고 맛있어요!",
-    content:
-      "처음 이용해봤는데 농장 일지를 통해 성장 과정을 지켜보는 재미가 쏠쏠했어요. 감자도 크고 맛있어서 만족합니다!",
-    name: "박○○님",
-    location: "경기도 성남시",
-    date: "2024.11.08",
-  },
-  {
-    rating: 5,
-    title: "믿을 수 있는 농부님들!",
-    content:
-      "농부님이 매일 올려주시는 농장 일지를 보며 안심하고 기다릴 수 있었어요. 상추가 정말 싱싱하고 맛있습니다!",
-    name: "이○○님",
-    location: "부산시 해운대구",
-    date: "2024.10.28",
-  },
-];
-
-const dummySteps = [
+const steps = [
   {
     number: 1,
     title: "농작물 선택",
@@ -110,47 +44,113 @@ const dummySteps = [
     description: ["수확한 신선한 농작물을", "집에서 편하게 받아보세요."],
   },
 ];
-import { fetchProducts } from "../api/Home";
-import toast from "react-hot-toast";
-import HeroSection from "../components/home/HeroSection";
-import StatsSection from "../components/home/StatsSection";
-import CropSection from "../components/home/CropSection";
-import StepsSection from "../components/home/StepsSection";
-import ReviewSection from "../components/home/ReviewSection";
-import ExtraCropSection from "../components/home/ExtraCropSection";
-import SubscribeSection from "../components/home/SubscribeSection";
-import EmailAlert from "../components/common/EmailAlert";
 
 export default function Home() {
+  // 9개 상품을 각각 변수로 저장
+  const [product1, setProduct1] = useState<any>(null);
+  const [product2, setProduct2] = useState<any>(null);
+  const [product3, setProduct3] = useState<any>(null);
+  const [product4, setProduct4] = useState<any>(null);
+  const [product5, setProduct5] = useState<any>(null);
+  const [product6, setProduct6] = useState<any>(null);
+  const [product7, setProduct7] = useState<any>(null);
+  const [product8, setProduct8] = useState<any>(null);
+  const [product9, setProduct9] = useState<any>(null);
+
+  // 리뷰 상태 - ReviewSection에서 사용하는 형태로 정의
+  const [reviews, setReviews] = useState<
+    | {
+        id: number;
+        rating: number;
+        title: string;
+        content: string;
+        name: string;
+        location: string;
+        date: string;
+      }[]
+    | null
+  >(null);
+
   const [email, setEmail] = useState("");
   const [showEmailAlert, setShowEmailAlert] = useState(false);
-  const [cropCards, setCropCards] = useState<any[]>(dummyCropCards);
-  const [extraCrops, setExtraCrops] = useState<any[]>(dummyExtraCrops);
-  const [reviews, setReviews] = useState<any[]>(dummyReviews);
-  const [steps, setSteps] = useState<any[]>(dummySteps);
 
   useEffect(() => {
-    const getProducts = async () => {
+    const loadProducts = async () => {
       try {
-        const data = await fetchProducts();
-        if (data && data.response && Array.isArray(data.response)) {
-          const cards = data.response.map((item: any) => ({
-            id: item.id,
-            title: item.title,
-            price: item.price,
-            imageUrl: item.imageUrl,
-          }));
-          setCropCards(cards);
-        } else {
-          setCropCards(dummyCropCards);
+        const apiResponse = await fetchProducts();
+        if (apiResponse.success && apiResponse.response) {
+          const products = apiResponse.response;
+
+          // API 데이터를 그대로 사용 (더미 데이터 병합은 CropSection에서 처리)
+          setProduct1(products[0] || null);
+          setProduct2(products[1] || null);
+          setProduct3(products[2] || null);
+          setProduct4(products[3] || null);
+          setProduct5(products[4] || null);
+          setProduct6(products[5] || null);
+          setProduct7(products[6] || null);
+          setProduct8(products[7] || null);
+          setProduct9(products[8] || null);
         }
-        // extraCrops, reviews, steps도 API에서 받아오면 setExtraCrops, setReviews, setSteps에 세팅
       } catch (error) {
-        setCropCards(dummyCropCards);
-        console.error("Failed to fetch products:", error);
+        console.error("상품 데이터 로딩 실패:", error);
+        // API 실패시 null로 설정 (더미 데이터는 CropSection에서 처리)
+        setProduct1(null);
+        setProduct2(null);
+        setProduct3(null);
       }
     };
-    getProducts();
+
+    const loadReviews = async () => {
+      try {
+        // 여러 상품의 리뷰를 가져와서 병합 - 각각 개별적으로 처리
+        const allReviews: ReviewResponse[] = [];
+
+        // 첫 번째 리뷰 API 호출
+        try {
+          const review1Response = await fetchProductsReview1();
+          if (review1Response.success && review1Response.response) {
+            allReviews.push(...review1Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 1 리뷰 로딩 실패:", error);
+        }
+
+        // 두 번째 리뷰 API 호출
+        try {
+          const review2Response = await fetchProductsReview2();
+          if (review2Response.success && review2Response.response) {
+            allReviews.push(...review2Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 2 리뷰 로딩 실패:", error);
+        }
+
+        // API 데이터를 ReviewSection 형태로 변환
+        const transformedReviews = allReviews.map((review) => ({
+          id: review.id,
+          rating: Math.floor(review.rating), // rating을 정수로 변환
+          title:
+            review.comment.length > 20
+              ? review.comment.substring(0, 20) + "..."
+              : review.comment, // comment를 title로 사용
+          content: review.comment,
+          name: review.authorName,
+          location: "참가자", // API에 location 정보가 없으므로 기본값
+          date: new Date(review.createdAt)
+            .toLocaleDateString("ko-KR")
+            .replace(/\//g, "."), // 날짜 형식 변환
+        }));
+
+        setReviews(transformedReviews.length > 0 ? transformedReviews : null);
+      } catch (error) {
+        console.error("리뷰 데이터 로딩 실패:", error);
+        setReviews(null);
+      }
+    };
+
+    loadProducts();
+    loadReviews();
   }, []);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
@@ -188,9 +188,13 @@ export default function Home() {
       <main className="w-full min-h-screen flex flex-col items-center">
         <HeroSection />
         <StatsSection />
-        <CropSection cropCards={cropCards} />
+        <CropSection
+          product1={product1}
+          product2={product2}
+          product3={product3}
+        />
         <StepsSection steps={steps} />
-        <ReviewSection reviews={reviews} />
+        <ReviewSection reviews={reviews || undefined} />
         <ExtraCropSection extraCrops={extraCrops} />
         <SubscribeSection
           email={email}
