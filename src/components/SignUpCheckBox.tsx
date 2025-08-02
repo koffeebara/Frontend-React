@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface SignUpCheckBoxProps {
   onValidationChange?: (isValid: boolean) => void;
 }
 
-export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxProps) {
+export default function SignUpCheckBox({
+  onValidationChange,
+}: SignUpCheckBoxProps) {
   const [agreements, setAgreements] = useState({
     terms: false,
     privacy: false,
@@ -17,7 +19,6 @@ export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxPro
   useEffect(() => {
     onValidationChange?.(requiredChecked);
   }, [requiredChecked, onValidationChange]);
-
 
   const toggleAll = () => {
     const newValue = !allChecked;
@@ -36,7 +37,7 @@ export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxPro
   };
 
   return (
-    <div className="bg-gray-100 p-6 rounded-2xl w-full space-y-4 text-sm">
+    <div className="bg-gray-100 p-6 rounded-2xl w-full space-y-4 text-sm border border-gray-300">
       {/* 전체 동의 */}
       <label className="flex items-center space-x-2 font-medium text-base">
         <input
@@ -48,13 +49,12 @@ export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxPro
         <span>전체 동의</span>
       </label>
 
-
       {/* 개별 항목 */}
       <label className="flex items-center space-x-2">
         <input
           type="checkbox"
           checked={agreements.terms}
-          onChange={() => toggleOne('terms')}
+          onChange={() => toggleOne("terms")}
           className="w-4 h-4"
         />
         <span>
@@ -67,12 +67,15 @@ export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxPro
         <input
           type="checkbox"
           checked={agreements.privacy}
-          onChange={() => toggleOne('privacy')}
+          onChange={() => toggleOne("privacy")}
           className="w-4 h-4"
         />
         <span>
           <span className="text-black font-medium">[필수] </span>
-          <span className="text-green-800 font-medium">개인정보 처리방침</span> 동의
+          <span className="text-green-800 font-medium">
+            개인정보 처리방침
+          </span>{" "}
+          동의
         </span>
       </label>
 
@@ -80,12 +83,15 @@ export default function SignUpCheckBox({ onValidationChange }: SignUpCheckBoxPro
         <input
           type="checkbox"
           checked={agreements.marketing}
-          onChange={() => toggleOne('marketing')}
+          onChange={() => toggleOne("marketing")}
           className="w-4 h-4"
         />
         <span>
           <span className="text-black font-medium">[선택] </span>
-          <span className="text-green-800 font-medium">마케팅 정보 수신</span> 동의
+          <span className="text-green-800 font-medium">
+            마케팅 정보 수신
+          </span>{" "}
+          동의
         </span>
       </label>
     </div>
