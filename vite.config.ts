@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      "/api/v1": {
+      "/api": {
         target: "https://zerojae175-dev.store",
         changeOrigin: true,
         secure: true,
