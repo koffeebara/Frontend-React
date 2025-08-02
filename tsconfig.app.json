@@ -23,6 +23,16 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"],
-  "exclude": ["**/reserve/**", "**/*reserve*", "node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/reserve/**/*",
+    "**/*reserve*",
+    "src/components/reserve/**/*"
+  ]
 }

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Reserve components (temporary exclusion)
+src/components/reserve/
+**/reserve/
+
 # Environment variables
 .env
 .env.local
