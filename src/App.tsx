@@ -18,6 +18,7 @@ import PaymentComplete from "./pages/PaymentComplete";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 import NotFound from "./pages/NotFound";
+import ProjectList from "./pages/ProjectList";
 
 function App() {
   const { isLoggedIn, _hasHydrated } = useAuthStore();
@@ -44,6 +45,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<PaymentComplete />} />
+          <Route path="/projectList" element={<ProjectList />} />
           <Route path="*" element={<NotFound />} /> {/* 404 페이지 처리 */}
           <Route
             path="/mypage"
@@ -54,6 +56,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
+
     </div>
   );
 }
