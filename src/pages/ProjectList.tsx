@@ -5,38 +5,38 @@ import ProductCardList from "../components/project-list/ProductCardList";
 const slides = [
   {
     id: 1,
-    image: "/test_img.png",
+    image: "/grapes-8306833_1280.jpg",
     alt: "Image 1",
-    title: "슬라이드 1",
-    content: "슬라이드 내용 1",
+    title: "포도",
+    content: "달콤한 포도",
   },
   {
     id: 2,
-    image: "/test_img.png",
+    image: "/apples-8212695_1280.jpg",
     alt: "Image 2",
-    title: "슬라이드 2",
-    content: "슬라이드 내용 2",
+    title: "사과",
+    content: "신선한 사과",
   },
   {
     id: 3,
-    image: "/test_img.png",
+    image: "/corn-8028831_1280.jpg",
     alt: "Image 3",
-    title: "슬라이드 3",
-    content: "슬라이드 내용 3",
+    title: "옥수수",
+    content: "노란 옥수수",
   },
   {
     id: 4,
-    image: "/test_img.png",
-    alt: "Image 3",
-    title: "슬라이드 3",
-    content: "슬라이드 내용 3",
+    image: "/peach-2632182_1280.jpg",
+    alt: "Image 4",
+    title: "복숭아",
+    content: "맛있는 복숭아",
   },
   {
     id: 5,
-    image: "/test_img.png",
-    alt: "Image 3",
-    title: "슬라이드 3",
-    content: "슬라이드 내용 3",
+    image: "/watermelon-1808136_1280.jpg",
+    alt: "Image 5",
+    title: "수박",
+    content: "시원한 수박",
   },
 ];
 
@@ -105,11 +105,17 @@ export default function CustomImageSlider() {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className=" border rounded-lg p-2  bg-white"
+
+              className={`flex border border-gray-200 justify-between rounded-lg p-2 cursor-pointer items-center ${currentIndex === index ? "bg-green-000" : "bg-white"
+                }`}
               onClick={() => goToSlide(index)}
             >
-              <p>{slide.title}</p>
-              <p>{slide.content}</p>
+              <div>
+                <p>{slide.title}</p>
+                <p>{slide.content}</p>
+              </div>
+              <img src={slide.image} alt="" className="w-8 h-8" />
+
             </div>
           ))}
         </div>
