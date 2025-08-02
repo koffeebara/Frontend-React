@@ -5,7 +5,7 @@ interface Step {
 }
 
 const StepsSection = ({ steps }: { steps: Step[] }) => (
-  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8  rounded-3xl">
+  <section className="w-full max-w-[1200px] px-6 py-12 flex flex-col gap-8 bg-green-200 rounded-3xl">
     <h2 className="text-gray-900 text-2xl md:text-3xl font-bold text-center mb-4">
       가상농장 이용 방법
     </h2>
@@ -13,7 +13,7 @@ const StepsSection = ({ steps }: { steps: Step[] }) => (
       {steps.map((step) => (
         <div
           key={step.number}
-          className="w-full max-w-[320px] flex flex-col items-center gap-4 bg-sky-50 rounded-2xl p-6"
+          className="w-full max-w-[320px] flex flex-col items-center gap-4 bg-common-000 rounded-2xl shadow p-6"
         >
           <div className="w-10 h-10 bg-mint-600 rounded-full flex items-center justify-center text-common-000 text-lg font-bold">
             {step.number}

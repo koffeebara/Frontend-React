@@ -3,6 +3,7 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import { authService } from "../../services/authService";
 import { useState } from "react";
 import { useAuthStore } from "../store/authStore";
+import backIcon from "../assets/backIcon.svg";
 
 export default function Login() {
   const { email, setEmail, emailMessage, password, setPassword } =
@@ -42,12 +43,17 @@ export default function Login() {
       {/* Main Content */}
       <div className="w-full max-w-[1200px] px-4 pt-6 pb-15 bg-white flex flex-col justify-start items-center gap-4">
         {/* Back Button */}
-        <div className="flex flex-col w-full h-max items-center ">
+        <div className="self-stretch px-2 inline-flex justify-start items-center gap-1 p-1">
           <Link
             to="/"
-            className="text-mint-700 w-full text-left cursor-pointer"
+            className="inline-flex items-center gap-1 cursor-pointer"
           >
-            &lt; 홈으로 돌아가기
+            <div className="w-4 h-4 relative flex justify-center items-center overflow-hidden">
+              <img src={backIcon} alt="Back" className="w-4 h-4" />
+            </div>
+            <div className="justify-start text-green-700 text-xs font-semibold leading-snug">
+              홈으로 돌아가기
+            </div>
           </Link>
         </div>
 
@@ -141,8 +147,9 @@ export default function Login() {
                   </div>
                   <input
                     type="email"
-                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${emailMessage ? "border-red-500" : "border-black/10"
-                      } text-sm font-normal leading-normal placeholder-gray-600`}
+                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${
+                      emailMessage ? "border-red-500" : "border-black/10"
+                    } text-sm font-normal leading-normal placeholder-gray-600`}
                     placeholder="이메일 주소를 입력해주세요."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -165,8 +172,9 @@ export default function Login() {
                   </div>
                   <input
                     type="password"
-                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${loginError ? "border-red-500" : "border-black/10"
-                      } text-sm font-normal leading-normal placeholder-gray-600`}
+                    className={`self-stretch px-6 py-4 bg-gray-50 rounded-2xl border ${
+                      loginError ? "border-red-500" : "border-black/10"
+                    } text-sm font-normal leading-normal placeholder-gray-600`}
                     placeholder="비밀번호를 입력해주세요."
                     value={password}
                     autoComplete="current-password"
@@ -205,10 +213,11 @@ export default function Login() {
                 {/* Login Button */}
                 <button
                   type="submit"
-                  className={`self-stretch px-6 py-4 rounded-2xl text-sm font-semibold leading-normal transition-colors ${isValid && !isLoading
-                    ? "bg-mint-700 text-white hover:bg-mint-800"
-                    : "bg-gray-300 text-gray-400 cursor-not-allowed"
-                    }`}
+                  className={`self-stretch px-6 py-4 rounded-2xl text-sm font-semibold leading-normal transition-colors ${
+                    isValid && !isLoading
+                      ? "bg-mint-700 text-white hover:bg-mint-800"
+                      : "bg-gray-300 text-gray-400 cursor-not-allowed"
+                  }`}
                   disabled={!isValid || isLoading}
                 >
                   {isLoading ? "로그인 중..." : "로그인"}
@@ -218,7 +227,7 @@ export default function Login() {
 
             {/* Bottom Links */}
             <div className="w-56 flex flex-col justify-start items-center gap-2">
-              <div className="self-stretch h-6 text-center justify-start text-mint-700 text-sm font-semibold leading-normal cursor-pointer">
+              <div className="self-stretch h-6 text-center justify-start text-green-700 text-sm font-semibold leading-normal cursor-pointer">
                 비밀번호 찾기
               </div>
               <div className="flex justify-start items-center gap-1">
@@ -227,7 +236,7 @@ export default function Login() {
                 </div>
                 <Link
                   to="/signup"
-                  className="text-right justify-start text-mint-700 text-sm font-semibold leading-normal p-2"
+                  className="text-right justify-start text-green-700 text-sm font-semibold leading-normal p-2"
                 >
                   회원가입
                 </Link>

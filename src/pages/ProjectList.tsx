@@ -105,15 +105,11 @@ export default function CustomImageSlider() {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`flex border border-gray-200 justify-between rounded-lg p-2 cursor-pointer ${currentIndex === index ? "bg-green-000" : "bg-white"
-                }`}
+              className=" border rounded-lg p-2  bg-white"
               onClick={() => goToSlide(index)}
             >
-              <div>
-                <p>{slide.title}</p>
-                <p>{slide.content}</p>
-              </div>
-              <img src="/test_img.png" alt="" />
+              <p>{slide.title}</p>
+              <p>{slide.content}</p>
             </div>
           ))}
         </div>

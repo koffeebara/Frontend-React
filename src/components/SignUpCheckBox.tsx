@@ -59,7 +59,7 @@ export default function SignUpCheckBox({
         />
         <span>
           <span className="text-black font-medium">[필수] </span>
-          <span className="text-mint-800 font-medium">이용약관</span> 동의
+          <span className="text-green-800 font-medium">이용약관</span> 동의
         </span>
       </label>
 
@@ -72,7 +72,7 @@ export default function SignUpCheckBox({
         />
         <span>
           <span className="text-black font-medium">[필수] </span>
-          <span className="text-mint-800 font-medium">
+          <span className="text-green-800 font-medium">
             개인정보 처리방침
           </span>{" "}
           동의
@@ -88,7 +88,7 @@ export default function SignUpCheckBox({
         />
         <span>
           <span className="text-black font-medium">[선택] </span>
-          <span className="text-mint-800 font-medium">
+          <span className="text-green-800 font-medium">
             마케팅 정보 수신
           </span>{" "}
           동의

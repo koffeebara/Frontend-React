@@ -1,4 +1,3 @@
-
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import HeroSection from "../components/home/HeroSection";
@@ -16,9 +15,7 @@ import {
 } from "../api/Home";
 import type { ProductResponse, ReviewResponse } from "../api/Home";
 
-
 const steps = [
-
   {
     number: 1,
     title: "농작물 선택",
@@ -42,9 +39,7 @@ const steps = [
   },
 ];
 
-
 export default function Home() {
-
   // 9개 상품을 각각 변수로 저장
   const [product1, setProduct1] = useState<any>(null);
   const [product2, setProduct2] = useState<any>(null);
@@ -59,26 +54,23 @@ export default function Home() {
   // 리뷰 상태 - ReviewSection에서 사용하는 형태로 정의
   const [reviews, setReviews] = useState<
     | {
-      id: number;
-      rating: number;
-      title: string;
-      content: string;
-      name: string;
-      location: string;
-      date: string;
-    }[]
+        id: number;
+        rating: number;
+        title: string;
+        content: string;
+        name: string;
+        location: string;
+        date: string;
+      }[]
     | null
   >(null);
-
 
   const [email, setEmail] = useState("");
   const [showEmailAlert, setShowEmailAlert] = useState(false);
 
-
   useEffect(() => {
     const loadProducts = async () => {
       try {
-
         const apiResponse = await fetchProducts();
         if (apiResponse.success && apiResponse.response) {
           const products = apiResponse.response;
@@ -100,7 +92,6 @@ export default function Home() {
         setProduct1(null);
         setProduct2(null);
         setProduct3(null);
-
       }
     };
 
@@ -198,7 +189,6 @@ export default function Home() {
         />
         <StepsSection steps={steps} />
         <ReviewSection reviews={reviews || undefined} />
-
         <ExtraCropSection
           product4={product4}
           product5={product5}
@@ -207,7 +197,6 @@ export default function Home() {
           product8={product8}
           product9={product9}
         />
-
         <SubscribeSection
           email={email}
           setEmail={setEmail}

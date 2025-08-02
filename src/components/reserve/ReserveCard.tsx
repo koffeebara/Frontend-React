@@ -113,7 +113,7 @@ export default function ReserveCard({
           <div>
             <p className="text-lg font-semibold pb-2">방문 주의 사항</p>
             <p className='text-gray-600'>{cautionMessage}</p>
-            <label className="flex items-center gap-2 mt-2 pt-4">
+            <label className="flex items-center gap-2 mt-2 ">
               <input type="checkbox" />
               <span className='font-bold'>방문 주의 사항을 확인했습니다.</span>
             </label>
@@ -136,11 +136,9 @@ export default function ReserveCard({
           className="w-full bg-mint-600 text-white px-4 py-1 rounded mr-2"
           disabled={isOpen && count === 0}
           title={isOpen && count === 0 ? "예약 인원을 선택하세요" : undefined}
-          style={isOpen ? undefined : { marginLeft: "5rem", marginRight: "5rem" }}
         >
           {isOpen ? '예약하기' : '인원 선택'}
         </button>
-
       </div>
 
       {showReserveAlert && (

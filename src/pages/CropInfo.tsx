@@ -1,19 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 const CropInfo: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"details" | "guide" | "reviews">(
     "details"
   );
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full bg-white flex flex-col items-center">
       {/* 브레드크럼 */}
-      <div className="flex max-w-[1168px] w-full items-center text-mint-700 gap-2 p-6">
-        <Link to="/">홈</Link>
-        <span className="text-mint-600">&gt;</span>
-        <Link to="/list">작물 목록</Link>
-        <span className="text-mint-600">&gt;</span>
-        <span className="text-mint-700">상세 정보</span>
+      <div className="w-full max-w-[1200px] px-4 pt-8 pb-4">
+        <div className="px-2 flex items-center gap-1">
+          <span className="text-green-700 text-sm font-semibold">홈</span>
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+          <span className="text-green-700 text-sm font-semibold">
+            농작물 상세
+          </span>
+        </div>
       </div>
 
       {/* 메인 콘텐츠 */}
@@ -47,14 +61,17 @@ const CropInfo: React.FC = () => {
 
             <div className="flex flex-col gap-4">
               {/* 가격 정보 */}
-              <div className=" py-4 rounded-lg flex flex-col gap-1.5">
-                <span className="text-mint-700 text-[32px] font-bold">
-                  150,000원
-                </span>
+              <div className="px-6 py-4 bg-green-100 rounded-lg flex flex-col gap-1.5">
+                <div className="flex items-center">
+                  <span className="text-gray-800 text-xl font-bold">
+                    150,000
+                  </span>
+                  <span className="text-gray-800 text-xl font-bold">원</span>
+                </div>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
-                    <span className="text-gray-500 text-sm">단위</span>
-                    <span className="text-gray-500 text-sm">10kg</span>
+                    <span className="text-gray-600 text-sm">단위</span>
+                    <span className="text-gray-600 text-sm">10kg</span>
                   </div>
                   <span className="text-gray-400">|</span>
                   <div className="flex items-center gap-1">
@@ -65,7 +82,7 @@ const CropInfo: React.FC = () => {
               </div>
 
               {/* 농부 정보 */}
-              <div className="px-6 py-4 border border-gray-200 rounded-lg flex flex-col gap-1.5">
+              <div className="px-6 py-4 bg-gray-50 rounded-lg flex flex-col gap-1.5">
                 <div className="flex items-center gap-1.5">
                   <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
                   <span className="text-gray-800 text-base font-semibold">
@@ -90,19 +107,19 @@ const CropInfo: React.FC = () => {
 
             {/* 태그 */}
             <div className="flex items-start gap-3">
-              <div className="px-4 py-1 bg-green-000 rounded-full border border-green-200 flex items-center gap-0.5">
+              <div className="px-4 py-1 bg-green-50 rounded-full border border-green-200 flex items-center gap-0.5">
                 <span className="text-green-900 text-sm">#</span>
                 <span className="text-green-900 text-sm font-semibold">
                   유기농
                 </span>
               </div>
-              <div className="px-4 py-1 bg-green-000 rounded-full border border-green-200 flex items-center gap-0.5">
+              <div className="px-4 py-1 bg-green-50 rounded-full border border-green-200 flex items-center gap-0.5">
                 <span className="text-green-900 text-sm">#</span>
                 <span className="text-green-900 text-sm font-semibold">
                   토마토
                 </span>
               </div>
-              <div className="px-4 py-1 bg-green-000 rounded-full border border-green-200 flex items-center gap-0.5">
+              <div className="px-4 py-1 bg-green-50 rounded-full border border-green-200 flex items-center gap-0.5">
                 <span className="text-green-900 text-sm">#</span>
                 <span className="text-green-900 text-sm font-semibold">
                   논산
@@ -113,7 +130,7 @@ const CropInfo: React.FC = () => {
 
           {/* 참여하기 버튼 */}
           <div className="w-full max-w-[800px]">
-            <button className="w-full px-10 py-4 bg-mint-600 rounded-lg text-white text-base font-semibold">
+            <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
               지금 참여하기
             </button>
           </div>
@@ -122,8 +139,8 @@ const CropInfo: React.FC = () => {
 
       {/* 참여 현황 */}
       <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex flex-col gap-5">
-        <div className="p-6 bg-green-000 flex flex-col gap-4">
-          <div className="flex justify-center items-center gap-1">
+        <div className="p-6 bg-blue-50 flex flex-col gap-4">
+          <div className="flex items-center gap-1">
             <span className="text-gray-800 text-xl font-bold">🔥 지금</span>
             <span className="text-gray-800 text-xl font-bold">
               25명이 참여 중 🔥
@@ -132,21 +149,21 @@ const CropInfo: React.FC = () => {
           <div className="flex gap-4">
             <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
               <span className="text-gray-700 text-sm">참여자</span>
-              <span className="text-green-700 text-4xl font-semibold">25</span>
+              <span className="text-blue-400 text-4xl font-semibold">25</span>
             </div>
             <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
               <span className="text-gray-700 text-sm">위탁 완료</span>
-              <span className="text-green-700 text-4xl font-semibold">18</span>
+              <span className="text-blue-400 text-4xl font-semibold">18</span>
             </div>
             <div className="flex-1 px-4 pt-4 pb-3 bg-white rounded-2xl border border-gray-100 flex flex-col items-center gap-0.5">
               <span className="text-gray-700 text-sm">남은 날짜</span>
-              <span className="text-green-700 text-4xl font-semibold">45</span>
+              <span className="text-blue-400 text-4xl font-semibold">45</span>
             </div>
           </div>
         </div>
 
         {/* 달성률 */}
-        {/* <div className="w-full max-w-[800px] mx-auto flex flex-col gap-2">
+        <div className="w-full max-w-[800px] mx-auto flex flex-col gap-2">
           <div className="px-1 flex items-center gap-1">
             <span className="text-gray-800 text-base font-semibold">
               달성률
@@ -161,34 +178,37 @@ const CropInfo: React.FC = () => {
             <span className="text-gray-700 text-sm">100박스 중</span>
             <span className="text-gray-700 text-sm">72박스 위탁 완료!</span>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/* 탭 메뉴 */}
       <div className="w-full max-w-[1168px] px-4 pt-10 pb-4 flex">
         <button
-          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${activeTab === "details"
-            ? "border-green-600 text-gray-800 font-semibold"
-            : "border-transparent text-gray-500"
-            }`}
+          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${
+            activeTab === "details"
+              ? "border-green-600 text-gray-800 font-semibold"
+              : "border-transparent text-gray-500"
+          }`}
           onClick={() => setActiveTab("details")}
         >
           상세정보
         </button>
         <button
-          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${activeTab === "guide"
-            ? "border-green-600 text-gray-800 font-semibold"
-            : "border-transparent text-gray-500"
-            }`}
+          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${
+            activeTab === "guide"
+              ? "border-green-600 text-gray-800 font-semibold"
+              : "border-transparent text-gray-500"
+          }`}
           onClick={() => setActiveTab("guide")}
         >
           재배안내
         </button>
         <button
-          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${activeTab === "reviews"
-            ? "border-green-600 text-gray-800 font-semibold"
-            : "border-transparent text-gray-500"
-            }`}
+          className={`flex-1 h-12 pt-3 pb-4 flex justify-center items-center border-b-3 ${
+            activeTab === "reviews"
+              ? "border-green-600 text-gray-800 font-semibold"
+              : "border-transparent text-gray-500"
+          }`}
           onClick={() => setActiveTab("reviews")}
         >
           후기
@@ -201,7 +221,7 @@ const CropInfo: React.FC = () => {
           {/* 농작물 정보 */}
           <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex flex-col gap-6">
             <h2 className="text-gray-900 text-2xl font-bold">🌿 농작물 정보</h2>
-            <div className="px-4 py-5 rounded-2xl  flex flex-col gap-6">
+            <div className="px-4 py-5 rounded-2xl border border-gray-300 flex flex-col gap-6">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-full max-w-[800px] aspect-video bg-gray-100 rounded-lg overflow-hidden">
                   <div className="w-full h-full bg-gray-100"></div>
@@ -247,7 +267,7 @@ const CropInfo: React.FC = () => {
           </div>
 
           {/* 농장 정보 */}
-          <div className="w-full max-w-[1168px] px-8 pt-8 pb-2 flex flex-col gap-6">
+          <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex flex-col gap-6">
             <h2 className="text-gray-900 text-2xl font-bold">🧑‍🌾 농장 정보</h2>
             <div className="grid grid-cols-2 gap-4">
               <div className="px-6 py-5 bg-gray-50 rounded-lg border border-gray-100 flex flex-col gap-4">
@@ -340,17 +360,19 @@ const CropInfo: React.FC = () => {
               <div key={index} className="flex items-center gap-4">
                 <div className="w-6 h-6 relative flex justify-center items-center">
                   <div
-                    className={`w-3.5 h-3.5 rounded-full ${item.color === "green" ? "bg-green-400" : "bg-orange-300"
-                      }`}
+                    className={`w-3.5 h-3.5 rounded-full ${
+                      item.color === "green" ? "bg-green-400" : "bg-orange-300"
+                    }`}
                   ></div>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center gap-1">
                     <span
-                      className={`text-sm font-semibold ${item.color === "green"
-                        ? "text-green-600"
-                        : "text-orange-500"
-                        }`}
+                      className={`text-sm font-semibold ${
+                        item.color === "green"
+                          ? "text-green-600"
+                          : "text-orange-500"
+                      }`}
                     >
                       {item.month}월 {item.week}주
                     </span>
@@ -375,7 +397,7 @@ const CropInfo: React.FC = () => {
           <h2 className="text-gray-900 text-2xl font-bold border-t border-gray-100 pt-6">
             💬 후기
           </h2>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
             {[1, 2, 3, 4].map((item, index) => (
               <div key={index} className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
@@ -438,7 +460,7 @@ const CropInfo: React.FC = () => {
       {/* 하단 참여하기 버튼 */}
       <div className="w-full max-w-[1168px] px-4 pt-8 pb-2 flex justify-center">
         <div className="w-full max-w-[800px]">
-          <button className="w-full px-10 py-4 bg-mint-600 rounded-lg text-white text-base font-semibold">
+          <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
             지금 참여하기
           </button>
         </div>

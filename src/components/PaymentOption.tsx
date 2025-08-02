@@ -19,14 +19,14 @@ export default function PaymentOption({
   return (
     <label
       className={`flex items-center gap-4 p-4 rounded-lg border cursor-pointer transition-all
-        ${selected ? 'bg-green-000 border-green-400' : 'bg-white border-gray-200'}
+        ${selected ? 'bg-green-100 border-green-500' : 'bg-white border-gray-300'}
       `}
       onClick={onSelect}
     >
       {/* 체크박스 (시각적 요소용) */}
       <div
-        className={`w-5 h-5 rounded-sm border border-gray-300
-          ${selected ? 'bg-green-400' : 'bg-white'}
+        className={`w-5 h-5 rounded-sm border border-gray-400
+          ${selected ? 'bg-green-600' : 'bg-white'}
         `}
       />
 

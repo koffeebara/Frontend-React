@@ -19,7 +19,7 @@ export default function ProductCardList() {
 
   const goToNextPage = (i: number) => {
     setCurrentPage(i);
-    window.scrollTo({ top: 100, behavior: "smooth" });
+    window.scrollTo({ top: 20, behavior: "smooth" });
   };
 
   const totalPages = Math.ceil(dummyData.length / ITEMS_PER_PAGE);
@@ -43,10 +43,11 @@ export default function ProductCardList() {
           <button
             key={i}
             onClick={() => goToNextPage(i)}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${currentPage === i
-              ? "bg-green-700 text-white"
-              : "bg-gray-200 text-black hover:bg-gray-300"
-              }`}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === i
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-black hover:bg-gray-300"
+            }`}
           >
             {i + 1}
           </button>
