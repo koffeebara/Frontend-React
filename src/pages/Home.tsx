@@ -100,20 +100,27 @@ export default function Home() {
 
     const loadReviews = async () => {
       try {
-        // 여러 상품의 리뷰를 가져와서 병합
-        const [review1Response, review2Response] = await Promise.all([
-          fetchProductsReview1(),
-          fetchProductsReview2(),
-        ]);
-
+        // 여러 상품의 리뷰를 가져와서 병합 - 각각 개별적으로 처리
         const allReviews: ReviewResponse[] = [];
 
-        if (review1Response.success && review1Response.response) {
-          allReviews.push(...review1Response.response);
+        // 첫 번째 리뷰 API 호출
+        try {
+          const review1Response = await fetchProductsReview1();
+          if (review1Response.success && review1Response.response) {
+            allReviews.push(...review1Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 1 리뷰 로딩 실패:", error);
         }
 
-        if (review2Response.success && review2Response.response) {
-          allReviews.push(...review2Response.response);
+        // 두 번째 리뷰 API 호출
+        try {
+          const review2Response = await fetchProductsReview2();
+          if (review2Response.success && review2Response.response) {
+            allReviews.push(...review2Response.response);
+          }
+        } catch (error) {
+          console.warn("Product 2 리뷰 로딩 실패:", error);
         }
 
         // API 데이터를 ReviewSection 형태로 변환
