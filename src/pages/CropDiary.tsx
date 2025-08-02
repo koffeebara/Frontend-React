@@ -5,6 +5,51 @@ const CropDiary: React.FC = () => {
     "all" | "growth" | "management" | "problem"
   >("all");
 
+  // 필터 타입 정의
+  const types = [
+    { value: "all", label: "전체 일지" },
+    { value: "growth", label: "성장 기록" },
+    { value: "management", label: "관리 작업" },
+    { value: "problem", label: "문제 해결" },
+  ];
+
+  // 예시 데이터
+  const diaryEntries = [
+    {
+      type: "growth",
+      date: "07월 15일",
+      title: "토마토 모종 심기 완료",
+      description:
+        "오늘 토마토 모종을 심었습니다. 건강한 모종들이 잘 자라길 바라며 충분한 물과 영양분을 공급해주었습니다.",
+      tags: ["#성장기록", "#모종심기"],
+      color: "orange-400",
+    },
+    {
+      type: "management",
+      date: "07월 20일",
+      title: "첫 번째 물주기 및 지지대 설치",
+      description:
+        "모종들이 뿌리를 잘 내리고 있습니다. 오늘은 지지대를 설치하고 충분한 물을 주었습니다. 성장이 기대됩니다.",
+      tags: ["#관리작업", "#지지대설치"],
+      color: "teal-700",
+    },
+    {
+      type: "problem",
+      date: "07월 25일",
+      title: "병충해 발견 및 대응",
+      description:
+        "잎에 작은 반점이 발견되어 친환경 방제제를 살포했습니다. 조기에 발견해서 다행이며, 지속적인 관찰이 필요합니다.",
+      tags: ["#문제해결", "#병충해방제"],
+      color: "green-500",
+    },
+  ];
+
+  // 필터링된 항목들
+  const filteredEntries =
+    activeTab === "all"
+      ? diaryEntries
+      : diaryEntries.filter((entry) => entry.type === activeTab);
+
   return (
     <div className="w-full min-h-screen bg-green-50">
       <div className="w-full max-w-[1280px] md:max-w-[480px] lg:max-w-[1280px] mx-auto px-4 md:px-4 py-8 md:py-0">
@@ -31,7 +76,7 @@ const CropDiary: React.FC = () => {
         {/* Main Content Container */}
         <div className="w-full max-w-[1200px] md:max-w-[384px] lg:max-w-[1200px] mx-auto flex flex-col gap-4 md:gap-4">
           {/* Crop Profile Card */}
-          <div className="w-full md:w-96 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 mx-auto">
+          <div className="w-full min-w-full md:w-96 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 mx-auto">
             <div className="flex flex-col items-center gap-6 md:gap-8">
               {/* Profile Section */}
               <div className="flex flex-col items-center gap-4">
@@ -173,48 +218,25 @@ const CropDiary: React.FC = () => {
           </div>
 
           {/* Tab Navigation */}
-          <div className="w-full max-w-[452px] md:max-w-[880px] mx-auto">
-            <div className="grid grid-cols-2 md:flex gap-1 md:gap-3 p-1 bg-gray-100 rounded-lg">
-              <button
-                onClick={() => setActiveTab("all")}
-                className={`px-3 md:px-6 py-2 md:py-3 rounded-md font-semibold text-xs md:text-sm transition-all ${
-                  activeTab === "all"
-                    ? "bg-teal-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                전체 일지
-              </button>
-              <button
-                onClick={() => setActiveTab("growth")}
-                className={`px-3 md:px-6 py-2 md:py-3 rounded-md font-semibold text-xs md:text-sm transition-all ${
-                  activeTab === "growth"
-                    ? "bg-teal-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                성장 기록
-              </button>
-              <button
-                onClick={() => setActiveTab("management")}
-                className={`px-3 md:px-6 py-2 md:py-3 rounded-md font-semibold text-xs md:text-sm transition-all ${
-                  activeTab === "management"
-                    ? "bg-teal-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                관리 작업
-              </button>
-              <button
-                onClick={() => setActiveTab("problem")}
-                className={`px-3 md:px-6 py-2 md:py-3 rounded-md font-semibold text-xs md:text-sm transition-all ${
-                  activeTab === "problem"
-                    ? "bg-teal-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                문제 해결
-              </button>
+          <div className="w-full max-w-[880px] mx-auto">
+            <div className="flex gap-2 mb-4 justify-center">
+              {types.map((type) => (
+                <button
+                  key={type.value}
+                  onClick={() =>
+                    setActiveTab(
+                      type.value as "all" | "growth" | "management" | "problem"
+                    )
+                  }
+                  className={`w-[211px] h-[40px] rounded-lg border text-sm font-semibold transition-all ${
+                    activeTab === type.value
+                      ? "bg-teal-600 text-white shadow-md"
+                      : "bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {type.label}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -224,139 +246,57 @@ const CropDiary: React.FC = () => {
             <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-green-600"></div>
 
             <div className="space-y-6 md:space-y-8 pl-16 md:pl-20">
-              {/* Diary Entry 1 */}
-              <div className="relative">
-                <div className="absolute -left-[60px] md:-left-[76px] top-6 md:top-8 w-6 h-6 md:w-8 md:h-8 bg-orange-400 rounded-full border-3 md:border-4 border-white shadow-md"></div>
-                <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-1 md:gap-2 text-green-600 text-sm font-semibold mb-2">
-                      <span>07월</span>
-                      <span>15일</span>
+              {filteredEntries.map((entry, index) => (
+                <div key={index} className="relative">
+                  <div
+                    className={`absolute -left-[60px] md:-left-[76px] top-6 md:top-8 w-6 h-6 md:w-8 md:h-8 bg-${entry.color} rounded-full border-3 md:border-4 border-white shadow-md`}
+                  ></div>
+                  <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-6">
+                    <div className="mb-4">
+                      <div className="flex items-center gap-1 md:gap-2 text-green-600 text-sm font-semibold mb-2">
+                        <span>{entry.date}</span>
+                      </div>
+                      <h3 className="text-gray-900 text-lg md:text-xl font-bold mb-3">
+                        {entry.title}
+                      </h3>
+                      <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                        {entry.description}
+                      </p>
                     </div>
-                    <h3 className="text-gray-900 text-lg md:text-xl font-bold mb-3">
-                      토마토 모종 심기 완료
-                    </h3>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                      오늘 토마토 모종을 심었습니다. 건강한 모종들이 잘 자라길
-                      바라며
-                      <br className="hidden md:block" />
-                      충분한 물과 영양분을 공급해주었습니다.
-                    </p>
-                  </div>
 
-                  {/* Image Gallery */}
-                  <div className="grid grid-cols-3 gap-1.5 md:gap-3 mb-4">
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🌱</span>
+                    {/* Image Gallery */}
+                    <div className="grid grid-cols-3 gap-1.5 md:gap-3 mb-4">
+                      <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
+                        <span className="text-lg md:text-2xl">🌱</span>
+                      </div>
+                      <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                        <span className="text-lg md:text-2xl">💧</span>
+                      </div>
+                      <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center">
+                        <span className="text-lg md:text-2xl">☀️</span>
+                      </div>
                     </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">💧</span>
-                    </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">☀️</span>
-                    </div>
-                  </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-xs md:text-sm border border-blue-200">
-                      #성장기록
-                    </span>
-                    <span className="px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-xs md:text-sm border border-blue-200">
-                      #모종심기
-                    </span>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {entry.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className={`px-3 py-1 rounded-full text-xs md:text-sm border ${
+                            entry.type === "growth"
+                              ? "bg-blue-50 text-blue-800 border-blue-200"
+                              : entry.type === "management"
+                                ? "bg-orange-50 text-orange-800 border-orange-200"
+                                : "bg-red-50 text-red-800 border-red-200"
+                          }`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Diary Entry 2 */}
-              <div className="relative">
-                <div className="absolute -left-[60px] md:-left-[76px] top-6 md:top-8 w-6 h-6 md:w-8 md:h-8 bg-teal-700 rounded-full border-3 md:border-4 border-white shadow-md"></div>
-                <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-1 md:gap-2 text-green-600 text-sm font-semibold mb-2">
-                      <span>07월</span>
-                      <span>20일</span>
-                    </div>
-                    <h3 className="text-gray-900 text-lg md:text-xl font-bold mb-3">
-                      첫 번째 물주기 및 지지대 설치
-                    </h3>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                      모종들이 뿌리를 잘 내리고 있습니다. 오늘은 지지대를
-                      설치하고
-                      <br className="hidden md:block" />
-                      충분한 물을 주었습니다. 성장이 기대됩니다.
-                    </p>
-                  </div>
-
-                  {/* Image Gallery */}
-                  <div className="grid grid-cols-3 gap-1.5 md:gap-3 mb-4">
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🪴</span>
-                    </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🪵</span>
-                    </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🌿</span>
-                    </div>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-orange-50 text-orange-800 rounded-full text-xs md:text-sm border border-orange-200">
-                      #관리작업
-                    </span>
-                    <span className="px-3 py-1 bg-orange-50 text-orange-800 rounded-full text-xs md:text-sm border border-orange-200">
-                      #지지대설치
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Diary Entry 3 */}
-              <div className="relative">
-                <div className="absolute -left-[60px] md:-left-[76px] top-6 md:top-8 w-6 h-6 md:w-8 md:h-8 bg-green-500 rounded-full border-3 md:border-4 border-white shadow-md"></div>
-                <div className="bg-white rounded-2xl border border-gray-200 p-4 md:p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-1 md:gap-2 text-green-600 text-sm font-semibold mb-2">
-                      <span>07월</span>
-                      <span>25일</span>
-                    </div>
-                    <h3 className="text-gray-900 text-lg md:text-xl font-bold mb-3">
-                      병충해 발견 및 대응
-                    </h3>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                      잎에 작은 반점이 발견되어 친환경 방제제를 살포했습니다.
-                      <br className="hidden md:block" />
-                      조기에 발견해서 다행이며, 지속적인 관찰이 필요합니다.
-                    </p>
-                  </div>
-
-                  {/* Image Gallery */}
-                  <div className="grid grid-cols-3 gap-1.5 md:gap-3 mb-4">
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🐛</span>
-                    </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">💊</span>
-                    </div>
-                    <div className="aspect-[4/3] h-20 md:h-auto bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                      <span className="text-lg md:text-2xl">🔍</span>
-                    </div>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-red-50 text-red-800 rounded-full text-xs md:text-sm border border-red-200">
-                      #문제해결
-                    </span>
-                    <span className="px-3 py-1 bg-red-50 text-red-800 rounded-full text-xs md:text-sm border border-red-200">
-                      #병충해방제
-                    </span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
