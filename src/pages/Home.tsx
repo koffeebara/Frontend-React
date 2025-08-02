@@ -1,3 +1,4 @@
+
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import HeroSection from "../components/home/HeroSection";
@@ -15,13 +16,16 @@ import {
 } from "../api/Home";
 import type { ProductResponse, ReviewResponse } from "../api/Home";
 
-const extraCrops = [
+
+const dummyExtraCrops = [
   { emoji: "🥕", name: "유기농 당근", price: "15,000", participants: 12 },
   { emoji: "🥬", name: "친환경 배추", price: "25,000", participants: 8 },
   { emoji: "🥒", name: "무농약 오이", price: "18,000", participants: 20 },
 ];
 
+
 const steps = [
+
   {
     number: 1,
     title: "농작물 선택",
@@ -44,8 +48,19 @@ const steps = [
     description: ["수확한 신선한 농작물을", "집에서 편하게 받아보세요."],
   },
 ];
+import { fetchProducts } from "../api/Home";
+import toast from "react-hot-toast";
+import HeroSection from "../components/home/HeroSection";
+import StatsSection from "../components/home/StatsSection";
+import CropSection from "../components/home/CropSection";
+import StepsSection from "../components/home/StepsSection";
+import ReviewSection from "../components/home/ReviewSection";
+import ExtraCropSection from "../components/home/ExtraCropSection";
+import SubscribeSection from "../components/home/SubscribeSection";
+import EmailAlert from "../components/common/EmailAlert";
 
 export default function Home() {
+
   // 9개 상품을 각각 변수로 저장
   const [product1, setProduct1] = useState<any>(null);
   const [product2, setProduct2] = useState<any>(null);
@@ -71,9 +86,11 @@ export default function Home() {
     | null
   >(null);
 
+
   useEffect(() => {
     const loadProducts = async () => {
       try {
+
         const apiResponse = await fetchProducts();
         if (apiResponse.success && apiResponse.response) {
           const products = apiResponse.response;
@@ -95,6 +112,7 @@ export default function Home() {
         setProduct1(null);
         setProduct2(null);
         setProduct3(null);
+
       }
     };
 
