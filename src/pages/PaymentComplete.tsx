@@ -1,11 +1,12 @@
 import StepBox from "../components/StepBox"
-import { Link, useNavigate } from "react-router-dom"
+// import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function PaymentComplete() {
   const farmer = "홍길동"
   const item = "옥수수 두 상자"
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>

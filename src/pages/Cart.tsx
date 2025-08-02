@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import DaumPostcode from 'react-daum-postcode';
 import AddressSearch from '../components/AddressSearch';
 import { useCartStore } from '../store/cartStore';
 import CartItem from '../components/CartItem';

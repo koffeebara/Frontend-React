@@ -9,7 +9,6 @@ type PaymentOptionProps = {
 };
 
 export default function PaymentOption({
-  id,
   label,
   description,
   icon,

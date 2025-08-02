@@ -47,7 +47,7 @@ export default function RecordCard({
   description,
   tags,
 }: RecordCardProps) {
-  const { dotColor, label } = typeConfig[type];
+  const { dotColor } = typeConfig[type];
 
   return (
     <div className="relative flex">
