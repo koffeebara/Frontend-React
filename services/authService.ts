@@ -57,9 +57,7 @@ const parseJsonResponse = async (response: Response): Promise<any> => {
 };
 
 // 개발 환경에서는 프록시 사용, 배포 환경에서는 실제 API URL 사용
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
-  (import.meta.env.DEV ? "" : "https://zerojae175-dev.store");
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 export const authService = {
   signup: async (userData: SignupData): Promise<SignupResponse> => {
@@ -73,7 +71,7 @@ export const authService = {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        credentials: "include", // CORS 요청에 credentials 포함
+        mode: "cors", // 명시적으로 CORS 모드 설정
         body: JSON.stringify(userData),
       });
 
@@ -124,7 +122,7 @@ export const authService = {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        credentials: "include",
+        mode: "cors", // 명시적으로 CORS 모드 설정
         body: JSON.stringify(credentials),
       });
 
