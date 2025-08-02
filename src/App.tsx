@@ -18,6 +18,7 @@ import CropDiary from "./pages/CropDiary";
 import Cart from "./pages/Cart";
 import PaymentComplete from "./pages/PaymentComplete";
 import FarmLog from "./pages/FarmLog";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
   return (
     <div className="w-full min-h-screen bg-green-000">
       <Nav />
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"

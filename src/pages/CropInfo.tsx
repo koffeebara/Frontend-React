@@ -129,10 +129,11 @@ const CropInfo: React.FC = () => {
           </div>
 
           {/* 참여하기 버튼 */}
-          <div className="w-full max-w-[800px]">
+          <div className="w-full max-w-[800px]">   
             <button className="w-full px-10 py-4 bg-green-600 rounded-lg text-white text-base font-semibold">
               지금 참여하기
             </button>
+
           </div>
         </div>
       </div>
