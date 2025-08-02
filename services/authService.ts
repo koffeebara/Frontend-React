@@ -62,21 +62,37 @@ export const authService = {
     const url = `${API_BASE_URL}/api/v1/users`;
     console.log('회원가입 요청 URL:', url); // 디버깅용
     
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        credentials: 'include', // CORS 요청에 credentials 포함
+        body: JSON.stringify(userData),
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('회원가입 실패 응답:', errorText);
-      throw new Error(`회원가입 실패: ${response.status}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('회원가입 실패 응답:', errorText);
+        throw new Error(`회원가입 실패: ${response.status}`);
+      }
+
+      return parseJsonResponse(response);
+    } catch (error) {
+      console.error('회원가입 처리 중 오류:', error);
+      
+      // CORS 에러 특별 처리
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        throw new Error('서버 연결에 실패했습니다. CORS 설정을 확인해주세요.');
+      }
+      
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error('회원가입 처리 중 알 수 없는 오류가 발생했습니다.');
     }
-
-    return parseJsonResponse(response);
   },
 
   /* 로그인 */
@@ -89,7 +105,9 @@ export const authService = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(credentials),
       });
 
@@ -103,6 +121,12 @@ export const authService = {
       return data.response; // { accessToken, user }
     } catch (error) {
       console.error('로그인 처리 중 오류:', error);
+      
+      // CORS 에러 특별 처리
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        throw new Error('서버 연결에 실패했습니다. CORS 설정을 확인해주세요.');
+      }
+      
       if (error instanceof Error) {
         throw error;
       }
