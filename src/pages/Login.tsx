@@ -12,7 +12,6 @@ export default function Login() {
     emailMessage,
     password,
     setPassword,
-    passwordMessage,
   } = useFormValidation({ type: "login" });
 
   const setToken = useAuthStore((state) => state.setToken);
@@ -20,7 +19,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  const isValid = email && password && !emailMessage && !passwordMessage;
+  const isValid = email && password && !emailMessage;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ export default function Login() {
       const response = await authService.login({ email, password });
       console.log("로그인 성공:", response);
       setToken(response.accessToken);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error("로그인 실패:", error);
       setLoginError("아이디 또는 비밀번호가 올바르지 않습니다.");

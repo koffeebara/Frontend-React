@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useFormValidation } from "../hooks/useFormValidation";
 import { authService } from "../../services/authService";
-import { useAuthStore } from "../store/authStore";
 import { useState } from "react";
 import SignUpCheckBox from "../components/SignUpCheckBox";
 
@@ -13,20 +12,41 @@ export default function Signup() {
     password,
     setPassword,
     passwordMessage,
+    confirmPassword,
+    setConfirmPassword,
+    confirmPasswordMessage,
     name,
     setName,
     nameMessage,
+    phonePrefix,
+    setPhonePrefix,
+    phoneMiddle,
+    setPhoneMiddle,
+    phoneLast,
+    setPhoneLast,
+    phoneMessage,
+    fullPhone,
   } = useFormValidation({ type: "signup" });
+
+  const [selectedKey, setSelectedKey] = useState('buyer');
+  const [agreementValid, setAgreementValid] = useState(false);
 
   const isValid =
     email &&
     password &&
+    confirmPassword &&
     name &&
+    phoneMiddle &&
+    phoneLast &&
+    phoneMiddle.length === 4 &&
+    phoneLast.length === 4 &&
     !emailMessage &&
     !passwordMessage &&
-    !nameMessage;
+    !confirmPasswordMessage &&
+    !nameMessage &&
+    !phoneMessage &&
+    agreementValid;
 
-  const { setToken } = useAuthStore();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [signupError, setSignupError] = useState("");
@@ -39,19 +59,16 @@ export default function Signup() {
     setSignupError("");
 
     try {
-      console.log("회원가입 시도:", { email, password, name });
+      console.log("회원가입 시도:", { email, password, name, phone: fullPhone, userType: selectedKey.toUpperCase() });
       const signupResponse = await authService.signup({
         email,
         password,
         name,
+        phone: fullPhone,
+        userType: selectedKey.toUpperCase() as 'BUYER' | 'FARMER',
       });
       console.log("회원가입 성공:", signupResponse);
-
-      // 회원가입 후 자동 로그인
-      const loginResponse = await authService.login({ email, password });
-      console.log("자동 로그인 성공:", loginResponse);
-      setToken(loginResponse.accessToken);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.error("회원가입 실패:", error);
       const errorMessage =
@@ -62,10 +79,10 @@ export default function Signup() {
     }
   };
 
-  // 
+  // 역할 옵션
   const roles = [
     {
-      key: 'member',
+      key: 'buyer',
       icon: '🛒',
       title: '일반회원',
       description: '농작물 위탁에 참여해 배송받고 싶으신 분',
@@ -77,8 +94,6 @@ export default function Signup() {
       description: '위탁을 받아 농작물을 키우고 싶으신 분',
     },
   ];
-
-  const [selectedKey, setSelectedKey] = useState('member');
 
   return (
     <div className="w-full mx-auto  p-4">
@@ -138,10 +153,43 @@ export default function Signup() {
           {/* 휴대폰 번호 */}
           <div className="w-full mt-6 px-4">
             <p className="font-bold pb-2">휴대폰 번호<span className="text-red-500">*</span></p>
-            <input
-              className="w-full bg-gray-100 p-4 rounded-xl border border-gray-300"
-              placeholder="010-1234-5678"
-            />
+            <div className="flex gap-2">
+              <select 
+                className="bg-gray-100 p-4 rounded-xl border border-gray-300 w-20"
+                value={phonePrefix}
+                onChange={(e) => setPhonePrefix(e.target.value)}
+              >
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+              </select>
+              <input
+                className="flex-1 bg-gray-100 p-4 rounded-xl border border-gray-300"
+                placeholder="1234"
+                maxLength={4}
+                value={phoneMiddle}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '');
+                  setPhoneMiddle(value);
+                }}
+              />
+              <input
+                className="flex-1 bg-gray-100 p-4 rounded-xl border border-gray-300"
+                placeholder="5678"
+                maxLength={4}
+                value={phoneLast}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, '');
+                  setPhoneLast(value);
+                }}
+              />
+            </div>
+            {phoneMessage && (
+              <p className="text-sm text-red-500 mt-1">{phoneMessage}</p>
+            )}
           </div>
         </div>
         <form className="mt-4" onSubmit={handleSubmit}>
@@ -185,7 +233,13 @@ export default function Signup() {
               <input
                 className="w-full bg-gray-100 p-4 rounded-xl border border-gray-300"
                 placeholder="비밀번호를 다시 입력해주세요."
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
+              {confirmPasswordMessage && (
+                <p className="ml-4 text-sm text-red-500 mt-1">{confirmPasswordMessage}</p>
+              )}
             </div>
           </div>
           {/* 회원가입 에러 메시지 */}
@@ -197,8 +251,7 @@ export default function Signup() {
 
           {/* 동의 */}
           <div className="mx-4 pt-8">
-            <SignUpCheckBox />
-
+            <SignUpCheckBox onValidationChange={setAgreementValid} />
           </div>
 
           {/* 회원가입 */}
@@ -233,74 +286,3 @@ export default function Signup() {
     </div>
   );
 }
-
-
-// 기존 코드
-//       <div className="text-center mb-8">
-//         <h1 className="text-xl mb-2">시고르토크</h1>
-//         <div className="bg-gray-200 p-4">
-//           <p>시고르토크 img 위치</p>
-//         </div>
-//       </div>
-//       <form className="mt-8" onSubmit={handleSubmit}>
-//         {/* 이메일 */}
-//         <div className="mt-4">
-//           <input
-//             type="email"
-//             className="w-full bg-gray-200 p-4 text-center"
-//             placeholder="이메일"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-//         </div>
-//         {emailMessage && (
-//           <p className="text-center text-sm text-red-500">{emailMessage}</p>
-//         )}
-
-//         {/* 비밀번호 */}
-//         <div className="mt-4">
-//           <input
-//             className="w-full bg-gray-200 p-4 text-center"
-//             placeholder="비밀번호"
-//             type="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//         </div>
-
-//         {password.length > 0 && passwordMessage && (
-//           <p className="text-center text-sm text-red-500">{passwordMessage}</p>
-//         )}
-
-//         {/* 이름 */}
-//         <div className="mt-4">
-//           <input
-//             className="w-full bg-gray-200 p-4 text-center"
-//             placeholder="이름"
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//           />
-//         </div>
-//         {nameMessage && (
-//           <p className="text-center text-sm text-red-500">{nameMessage}</p>
-//         )}
-
-//         {/* 회원가입 에러 메시지 */}
-//         {signupError && (
-//           <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-//             {signupError}
-//           </div>
-//         )}
-
-//         {/* 회원가입 */}
-//         <div className="mt-8">
-//           <button
-//             className={`w-full p-4 text-center cursor-pointer 
-//             ${isValid && !isLoading ? "bg-blue-500 text-white" : "bg-gray-300 text-gray-400 cursor-not-allowed"}`}
-//             disabled={!isValid || isLoading}
-//             type="submit"
-//           >
-//             {isLoading ? "회원가입 중..." : "회원가입"}
-//           </button>
-//         </div>
-//       </form>

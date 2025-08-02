@@ -2,6 +2,8 @@ interface SignupData {
   email: string;
   password: string;
   name: string;
+  phone: string;
+  userType: 'BUYER' | 'FARMER';
 }
 
 interface LoginCredentials {
